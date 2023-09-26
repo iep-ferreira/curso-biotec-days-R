@@ -19,3 +19,15 @@ sharing-your-book
 publishing
 pages
 metadata-for-sharing
+apresentação
+ufscar-lagoa-do-sino
+ce-meca
+ciência-de-dados-e-aplicações-tecnológicas
+realização
+sobre-a-equipe
+introdução
+a-linguagem-r
+quem-somos
+ciência-dos-dados-na-lagoa-do-sino
+ufscar-lagoa-do-sino-1
+ce-meca-1

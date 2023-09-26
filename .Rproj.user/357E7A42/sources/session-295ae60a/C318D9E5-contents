@@ -1,23 +1,84 @@
 --- 
-title: "A Minimal Book Example"
-author: "John Doe"
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
+title: "Bioinformática e linguagem R na era da inteligência artificial"
+author: 'Prof. Dr. Iuri E. P. Ferreira e Prof. Dr. Jorge L. R. Pantoja Filho. Universidade Federal de São Carlos, Campus Lagoa do Sino'
+date: "5 de outubro de 2023"
+output:
+  html_document:
+    df_print: paged
 documentclass: book
-bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
-# cover-image: path to the social sharing image like images/cover.jpg
+bibliography:
+- book.bib
+- packages.bib
+#url: "https://iep-ferreira.github.io/curso-biotec-days-R/"
+#cover-image: "images/imagem-projeto.png"
 description: |
   This is a minimal example of using the bookdown package to write a book.
-  The HTML output format for this example is bookdown::gitbook,
   set in the _output.yml file.
+  The HTML output format for this example is bookdown::gitbook,
 link-citations: yes
-github-repo: rstudio/bookdown-demo
+github-repo: "rstudio/bookdown-demo"
+site: bookdown::bookdown_site
 ---
 
-# About
+# Quem somos?
+
+## UFSCar Lagoa do Sino
+
+<div align = "justify"> 
+
+Material didático produzido pela equipe do Centro de Modelagem Estatística em Ciências Ambientais (Ce-MECA), da UFSCar Lagoa do Sino. </p>
+
+![Venha conhecer o Ce-MECA - UFSCar!](images/logo3.jpg)
+
+A linguagem R vem se tornando cada vez mais utilizada, passando da 19º posição em 2019 ao 9º lugar em 2020 em popularidade, conforme _The TIOBE Programming Community index_ . 
+
+</div>   
+
+## Ce-MECA
+
+<div align = "justify"> 
+
+Material didático produzido pela equipe do Centro de Modelagem Estatística em Ciências Ambientais (Ce-MECA), da UFSCar Lagoa do Sino. </p>
+
+![Venha conhecer o Ce-MECA - UFSCar!](images/logo3.jpg)
+
+A linguagem R vem se tornando cada vez mais utilizada, passando da 19º posição em 2019 ao 9º lugar em 2020 em popularidade, conforme _The TIOBE Programming Community index_ . 
+
+</div>   
+
+## Ciência dos Dados na Lagoa do Sino
+
+# Introdução 
+
+## A Linguagem R
+
+<div align = "justify"> 
+
+R é uma linguagem de programação criada por Ross Ihaka e 
+Robert Gentleman, na universidade de Auckland, Nova Zelândia, 
+em meados dos anos 1990. A linguagem R foi uma adaptação da 
+linguagem S, criada por John Chambers em 1976, nos laboratórios 
+Bell. </p>
+
+R também denomina um programa computacional destinado a análises estatísticas e visualização de dados. O programa R é livre ( _General Public License_ ) e possui código-fonte aberto, sendo aprimorado continuamente por uma rede global de colaboradores, a partir da _R Foundation for Statistical Computing_ , sediada em Viena, na Áustria. </p>
+
+A linguagem R vem se tornando cada vez mais utilizada, passando da 19º posição em 2019 ao 9º lugar em 2020 em popularidade, conforme _The TIOBE Programming Community index_ . 
+</div>   
+
+
+
+
+## UFSCar Lagoa do Sino
 
 This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
+
+## Ce-MECA 
+
+![teste](images/imagem-projeto.png)
+
+
+## Ciência de Dados e Aplicações Tecnológicas
+
 
 ## Usage 
 
