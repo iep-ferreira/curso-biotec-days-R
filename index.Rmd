@@ -20,33 +20,116 @@ github-repo: "rstudio/bookdown-demo"
 site: bookdown::bookdown_site
 ---
 
-# Quem somos?
+# Apresentação
 
-## UFSCar Lagoa do Sino
 
-<div align = "justify"> 
+## Quem somos? 
 
-Material didático produzido pela equipe do Centro de Modelagem Estatística em Ciências Ambientais (Ce-MECA), da UFSCar Lagoa do Sino. </p>
 
-![Venha conhecer o Ce-MECA - UFSCar!](images/logo3.jpg)
 
-A linguagem R vem se tornando cada vez mais utilizada, passando da 19º posição em 2019 ao 9º lugar em 2020 em popularidade, conforme _The TIOBE Programming Community index_ . 
 
-</div>   
-
-## Ce-MECA
 
 <div align = "justify"> 
 
-Material didático produzido pela equipe do Centro de Modelagem Estatística em Ciências Ambientais (Ce-MECA), da UFSCar Lagoa do Sino. </p>
+Este material foi elaborado pela equipe do Centro de Modelagem Estatística em Ciências Ambientais (Ce-MECA), da UFSCar Lagoa do Sino. Visite o [nosso site!](https://sites.google.com/ufscar.br/cemeca) </p>
 
-![Venha conhecer o Ce-MECA - UFSCar!](images/logo3.jpg)
+</div>
 
-A linguagem R vem se tornando cada vez mais utilizada, passando da 19º posição em 2019 ao 9º lugar em 2020 em popularidade, conforme _The TIOBE Programming Community index_ . 
+```{r echo=FALSE, out.width='550px', fig.align='center'}
+knitr::include_graphics("images/logo3.jpg")
+```
 
-</div>   
+## Iniciativas 
+    
 
-## Ciência dos Dados na Lagoa do Sino
+  + <h4> Projeto Ciência de Dados na Lagoa do Sino </h4>
+
+
+<div align = "justify"> 
+
+O programa estabelece um espaço devotado à discussão e popularização da Ciência de Dados, a fim de criar uma ponte entre educandos da UFSCar e profissionais e empresas da área. </p> 
+
+</div>
+
+```{r echo=FALSE, out.width='600px', fig.align='center'}
+knitr::include_graphics("images/imagem-projeto.png")
+```
+
+  + <h4> Grupo de Ciência de Dados e Aplicações Tecnológicas </h4>
+    
+
+<div align = "justify"> 
+
+As aplicações em Ciência dos Dados são crescentes, e o seu impacto na sociedade hoje é imensurável. Hoje, encontramos algoritmos estatísticos ''em produção'' por toda a parte: nos sites de notícias, nas redes sociais, nos carros autônomos, no marketing digital etc. Atualmente, a inteligência artificial tem impactado todas as áreas criativas, e suas diversas aplicações abrem novas possibilidades e nos causam espanto. Nos dias atuais, um volume crescente de dados é gerado, e este volume está aquém das capacidades humanas de processamento e aquisição de conhecimento. Neste contexto, há uma demanda crescente por cientistas de dados. Recentemente, na UFSCar Lagoa do Sino, um grupo multidisciplinar de pesquisadores tem se reunido frequentemente para discutir pautas relacionadas à Ciência de Dados e suas aplicações nas mais diversas áreas do conhecimento. </p>
+
+</div>
+    
+Linhas de Pesquisa: 
+
+    + Aprendizado de Máquinas 
+  
+    + Modelagem Estatística em Ciências Ambientais e Ecologia
+  
+    + Vieses e Processos de Tomada de Decisões
+
+  + <h4> Laboratório de Análises Estatísticas </h4>
+    
+  + <h4> Programas de Iniciação Científica e Estágios </h4>
+  
+  + <h4> Estudos e Capacitações </h4>
+
+
+```{r echo=FALSE, out.width='400px', fig.align='center'}
+knitr::include_graphics("images/linhas-interesses.png")
+```
+
+## Projetos de Pesquisa
+
+<style>
+.scrollable-section {
+  height: 500px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+</style>
+
+
+<div class="scrollable-section">
+
+<table width="100%">
+  <tr>
+    <td width="40%">
+      <img src="images/proj-bioma-stats.png" width="400px"/>
+    </td>
+    <td width="60%">
+
+<summary> <b> Projeto Biomastats </b> </summary>
+
+    
+Um pacote para a elaboração de relatórios ambientais automatizados sobre o uso e a ocupação do solo no Brasil. 
+
+Fontana, KO; Souza, CA; Molin, PG; Santana, MF; Ferreira, IEP.  
+
+Fomento: CNPq 
+
+  </td>
+  </tr>
+</table>
+
+
+### Bloco de Conteúdo 1
+Algum conteúdo aqui...
+  
+### Bloco de Conteúdo 2
+Mais conteúdo aqui...
+  
+### Bloco de Conteúdo 3
+E ainda mais conteúdo...
+
+</div>
+
+
 
 # Introdução 
 
@@ -63,6 +146,7 @@ Bell. </p>
 R também denomina um programa computacional destinado a análises estatísticas e visualização de dados. O programa R é livre ( _General Public License_ ) e possui código-fonte aberto, sendo aprimorado continuamente por uma rede global de colaboradores, a partir da _R Foundation for Statistical Computing_ , sediada em Viena, na Áustria. </p>
 
 A linguagem R vem se tornando cada vez mais utilizada, passando da 19º posição em 2019 ao 9º lugar em 2020 em popularidade, conforme _The TIOBE Programming Community index_ . 
+
 </div>   
 
 
@@ -73,8 +157,6 @@ A linguagem R vem se tornando cada vez mais utilizada, passando da 19º posiçã
 This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
 
 ## Ce-MECA 
-
-![teste](images/imagem-projeto.png)
 
 
 ## Ciência de Dados e Aplicações Tecnológicas
@@ -96,9 +178,7 @@ You can render the HTML version of this example book without changing anything:
 
 1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
 
-Or build the book from the R console:
-
-```{r, eval=FALSE}
+Or build the book from the R console:```{r, eval=FALSE}
 bookdown::render_book()
 ```
 

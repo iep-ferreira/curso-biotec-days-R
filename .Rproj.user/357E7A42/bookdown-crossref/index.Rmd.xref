@@ -1,13 +1,13 @@
-h1:quem-somos Quem somos?
-h2:ufscar-lagoa-do-sino UFSCar Lagoa do Sino
-h2:ce-meca Ce-MECA
-h2:ciência-dos-dados-na-lagoa-do-sino Ciência dos Dados na Lagoa do Sino
+h1:apresentação Apresentação
+h2:quem-somos Quem somos?
+h2:iniciativas Iniciativas
+h2:projetos-de-pesquisa Projetos de Pesquisa
 h1:introdução Introdução
 h2:a-linguagem-r A Linguagem R
-h2:ufscar-lagoa-do-sino-1 UFSCar Lagoa do Sino
-h2:ce-meca-1 Ce-MECA
+h2:ufscar-lagoa-do-sino UFSCar Lagoa do Sino
+h2:ce-meca Ce-MECA
 h2:ciência-de-dados-e-aplicações-tecnológicas Ciência de Dados e Aplicações Tecnológicas
 h2:usage Usage
 h2:render-book Render book
-h2:preview-book Preview book
+h1:automatically-create-a-bib-database-for-r-packages automatically create a bib database for R packages
 

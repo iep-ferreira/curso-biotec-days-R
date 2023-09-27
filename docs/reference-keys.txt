@@ -31,3 +31,17 @@ quem-somos
 ciência-dos-dados-na-lagoa-do-sino
 ufscar-lagoa-do-sino-1
 ce-meca-1
+iniciativas
+fig:unnamed-chunk-1
+fig:unnamed-chunk-2
+linhas-de-pesquisa
+capacitações-e-ferramentas
+fig:unnamed-chunk-3
+projeto-ciência-de-dados-na-lagoa-do-sino
+grupo-de-ciência-de-dados-e-aplicações-tecnológicas
+laboratório-de-análises-estatísticas
+oportunidades-de-iniciação-científica-e-estágios
+projetos-de-pesquisa
+bloco-de-conteúdo-1
+bloco-de-conteúdo-2
+bloco-de-conteúdo-3
