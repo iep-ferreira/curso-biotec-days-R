@@ -2,8 +2,13 @@ h1:apresentação Apresentação
 h2:quem-somos Quem somos?
 h2:iniciativas Iniciativas
 h2:projetos-de-pesquisa Projetos de Pesquisa
-h1:introdução Introdução
-h2:a-linguagem-r A Linguagem R
+h1:origem-do-r Origem do R
+h1:primeiros-passos Primeiros passos
+h1:tipos-de-dados Tipos de dados
+h1:operações-básicas-e-funções-matemáticas Operações Básicas e Funções Matemáticas
+h2:principais-estruturas-de-dados Principais estruturas de dados
+h3:vetores Vetores
+h3:arrays-ou-matrizes Arrays ou matrizes
 h2:ufscar-lagoa-do-sino UFSCar Lagoa do Sino
 h2:ce-meca Ce-MECA
 h2:ciência-de-dados-e-aplicações-tecnológicas Ciência de Dados e Aplicações Tecnológicas

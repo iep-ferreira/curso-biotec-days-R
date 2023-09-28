@@ -45,3 +45,10 @@ projetos-de-pesquisa
 bloco-de-conteúdo-1
 bloco-de-conteúdo-2
 bloco-de-conteúdo-3
+origem-do-r
+primeiros-passos
+tipos-de-dados
+operações-básicas-e-funções-matemáticas
+principais-estruturas-de-dados
+vetores
+arrays-ou-matrizes

@@ -1,5 +1,5 @@
 --- 
-title: "Bioinformática e linguagem R na era da inteligência artificial"
+title: "Bioestatística e linguagem R na era da inteligência artificial"
 author: 'Prof. Dr. Iuri E. P. Ferreira e Prof. Dr. Jorge L. R. Pantoja Filho. Universidade Federal de São Carlos, Campus Lagoa do Sino'
 date: "5 de outubro de 2023"
 output:
@@ -72,14 +72,16 @@ Linhas de Pesquisa:
   
     + Vieses e Processos de Tomada de Decisões
 
-  + <h4> Laboratório de Análises Estatísticas </h4>
-    
   + <h4> Programas de Iniciação Científica e Estágios </h4>
+
+```{r echo=FALSE, out.width='500px', fig.align='center'}
+knitr::include_graphics("images/estagios.png")
+```
   
   + <h4> Estudos e Capacitações </h4>
 
 
-```{r echo=FALSE, out.width='400px', fig.align='center'}
+```{r echo=FALSE, out.width='700px', fig.align='center'}
 knitr::include_graphics("images/linhas-interesses.png")
 ```
 
@@ -97,6 +99,7 @@ knitr::include_graphics("images/linhas-interesses.png")
 
 <div class="scrollable-section">
 
+<!-- Projeto Biomastats -->
 <table width="100%">
   <tr>
     <td width="40%">
@@ -104,7 +107,7 @@ knitr::include_graphics("images/linhas-interesses.png")
     </td>
     <td width="60%">
 
-<summary> <b> Projeto Biomastats </b> </summary>
+<summary> <b> Biomastats </b> </summary>
 
     
 Um pacote para a elaboração de relatórios ambientais automatizados sobre o uso e a ocupação do solo no Brasil. 
@@ -117,23 +120,108 @@ Fomento: CNPq
   </tr>
 </table>
 
+<!-- Projeto Abundância Animal -->
+<table width="100%">
+  <tr>
+    <td width="40%">
+      <img src="images/proj-mba.png" width="400px"/>
+    </td>
+    <td width="60%">
 
-### Bloco de Conteúdo 1
-Algum conteúdo aqui...
-  
-### Bloco de Conteúdo 2
-Mais conteúdo aqui...
-  
-### Bloco de Conteúdo 3
-E ainda mais conteúdo...
+<summary> <b> Plataforma MBA </b> </summary>
+
+Plataforma de simulação baseada em multi-agentes (MBA) e o controle populaciona do Java Porco (Sus scrofa) no Sudoeste Paulista
+
+Bassani, FB; Sanches, A; Ferreira, IEP _et al_. 
+
+  </td>
+  </tr>
+</table>
+
+
+<!-- Projeto SIG Socioambiental -->
+<table width="100%">
+  <tr>
+    <td width="40%">
+      <img src="images/proj-sig.png" width="400px"/>
+    </td>
+    <td width="60%">
+
+<summary> <b> SIG Socioambiental </b> </summary>
+
+Um sistema para a visualização e análise de dados socioambientais em recortes do terrotório brasileiro
+
+Bilia, G; Pantoja-Filho, JLR; Ferreira, IEP _et al_. 
+
+  </td>
+  </tr>
+</table>
+
+<!-- Projeto Métricas da Paisagem -->
+<table width="100%">
+  <tr>
+    <td width="40%">
+      <img src="images/proj-met.png" width="400px"/>
+    </td>
+    <td width="60%">
+
+<summary> <b> Métricas da Paisagem </b> </summary>
+
+Implementação computacional de módulos de processamento, análise e visualização de métricas de paisagens no programa Biomastats 
+
+Camargo, V; Carvalho, HL; Tiezzi, RO; Ferreira, IEP _et al_. 
+
+Fomento: CNPq
+
+  </td>
+  </tr>
+</table>
+
+<!-- Projeto Modelos Bent-cable e lhas Pequenas  -->
+<table width="100%">
+  <tr>
+    <td width="40%">
+      <img src="images/bent-proj.png" width="400px"/>
+    </td>
+    <td width="60%">
+
+<summary> <b> Modelos Bent-cable e lhas Pequenas </b> </summary>
+
+    
+Aplicação de modelos segmentados com transição de fase suave para explicar o Efeito de Ilhas Pequenas a partir da existência de limiares aleatórios
+
+Santana, MF; Zocchi, SS; Leandro, RA; Martensen, AC; Ferreira, IEP 
+
+  </td>
+  </tr>
+</table>
+
+<!-- Projeto Biomastats GUI  -->
+
+<table width="100%">
+  <tr>
+    <td width="40%">
+      <img src="images/biomastatsGUI.png" width="400px"/>
+    </td>
+    <td width="60%">
+
+<summary> <b> Biomastats GUI </b> </summary>
+
+    
+Desenvolvimento e implantação da Interface Gráfica do Usuário para o programa Biomastats via aplicativos shiny
+
+Santana, MF; Ferreira, IEP
+
+Fomento: CNPq 
+
+  </td>
+  </tr>
+</table>
 
 </div>
 
 
-
-# Introdução 
-
-## A Linguagem R
+# Origem do R
 
 <div align = "justify"> 
 
@@ -145,9 +233,341 @@ Bell. </p>
 
 R também denomina um programa computacional destinado a análises estatísticas e visualização de dados. O programa R é livre ( _General Public License_ ) e possui código-fonte aberto, sendo aprimorado continuamente por uma rede global de colaboradores, a partir da _R Foundation for Statistical Computing_ , sediada em Viena, na Áustria. </p>
 
-A linguagem R vem se tornando cada vez mais utilizada, passando da 19º posição em 2019 ao 9º lugar em 2020 em popularidade, conforme _The TIOBE Programming Community index_ . 
+A linguagem R já esteve em 8º dentre as mais populares, no entanto, hoje ela ocupa a 18º posição de acordo com _The TIOBE Programming Community index_ (TIOBE, 2023) . </p>
 
 </div>   
+
+# Primeiros passos  
+
+<style>
+    details > summary {
+        font-weight: bold;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    
+    details > p {
+        margin-left: 20px;
+    }
+    
+    details > details > summary {
+        margin-left: 20px;
+    }
+</style>
+
+<div style="text-align: justify"> 
+
+<details>
+<summary> Instalação </summary>
+Para instalar o R, acesse a página oficial da organização _The R Project for Statistical Computing em  < https://cran.r-project.org/ > . O usuário deverá escolher o arquivo de acordo com o seu sistema operacional. </p>
+</details>
+
+<details>
+<summary> Execução de códigos </summary>
+O R é uma linguagem interpretada. Isso significa que partes do código podem ser executadas diretamente do interpretador (interface R), sem a necessidade de compilar todo código e montar um arquivo executável (.exe). Dessa forma, o usuário seleciona o pedaço do código que deseja executar e, de imediato, tem o resultado impresso no terminal de saída ou na janela gráfica. Se houver erro de sintaxe/interpretação, o programa exibirá um alerta no terminal de saída. </p>  
+
+<details>
+<summary> Exercício </summary>
+Abra a interface básica do R (R-GUI) e execute o código a seguir: </p>  
+
+```{r}
+x <- rnorm(100, 10, 15)
+summary(x)
+```
+</details>
+</details>
+
+<details>
+<summary> Criando scripts </summary>
+Após abrir a interface R, o usuário deverá criar um script (.txt ou .R) no qual os comandos serão salvos. Para executar um bloco de comandos, o usuário deverá selecioná-lo com o cursor do mouse (deixando-o em realce) e, então, pressionar "F5" ou "CTRL+ENTER", a depender da interface em uso. Outra opção é executar o comando, linha a linha, até completar o bloco de comandos desejado. </p> 
+
+
+<details>
+<summary> Exercício </summary>
+Abra a interface gráfica do R de preferência e crie um novo arquivo de script R. Escreva algumas linhas de códigos, com comentários. Salve o script em um novo diretório.  </p>  
+```{r}
+# crie uma lista de números aleatórios normalmente distribuídos
+x <- rnorm(100, 10, 15)
+# faça um resumo estatístico dos valores obtidos 
+summary(x)
+# desenhe um diagrama de caixas para os valores amostrados
+boxplot(x, main = "Diagrama de Caixas", ylab = "Valores amostrados")
+```
+</details>
+</details>
+
+<details>
+<summary> Atribuição de valores </summary>
+No R, os resultados podem ser obtidos a partir do uso de funções/expressões ou serem atribuídos a variáveis e gravados na memória do computador. Há diversas formas de atribuir valores a uma variável: `nome <- valor`; `valor -> nome`; `nome = valor`. 
+Tanto `->` como `=` funcionam como comandos de atribuição. Uma vantagem do R é o fato de não ser requerida a declaração/inicialização de variáveis, tipos e tamanhos ao início do programa, como é comum em outras linguagens. </p>
+R é uma linguagem _case sensitive_, isso significa que letras maiúsculas e minúsculas são diferenciadas no programa. Portanto, uma variável de nome `x` será diferente de outra com nome `X`. </p> 
+
+<details>
+<summary> Exemplo </summary>
+Execute as linhas de código a seguir e observe a diferença:
+```{r}
+# Valores atribuídos a variáveis locais
+x<-5
+10->X
+# Diferença entre as variáveis "x" e "X"
+5*x; 5*X
+```
+</details>
+</details>
+
+</div>
+
+# Tipos de dados
+
+<style>
+    details > summary {
+        font-weight: bold;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    
+    details > p {
+        margin-left: 20px;
+    }
+    
+    details > details > summary {
+        margin-left: 20px;
+    }
+</style>
+
+<div style="text-align: justify"> 
+
+Há diversos tipos de dados que podem ser armazenados na memória do computador e manipulados a partir do programa R. Os dados podem ser numéricos (reais ou inteiros), lógicos (verdadeiro ou falso), caracteres (sequências alfanuméricas), números complexos ou funções. </p>
+
+<details>
+<summary> Exemplos </summary>
+
+<details>
+<summary> Dado real / ponto flutuante </summary>
+```{r}
+1/3
+```
+</details>
+
+
+<details>
+<summary> Dado inteiro </summary>
+```{r}
+round(1/3)
+```
+</details>
+
+<details>
+<summary> Dado lógico </summary>
+```{r}
+1<3
+```
+</details>
+
+<details>
+<summary> Dado alfanumérico </summary>
+```{r}
+nome <- "Carlos Henrique"
+```
+</details>
+
+<details>
+<summary> Dado complexo </summary>
+```{r}
+# Complexo
+(5+6i) - (3-2i)
+```
+</details>
+
+<details>
+<summary> Função </summary>
+```{r}
+parabola <- function(x, a, b, c){ a*x^2 + b*x + c }
+parabola(x = 2, a = 1, b = 1, c = 3)
+```
+
+</details>
+
+</details>
+
+O comando `mode` retorna o tipo do dado guardado no objeto que entra como argumento da função (entre parênteses). </p>
+
+<details>
+<summary> Exemplo </summary>
+```{r}
+mode(parabola)
+```
+</details>
+
+</div>
+
+# Operações Básicas e Funções Matemáticas
+
+```{r echo=FALSE, out.width='300px', fig.align='center'}
+knitr::include_graphics("images/arith-operations.png")
+```
+
+```{r echo=FALSE, out.width='300px', fig.align='center'}
+knitr::include_graphics("images/logical-operations.png")
+```
+
+
+No R, as operações aritméticas são definidas de maneira intuitiva. 
+
+```{r}
+# aritmética
+l<-23
+l^2+2*l
+3*2+2
+3*(2+2)
+3/2
+```
+
+Mais operações matemáticas são listadas   [aqui](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Arithmetic.html). 
+
+Além disso, diversas funções matemáticas são pré-definidas no R. 
+</div>
+
+```{r}
+# Arredondar (duas casas decimais)
+round(17/3,2)
+# seno, cosseno, tangente, arco-tangente, tengente hiperbólica
+sin(pi);cos(pi);tan(pi);atan(0.5);tanh(0.5)
+# raiz quadrado, exponencial, log natural, log na base 10 e módulo
+sqrt(4);exp(2);log(10);log10(10);abs(-6.5)
+```
+<div style="text-align: justify"> 
+Por sua vez, comparações e controle de fluxo dependem de operadores 
+lógicos, ou seja, que resultam em _TRUE_ ou _FALSE_. Observe que "==" 
+não é um comando de atribuição, mas trata-se de uma comparação lógica de igualdade. Com comandos lógicos, também é possível estabelecer a união e 
+a interseção entre conjuntos: "(cond. 1)&(cond. 2)" será verdade (_TRUE_) apenas se as condições 1 e 2 forem satisfeitas simultaneamente; por outro lado, "(cond. 1)|(cond. 2)" será verdade se a condição 1 ou a condição 2 (ou ambas) forem satisfeitas. 
+</div>
+
+```{r}
+# Exemplo 1 
+nome <- "José"
+# A variável é um número? 
+is.numeric(nome)
+# A variável é um caracter? 
+is.character(nome)
+# Exemplo 2
+l<-1
+# A variável é igual a 23? 
+l==23
+# A variável é menor do que 15?
+l<15
+# A variável é menor do que 23
+l<=23
+# atribuição (nova variável)
+a<-17
+# condição 1 E condição 2 
+(a<15)&(l>23)
+(a<15)&(l>=23)
+# condição 1 OU condição 2 
+(a<15)|(l>23)
+(a<15)|(l>=23)
+```
+## Principais estruturas de dados   
+### Vetores
+<div style="text-align: justify"> 
+Vetor é o tipo de estrutura de dados mais simples. Trata-se de uma sequência de "valores" a serem armazenados na memória do computador. Observe que tais valores não são necessariamente números, mas podem ser nomes e/ou categorias ou valores lógicos (TRUE ou FALSE). Cada elemento de um vetor é um componente. 
+
+Uma lista pode ser construída a partir da combinação de elementos do mesmo tipo, através do comando (*combine*). Sua sintaxe é *c(element 1, element 2, ...)* . Observe que os elementos são separados por vírgulas. Se os elementos forem números decimais, as unidades e os decimais serão separados por pontos, como na Língua Inglesa.
+</div>
+
+```{r}
+# Vetor c/ números inteiros de 1 a 10
+v<-c(1,2,3,4,5,6,7,8,9,10)
+# Impressão do vetor armazenado
+print(v)
+# Quinto elemento do vetor
+v[5]
+```
+
+```{r}
+# Vetor c/ nomes dos alunos
+nomes<-c("Raul","Zulmira","Edmilson","Jaquelina","Gabriela","Hudson")
+# Impressão do vetor armazenado
+nomes
+# Obs: Nomes e rótulos sempre devem ser incluídos com aspas duplas. 
+```
+```{r}
+# Vetor com valores lógicos 
+# Quais elementos de v são divisíveis por 2?
+v%%2
+# Observe que o operador %% indica a divisibilidade 
+# (0 = não divisível / 1 = divisível)
+as.logical(v%%2)
+# Aqui os valores foram transformados em variáveis lógicas 
+# (i.e. TRUE = Verdadeiro = 1; FALSE = Falso = 0)
+```
+<div style="text-align: justify"> 
+Quando digitamos *vetor[2]*, o número disposto entre colchetes é uma **subscrição**. A subscrição indica a posição de um dado dentro de uma 
+estrutura de dados. Obviamente, a subscrição é um número inteiro e 
+dentro dos limites de tamanho da lista. A subscrição/índice varia de 1 
+até N, em que N é o número de elementos na lista. 
+
+Diversas operações com vetores e entre vetores e matrizes são pré-definidas no R. No exemplo abaixo, identifique a diferença entre o produto ponto-a-ponto e a multiplicação escalar (produto interno). 
+</div>
+
+```{r}
+# Definição de dois vetores quaisquer 
+v <- c(12,3,4,25,7,8)
+r <- c(13,15,4,21,2,3)
+# Comprimento de um vetor
+length(v)
+# Multiplicação ponto-a-ponto
+v*r
+# Produto escalar <v,r>
+v%*%r
+```
+
+### Arrays ou matrizes
+<div style="text-align: justify"> 
+Arrays e matrizes são estruturas de dados bidimensionais, cujas as 
+entradas apresentam subscrições para as linhas e colunas. 
+</div>
+
+```{r}
+# Criando um banco de dados
+dados<-data.frame(v,r)
+# Leitura das 3 linhas iniciais
+head(dados,3)
+# acessando a coluna "v" do banco de dados
+dados$v
+# Acessando o elemento da linha 3 e coluna 2
+dados[3,2]
+# Dimenões do banco de dados
+dim(dados)
+```
+<div style="text-align: justify"> 
+No exemplo abaixo, definimos uma matriz com 3 linhas (_nr = number of lines_) e cujo preenchimento segue a ordem das colunas (_byrow = FALSE_).
+Diversas operações matriciais são possíveis, tais como: transposição, inversão, multiplicação, cálculo de autovalores, autovetores e determinantes. Essas operações têm grande relevância na Estatística.   
+</div>
+
+```{r}
+# Definindo a matriz
+A<-matrix(c(2,3,4,5,6,7),nr=3,byrow=FALSE)
+A
+# Obtenção da transposta
+t(A)
+# Definindo outra matriz
+B<-matrix(c(2,3,4,5,6,7,8,9,10),nr=3,byrow=FALSE)
+B
+# Cálculo do determinante
+det(B)
+# Tentativa - Cálculo da Inversa 
+try(solve(B))
+# Nova matriz
+B2<-matrix(c(2,3,28,5,6,12,8,9,5),nr=3,byrow=FALSE)
+det(B2)
+solve(B2)
+# multiplicação ponto-a-ponto
+B*B2
+# multiplicação matricial
+B%*%B2
+```
+ 
 
 
 

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Operações Básicas e Funções Matemáticas | Bioestatística e linguagem R na era da inteligência artificial</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Operações Básicas e Funções Matemáticas | Bioestatística e linguagem R na era da inteligência artificial" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Operações Básicas e Funções Matemáticas | Bioestatística e linguagem R na era da inteligência artificial" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  
+
+<meta name="author" content="Prof. Dr. Iuri E. P. Ferreira e Prof. Dr. Jorge L. R. Pantoja Filho. Universidade Federal de São Carlos, Campus Lagoa do Sino" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tipos-de-dados.html"/>
+<link rel="next" href="hello-bookdown.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Minicurso - XII Four Biotec + Biotec Days</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Apresentação</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#quem-somos"><i class="fa fa-check"></i><b>1.1</b> Quem somos?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#iniciativas"><i class="fa fa-check"></i><b>1.2</b> Iniciativas</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#projetos-de-pesquisa"><i class="fa fa-check"></i><b>1.3</b> Projetos de Pesquisa</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="origem-do-r.html"><a href="origem-do-r.html"><i class="fa fa-check"></i><b>2</b> Origem do R</a></li>
+<li class="chapter" data-level="3" data-path="primeiros-passos.html"><a href="primeiros-passos.html"><i class="fa fa-check"></i><b>3</b> Primeiros passos</a></li>
+<li class="chapter" data-level="4" data-path="tipos-de-dados.html"><a href="tipos-de-dados.html"><i class="fa fa-check"></i><b>4</b> Tipos de dados</a></li>
+<li class="chapter" data-level="5" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html"><i class="fa fa-check"></i><b>5</b> Operações Básicas e Funções Matemáticas</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#principais-estruturas-de-dados"><i class="fa fa-check"></i><b>5.1</b> Principais estruturas de dados</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#vetores"><i class="fa fa-check"></i><b>5.1.1</b> Vetores</a></li>
+<li class="chapter" data-level="5.1.2" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#arrays-ou-matrizes"><i class="fa fa-check"></i><b>5.1.2</b> Arrays ou matrizes</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#ufscar-lagoa-do-sino"><i class="fa fa-check"></i><b>5.2</b> UFSCar Lagoa do Sino</a></li>
+<li class="chapter" data-level="5.3" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#ce-meca"><i class="fa fa-check"></i><b>5.3</b> Ce-MECA</a></li>
+<li class="chapter" data-level="5.4" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#ciência-de-dados-e-aplicações-tecnológicas"><i class="fa fa-check"></i><b>5.4</b> Ciência de Dados e Aplicações Tecnológicas</a></li>
+<li class="chapter" data-level="5.5" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#usage"><i class="fa fa-check"></i><b>5.5</b> Usage</a></li>
+<li class="chapter" data-level="5.6" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#render-book"><i class="fa fa-check"></i><b>5.6</b> Render book</a></li>
+<li class="chapter" data-level="5.7" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#preview-book"><i class="fa fa-check"></i><b>5.7</b> Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="hello-bookdown.html"><a href="hello-bookdown.html"><i class="fa fa-check"></i><b>6</b> Hello bookdown</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="hello-bookdown.html"><a href="hello-bookdown.html#a-section"><i class="fa fa-check"></i><b>6.1</b> A section</a>
+<ul>
+<li class="chapter" data-level="" data-path="hello-bookdown.html"><a href="hello-bookdown.html#an-unnumbered-section"><i class="fa fa-check"></i>An unnumbered section</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>7</b> Cross-references</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="cross.html"><a href="cross.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>7.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="7.2" data-path="cross.html"><a href="cross.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>7.2</b> Captioned figures and tables</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>8</b> Parts</a></li>
+<li class="chapter" data-level="9" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>9</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>9.1</b> Footnotes</a></li>
+<li class="chapter" data-level="9.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>9.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>10</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>10.1</b> Equations</a></li>
+<li class="chapter" data-level="10.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>10.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="10.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>10.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>11</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>11.1</b> Publishing</a></li>
+<li class="chapter" data-level="11.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>11.2</b> 404 pages</a></li>
+<li class="chapter" data-level="11.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>11.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bioestatística e linguagem R na era da inteligência artificial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="operações-básicas-e-funções-matemáticas" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Operações Básicas e Funções Matemáticas<a href="operações-básicas-e-funções-matemáticas.html#operações-básicas-e-funções-matemáticas" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="images/arith-operations.png" width="300px" style="display: block; margin: auto;" /></p>
+<p><img src="images/logical-operations.png" width="300px" style="display: block; margin: auto;" /></p>
+<p>No R, as operações aritméticas são definidas de maneira intuitiva.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="operações-básicas-e-funções-matemáticas.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># aritmética</span></span>
+<span id="cb23-2"><a href="operações-básicas-e-funções-matemáticas.html#cb23-2" aria-hidden="true" tabindex="-1"></a>l<span class="ot">&lt;-</span><span class="dv">23</span></span>
+<span id="cb23-3"><a href="operações-básicas-e-funções-matemáticas.html#cb23-3" aria-hidden="true" tabindex="-1"></a>l<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span>l</span></code></pre></div>
+<pre><code>## [1] 575</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="operações-básicas-e-funções-matemáticas.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">*</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="operações-básicas-e-funções-matemáticas.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">*</span>(<span class="dv">2</span><span class="sc">+</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="operações-básicas-e-funções-matemáticas.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">/</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 1.5</code></pre>
+<p>Mais operações matemáticas são listadas <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Arithmetic.html">aqui</a>.</p>
+Além disso, diversas funções matemáticas são pré-definidas no R.
+</div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="operações-básicas-e-funções-matemáticas.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arredondar (duas casas decimais)</span></span>
+<span id="cb31-2"><a href="operações-básicas-e-funções-matemáticas.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">17</span><span class="sc">/</span><span class="dv">3</span>,<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 5.67</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="operações-básicas-e-funções-matemáticas.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># seno, cosseno, tangente, arco-tangente, tengente hiperbólica</span></span>
+<span id="cb33-2"><a href="operações-básicas-e-funções-matemáticas.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(pi);<span class="fu">cos</span>(pi);<span class="fu">tan</span>(pi);<span class="fu">atan</span>(<span class="fl">0.5</span>);<span class="fu">tanh</span>(<span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 1.224606e-16</code></pre>
+<pre><code>## [1] -1</code></pre>
+<pre><code>## [1] -1.224647e-16</code></pre>
+<pre><code>## [1] 0.4636476</code></pre>
+<pre><code>## [1] 0.4621172</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="operações-básicas-e-funções-matemáticas.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># raiz quadrado, exponencial, log natural, log na base 10 e módulo</span></span>
+<span id="cb39-2"><a href="operações-básicas-e-funções-matemáticas.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">4</span>);<span class="fu">exp</span>(<span class="dv">2</span>);<span class="fu">log</span>(<span class="dv">10</span>);<span class="fu">log10</span>(<span class="dv">10</span>);<span class="fu">abs</span>(<span class="sc">-</span><span class="fl">6.5</span>)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<pre><code>## [1] 7.389056</code></pre>
+<pre><code>## [1] 2.302585</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre><code>## [1] 6.5</code></pre>
+<div style="text-align: justify">
+<p>Por sua vez, comparações e controle de fluxo dependem de operadores
+lógicos, ou seja, que resultam em <em>TRUE</em> ou <em>FALSE</em>. Observe que “==”
+não é um comando de atribuição, mas trata-se de uma comparação lógica de igualdade. Com comandos lógicos, também é possível estabelecer a união e
+a interseção entre conjuntos: “(cond. 1)&amp;(cond. 2)” será verdade (<em>TRUE</em>) apenas se as condições 1 e 2 forem satisfeitas simultaneamente; por outro lado, “(cond. 1)|(cond. 2)” será verdade se a condição 1 ou a condição 2 (ou ambas) forem satisfeitas.</p>
+</div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="operações-básicas-e-funções-matemáticas.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exemplo 1 </span></span>
+<span id="cb45-2"><a href="operações-básicas-e-funções-matemáticas.html#cb45-2" aria-hidden="true" tabindex="-1"></a>nome <span class="ot">&lt;-</span> <span class="st">&quot;José&quot;</span></span>
+<span id="cb45-3"><a href="operações-básicas-e-funções-matemáticas.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A variável é um número? </span></span>
+<span id="cb45-4"><a href="operações-básicas-e-funções-matemáticas.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(nome)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="operações-básicas-e-funções-matemáticas.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A variável é um caracter? </span></span>
+<span id="cb47-2"><a href="operações-básicas-e-funções-matemáticas.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(nome)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="operações-básicas-e-funções-matemáticas.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exemplo 2</span></span>
+<span id="cb49-2"><a href="operações-básicas-e-funções-matemáticas.html#cb49-2" aria-hidden="true" tabindex="-1"></a>l<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb49-3"><a href="operações-básicas-e-funções-matemáticas.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A variável é igual a 23? </span></span>
+<span id="cb49-4"><a href="operações-básicas-e-funções-matemáticas.html#cb49-4" aria-hidden="true" tabindex="-1"></a>l<span class="sc">==</span><span class="dv">23</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="operações-básicas-e-funções-matemáticas.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A variável é menor do que 15?</span></span>
+<span id="cb51-2"><a href="operações-básicas-e-funções-matemáticas.html#cb51-2" aria-hidden="true" tabindex="-1"></a>l<span class="sc">&lt;</span><span class="dv">15</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="operações-básicas-e-funções-matemáticas.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A variável é menor do que 23</span></span>
+<span id="cb53-2"><a href="operações-básicas-e-funções-matemáticas.html#cb53-2" aria-hidden="true" tabindex="-1"></a>l<span class="sc">&lt;=</span><span class="dv">23</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="operações-básicas-e-funções-matemáticas.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># atribuição (nova variável)</span></span>
+<span id="cb55-2"><a href="operações-básicas-e-funções-matemáticas.html#cb55-2" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span><span class="dv">17</span></span>
+<span id="cb55-3"><a href="operações-básicas-e-funções-matemáticas.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># condição 1 E condição 2 </span></span>
+<span id="cb55-4"><a href="operações-básicas-e-funções-matemáticas.html#cb55-4" aria-hidden="true" tabindex="-1"></a>(a<span class="sc">&lt;</span><span class="dv">15</span>)<span class="sc">&amp;</span>(l<span class="sc">&gt;</span><span class="dv">23</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="operações-básicas-e-funções-matemáticas.html#cb57-1" aria-hidden="true" tabindex="-1"></a>(a<span class="sc">&lt;</span><span class="dv">15</span>)<span class="sc">&amp;</span>(l<span class="sc">&gt;=</span><span class="dv">23</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="operações-básicas-e-funções-matemáticas.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># condição 1 OU condição 2 </span></span>
+<span id="cb59-2"><a href="operações-básicas-e-funções-matemáticas.html#cb59-2" aria-hidden="true" tabindex="-1"></a>(a<span class="sc">&lt;</span><span class="dv">15</span>)<span class="sc">|</span>(l<span class="sc">&gt;</span><span class="dv">23</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="operações-básicas-e-funções-matemáticas.html#cb61-1" aria-hidden="true" tabindex="-1"></a>(a<span class="sc">&lt;</span><span class="dv">15</span>)<span class="sc">|</span>(l<span class="sc">&gt;=</span><span class="dv">23</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div id="principais-estruturas-de-dados" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Principais estruturas de dados<a href="operações-básicas-e-funções-matemáticas.html#principais-estruturas-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="vetores" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Vetores<a href="operações-básicas-e-funções-matemáticas.html#vetores" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div style="text-align: justify">
+<p>Vetor é o tipo de estrutura de dados mais simples. Trata-se de uma sequência de “valores” a serem armazenados na memória do computador. Observe que tais valores não são necessariamente números, mas podem ser nomes e/ou categorias ou valores lógicos (TRUE ou FALSE). Cada elemento de um vetor é um componente.</p>
+<p>Uma lista pode ser construída a partir da combinação de elementos do mesmo tipo, através do comando (<em>combine</em>). Sua sintaxe é <em>c(element 1, element 2, …)</em> . Observe que os elementos são separados por vírgulas. Se os elementos forem números decimais, as unidades e os decimais serão separados por pontos, como na Língua Inglesa.</p>
+</div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="operações-básicas-e-funções-matemáticas.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vetor c/ números inteiros de 1 a 10</span></span>
+<span id="cb63-2"><a href="operações-básicas-e-funções-matemáticas.html#cb63-2" aria-hidden="true" tabindex="-1"></a>v<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)</span>
+<span id="cb63-3"><a href="operações-básicas-e-funções-matemáticas.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Impressão do vetor armazenado</span></span>
+<span id="cb63-4"><a href="operações-básicas-e-funções-matemáticas.html#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(v)</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="operações-básicas-e-funções-matemáticas.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quinto elemento do vetor</span></span>
+<span id="cb65-2"><a href="operações-básicas-e-funções-matemáticas.html#cb65-2" aria-hidden="true" tabindex="-1"></a>v[<span class="dv">5</span>]</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="operações-básicas-e-funções-matemáticas.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vetor c/ nomes dos alunos</span></span>
+<span id="cb67-2"><a href="operações-básicas-e-funções-matemáticas.html#cb67-2" aria-hidden="true" tabindex="-1"></a>nomes<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Raul&quot;</span>,<span class="st">&quot;Zulmira&quot;</span>,<span class="st">&quot;Edmilson&quot;</span>,<span class="st">&quot;Jaquelina&quot;</span>,<span class="st">&quot;Gabriela&quot;</span>,<span class="st">&quot;Hudson&quot;</span>)</span>
+<span id="cb67-3"><a href="operações-básicas-e-funções-matemáticas.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Impressão do vetor armazenado</span></span>
+<span id="cb67-4"><a href="operações-básicas-e-funções-matemáticas.html#cb67-4" aria-hidden="true" tabindex="-1"></a>nomes</span></code></pre></div>
+<pre><code>## [1] &quot;Raul&quot;      &quot;Zulmira&quot;   &quot;Edmilson&quot;  &quot;Jaquelina&quot; &quot;Gabriela&quot;  &quot;Hudson&quot;</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="operações-básicas-e-funções-matemáticas.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obs: Nomes e rótulos sempre devem ser incluídos com aspas duplas. </span></span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="operações-básicas-e-funções-matemáticas.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vetor com valores lógicos </span></span>
+<span id="cb70-2"><a href="operações-básicas-e-funções-matemáticas.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Quais elementos de v são divisíveis por 2?</span></span>
+<span id="cb70-3"><a href="operações-básicas-e-funções-matemáticas.html#cb70-3" aria-hidden="true" tabindex="-1"></a>v<span class="sc">%%</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>##  [1] 1 0 1 0 1 0 1 0 1 0</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="operações-básicas-e-funções-matemáticas.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Observe que o operador %% indica a divisibilidade </span></span>
+<span id="cb72-2"><a href="operações-básicas-e-funções-matemáticas.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (0 = não divisível / 1 = divisível)</span></span>
+<span id="cb72-3"><a href="operações-básicas-e-funções-matemáticas.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.logical</span>(v<span class="sc">%%</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##  [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="operações-básicas-e-funções-matemáticas.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aqui os valores foram transformados em variáveis lógicas </span></span>
+<span id="cb74-2"><a href="operações-básicas-e-funções-matemáticas.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (i.e. TRUE = Verdadeiro = 1; FALSE = Falso = 0)</span></span></code></pre></div>
+<div style="text-align: justify">
+<p>Quando digitamos <em>vetor[2]</em>, o número disposto entre colchetes é uma <strong>subscrição</strong>. A subscrição indica a posição de um dado dentro de uma
+estrutura de dados. Obviamente, a subscrição é um número inteiro e
+dentro dos limites de tamanho da lista. A subscrição/índice varia de 1
+até N, em que N é o número de elementos na lista.</p>
+<p>Diversas operações com vetores e entre vetores e matrizes são pré-definidas no R. No exemplo abaixo, identifique a diferença entre o produto ponto-a-ponto e a multiplicação escalar (produto interno).</p>
+</div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="operações-básicas-e-funções-matemáticas.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definição de dois vetores quaisquer </span></span>
+<span id="cb75-2"><a href="operações-básicas-e-funções-matemáticas.html#cb75-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">25</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
+<span id="cb75-3"><a href="operações-básicas-e-funções-matemáticas.html#cb75-3" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">4</span>,<span class="dv">21</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb75-4"><a href="operações-básicas-e-funções-matemáticas.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comprimento de um vetor</span></span>
+<span id="cb75-5"><a href="operações-básicas-e-funções-matemáticas.html#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(v)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="operações-básicas-e-funções-matemáticas.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplicação ponto-a-ponto</span></span>
+<span id="cb77-2"><a href="operações-básicas-e-funções-matemáticas.html#cb77-2" aria-hidden="true" tabindex="-1"></a>v<span class="sc">*</span>r</span></code></pre></div>
+<pre><code>## [1] 156  45  16 525  14  24</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="operações-básicas-e-funções-matemáticas.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Produto escalar &lt;v,r&gt;</span></span>
+<span id="cb79-2"><a href="operações-básicas-e-funções-matemáticas.html#cb79-2" aria-hidden="true" tabindex="-1"></a>v<span class="sc">%*%</span>r</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]  780</code></pre>
+</div>
+<div id="arrays-ou-matrizes" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Arrays ou matrizes<a href="operações-básicas-e-funções-matemáticas.html#arrays-ou-matrizes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div style="text-align: justify">
+<p>Arrays e matrizes são estruturas de dados bidimensionais, cujas as
+entradas apresentam subscrições para as linhas e colunas.</p>
+</div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="operações-básicas-e-funções-matemáticas.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando um banco de dados</span></span>
+<span id="cb81-2"><a href="operações-básicas-e-funções-matemáticas.html#cb81-2" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">&lt;-</span><span class="fu">data.frame</span>(v,r)</span>
+<span id="cb81-3"><a href="operações-básicas-e-funções-matemáticas.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Leitura das 3 linhas iniciais</span></span>
+<span id="cb81-4"><a href="operações-básicas-e-funções-matemáticas.html#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dados,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##    v  r
+## 1 12 13
+## 2  3 15
+## 3  4  4</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="operações-básicas-e-funções-matemáticas.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># acessando a coluna &quot;v&quot; do banco de dados</span></span>
+<span id="cb83-2"><a href="operações-básicas-e-funções-matemáticas.html#cb83-2" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>v</span></code></pre></div>
+<pre><code>## [1] 12  3  4 25  7  8</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="operações-básicas-e-funções-matemáticas.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acessando o elemento da linha 3 e coluna 2</span></span>
+<span id="cb85-2"><a href="operações-básicas-e-funções-matemáticas.html#cb85-2" aria-hidden="true" tabindex="-1"></a>dados[<span class="dv">3</span>,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="operações-básicas-e-funções-matemáticas.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dimenões do banco de dados</span></span>
+<span id="cb87-2"><a href="operações-básicas-e-funções-matemáticas.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dados)</span></code></pre></div>
+<pre><code>## [1] 6 2</code></pre>
+<div style="text-align: justify">
+<p>No exemplo abaixo, definimos uma matriz com 3 linhas (<em>nr = number of lines</em>) e cujo preenchimento segue a ordem das colunas (<em>byrow = FALSE</em>).
+Diversas operações matriciais são possíveis, tais como: transposição, inversão, multiplicação, cálculo de autovalores, autovetores e determinantes. Essas operações têm grande relevância na Estatística.</p>
+</div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="operações-básicas-e-funções-matemáticas.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definindo a matriz</span></span>
+<span id="cb89-2"><a href="operações-básicas-e-funções-matemáticas.html#cb89-2" aria-hidden="true" tabindex="-1"></a>A<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>),<span class="at">nr=</span><span class="dv">3</span>,<span class="at">byrow=</span><span class="cn">FALSE</span>)</span>
+<span id="cb89-3"><a href="operações-básicas-e-funções-matemáticas.html#cb89-3" aria-hidden="true" tabindex="-1"></a>A</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    2    5
+## [2,]    3    6
+## [3,]    4    7</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="operações-básicas-e-funções-matemáticas.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtenção da transposta</span></span>
+<span id="cb91-2"><a href="operações-básicas-e-funções-matemáticas.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(A)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    2    3    4
+## [2,]    5    6    7</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="operações-básicas-e-funções-matemáticas.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definindo outra matriz</span></span>
+<span id="cb93-2"><a href="operações-básicas-e-funções-matemáticas.html#cb93-2" aria-hidden="true" tabindex="-1"></a>B<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>),<span class="at">nr=</span><span class="dv">3</span>,<span class="at">byrow=</span><span class="cn">FALSE</span>)</span>
+<span id="cb93-3"><a href="operações-básicas-e-funções-matemáticas.html#cb93-3" aria-hidden="true" tabindex="-1"></a>B</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    2    5    8
+## [2,]    3    6    9
+## [3,]    4    7   10</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="operações-básicas-e-funções-matemáticas.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo do determinante</span></span>
+<span id="cb95-2"><a href="operações-básicas-e-funções-matemáticas.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(B)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="operações-básicas-e-funções-matemáticas.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tentativa - Cálculo da Inversa </span></span>
+<span id="cb97-2"><a href="operações-básicas-e-funções-matemáticas.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">try</span>(<span class="fu">solve</span>(B))</span></code></pre></div>
+<pre><code>## Error in solve.default(B) : 
+##   Lapack routine dgesv: system is exactly singular: U[3,3] = 0</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="operações-básicas-e-funções-matemáticas.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nova matriz</span></span>
+<span id="cb99-2"><a href="operações-básicas-e-funções-matemáticas.html#cb99-2" aria-hidden="true" tabindex="-1"></a>B2<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">28</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">12</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">5</span>),<span class="at">nr=</span><span class="dv">3</span>,<span class="at">byrow=</span><span class="cn">FALSE</span>)</span>
+<span id="cb99-3"><a href="operações-básicas-e-funções-matemáticas.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(B2)</span></code></pre></div>
+<pre><code>## [1] -27</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="operações-básicas-e-funções-matemáticas.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(B2)</span></code></pre></div>
+<pre><code>##           [,1]      [,2]       [,3]
+## [1,]  2.888889 -2.629630  0.1111111
+## [2,] -8.777778  7.925926 -0.2222222
+## [3,]  4.888889 -4.296296  0.1111111</code></pre>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="operações-básicas-e-funções-matemáticas.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># multiplicação ponto-a-ponto</span></span>
+<span id="cb103-2"><a href="operações-básicas-e-funções-matemáticas.html#cb103-2" aria-hidden="true" tabindex="-1"></a>B<span class="sc">*</span>B2</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    4   25   64
+## [2,]    9   36   81
+## [3,]  112   84   50</code></pre>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="operações-básicas-e-funções-matemáticas.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># multiplicação matricial</span></span>
+<span id="cb105-2"><a href="operações-básicas-e-funções-matemáticas.html#cb105-2" aria-hidden="true" tabindex="-1"></a>B<span class="sc">%*%</span>B2</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]  243  136  101
+## [2,]  276  159  123
+## [3,]  309  182  145</code></pre>
+</div>
+</div>
+<div id="ufscar-lagoa-do-sino" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> UFSCar Lagoa do Sino<a href="operações-básicas-e-funções-matemáticas.html#ufscar-lagoa-do-sino" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports; for example, a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
+</div>
+<div id="ce-meca" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Ce-MECA<a href="operações-básicas-e-funções-matemáticas.html#ce-meca" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="ciência-de-dados-e-aplicações-tecnológicas" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Ciência de Dados e Aplicações Tecnológicas<a href="operações-básicas-e-funções-matemáticas.html#ciência-de-dados-e-aplicações-tecnológicas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="usage" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Usage<a href="operações-básicas-e-funções-matemáticas.html#usage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Each <strong>bookdown</strong> chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter <em>must</em> start with a first-level heading: <code># A good chapter</code>, and can contain one (and only one) first-level heading.</p>
+<p>Use second-level and higher headings within chapters like: <code>## A short section</code> or <code>### An even shorter section</code>.</p>
+<p>The <code>index.Rmd</code> file is required, and is also your first book chapter. It will be the homepage when you render the book.</p>
+</div>
+<div id="render-book" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Render book<a href="operações-básicas-e-funções-matemáticas.html#render-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You can render the HTML version of this example book without changing anything:</p>
+<ol style="list-style-type: decimal">
+<li><p>Find the <strong>Build</strong> pane in the RStudio IDE, and</p></li>
+<li><p>Click on <strong>Build Book</strong>, then select your output format, or select “All formats” if you’d like to use multiple formats from the same book source files.</p></li>
+</ol>
+<p>Or build the book from the R console:<code>{r, eval=FALSE} bookdown::render_book()</code></p>
+<p>To render this example to PDF as a <code>bookdown::pdf_book</code>, you’ll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.org/tinytex/" class="uri">https://yihui.org/tinytex/</a>.</p>
+</div>
+<div id="preview-book" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Preview book<a href="operações-básicas-e-funções-matemáticas.html#preview-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in “Preview book”, or from the R console:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="operações-básicas-e-funções-matemáticas.html#cb107-1" aria-hidden="true" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">serve_book</span>()</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tipos-de-dados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="hello-bookdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
