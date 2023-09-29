@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Análise de Regressão | Programação em R para biotecnologistas (em elaboração)</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Análise de Regressão | Programação em R para biotecnologistas (em elaboração)" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Análise de Regressão | Programação em R para biotecnologistas (em elaboração)" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  
+
+<meta name="author" content="Prof. Dr. Iuri E. P. Ferreira e Prof. Dr. Jorge L. R. Pantoja Filho. Universidade Federal de São Carlos, Campus Lagoa do Sino" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="visualização-de-dados-1.html"/>
+<link rel="next" href="ajuste-linear-a-partir-da-ia.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Minicurso - XII Four Biotec + Biotec Days</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Apresentação</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#quem-somos"><i class="fa fa-check"></i><b>1.1</b> Quem somos?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#iniciativas"><i class="fa fa-check"></i><b>1.2</b> Iniciativas</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#projetos-de-pesquisa"><i class="fa fa-check"></i><b>1.3</b> Projetos de Pesquisa</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="origem-do-r.html"><a href="origem-do-r.html"><i class="fa fa-check"></i><b>2</b> Origem do R</a></li>
+<li class="chapter" data-level="3" data-path="primeiros-passos.html"><a href="primeiros-passos.html"><i class="fa fa-check"></i><b>3</b> Primeiros passos</a></li>
+<li class="chapter" data-level="4" data-path="tipos-de-dados.html"><a href="tipos-de-dados.html"><i class="fa fa-check"></i><b>4</b> Tipos de dados</a></li>
+<li class="chapter" data-level="5" data-path="operações-básicas.html"><a href="operações-básicas.html"><i class="fa fa-check"></i><b>5</b> Operações Básicas</a></li>
+<li class="chapter" data-level="6" data-path="desafio.html"><a href="desafio.html"><i class="fa fa-check"></i><b>6</b> Desafio</a></li>
+<li class="chapter" data-level="7" data-path="resposta-do-desafio.html"><a href="resposta-do-desafio.html"><i class="fa fa-check"></i><b>7</b> Resposta do desafio</a></li>
+<li class="chapter" data-level="8" data-path="inteligência-artificial-e-programação.html"><a href="inteligência-artificial-e-programação.html"><i class="fa fa-check"></i><b>8</b> Inteligência Artificial e Programação</a></li>
+<li class="chapter" data-level="9" data-path="visualização-de-dados-1.html"><a href="visualização-de-dados-1.html"><i class="fa fa-check"></i><b>9</b> Visualização de dados</a></li>
+<li class="chapter" data-level="10" data-path="análise-de-regressão.html"><a href="análise-de-regressão.html"><i class="fa fa-check"></i><b>10</b> Análise de Regressão</a></li>
+<li class="chapter" data-level="11" data-path="ajuste-linear-a-partir-da-ia.html"><a href="ajuste-linear-a-partir-da-ia.html"><i class="fa fa-check"></i><b>11</b> Ajuste linear a partir da IA</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="ajuste-linear-a-partir-da-ia.html"><a href="ajuste-linear-a-partir-da-ia.html#atividade-prática-1"><i class="fa fa-check"></i><b>11.1</b> Atividade Prática 1</a></li>
+<li class="chapter" data-level="11.2" data-path="ajuste-linear-a-partir-da-ia.html"><a href="ajuste-linear-a-partir-da-ia.html#atividade-prática-2"><i class="fa fa-check"></i><b>11.2</b> Atividade Prática 2</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html"><i class="fa fa-check"></i><b>12</b> Comparações entre tratamentos</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Programação em R para biotecnologistas (em elaboração)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="análise-de-regressão" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">10</span> Análise de Regressão<a href="análise-de-regressão.html#análise-de-regressão" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div style="text-align: justify">
+Observe que os tratamentos do experimento podem ser analisados de forma qualitativa ou quantitativa. Na análise quantitativa, por exemplo, desejamos ajustar uma curva de tendência e fazer previsões para novos valores da resposta.
+</p>
+<div id="ajuste-da-reta" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Ajuste da reta<a href="análise-de-regressão.html#ajuste-da-reta" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ajuste-do-modelo-linear-no-r" class="section level3 hasAnchor" number="10.1.1">
+<h3><span class="header-section-number">10.1.1</span> Ajuste do modelo linear no R<a href="análise-de-regressão.html#ajuste-do-modelo-linear-no-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A função <code>lm</code> é usada para ajustar modelos <em>estatisticamente</em> lineares (<code>lm</code> = linear model). Na sintaxe do R, a fórmula <code>pH ~ Dose</code> representa o ajuste de uma reta de tendência, expressa por</p>
+<p><span class="math display">\[
+pH = \beta_0 + \beta_1 \times Dose  
+\]</span></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="análise-de-regressão.html#cb26-1" aria-hidden="true" tabindex="-1"></a>mod_reta <span class="ot">&lt;-</span> <span class="fu">lm</span>( pH <span class="sc">~</span> Dose, <span class="at">data =</span> dados )</span>
+<span id="cb26-2"><a href="análise-de-regressão.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>( mod_reta )</span></code></pre></div>
+<pre><code>## (Intercept)        Dose 
+##   7.4666667  -0.1416667</code></pre>
+<p>Para ajustar a reta de tendência, torna-se necessário calcular os valores mais plausíveis para os parâmetros <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span>, com base nos dados. As estimativas de <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> são obtidas a partir do comando <code>coef</code>.</p>
+</div>
+<div id="diagnóstico-do-ajuste-da-reta" class="section level3 hasAnchor" number="10.1.2">
+<h3><span class="header-section-number">10.1.2</span> Diagnóstico do ajuste da reta<a href="análise-de-regressão.html#diagnóstico-do-ajuste-da-reta" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+Ao realizar o diagnóstico de um ajuste linear clássico a partir dos gráficos dos resíduos, esperamos validar os pressupostos do modelo. Os resíduos devem aparentar ser aleatórios, sem padrões discerníveis, indicando homocedasticidade, e devem ser aproximadamente normalmente distribuídos em torno de zero, validando a suposição de normalidade e a independência dos erros, essencial para inferências subsequentes.
+</p>
+<ul>
+<li>Análise dos resíduos do ajuste</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="análise-de-regressão.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( mod_reta, <span class="dv">1</span>) <span class="co"># valores ajustados x resíduos</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="análise-de-regressão.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb29-2"><a href="análise-de-regressão.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>( <span class="fu">residuals</span>( mod_reta ) ) <span class="co"># gráfico quantil-quantil</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-2.png" width="672" /></p>
+<pre><code>## [1] 11  2</code></pre>
+Neste caso, obsevamos que o gráfico quantil-quantil não apresenta desvios à normalidade. Porém, no gráfico dos resíduos em função dos valores ajustados, observa-se uma estrutura de variação dos dados não explicada pelo modelo. Os dados deveriam oscilar aleatoriamente em torno do zero, mas não é isso o que acontece.
+</p>
+</div>
+<div id="teste-de-falta-de-ajuste" class="section level3 hasAnchor" number="10.1.3">
+<h3><span class="header-section-number">10.1.3</span> Teste de falta de ajuste<a href="análise-de-regressão.html#teste-de-falta-de-ajuste" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+Nesta etapa, realizaremos o teste de falta de ajuste para averiguar se o modelo é suficiente para capturar o comportamento dos dados ou se um modelo mais “flexível” deveria ser utilizado.
+</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="análise-de-regressão.html#cb31-1" aria-hidden="true" tabindex="-1"></a>mod_quali <span class="ot">&lt;-</span> <span class="fu">lm</span>( pH <span class="sc">~</span> Tratamentos, <span class="at">data =</span> dados) <span class="co"># ajuste do modelo qualitativo</span></span>
+<span id="cb31-2"><a href="análise-de-regressão.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Falta de ajuste </span></span>
+<span id="cb31-3"><a href="análise-de-regressão.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>( mod_reta, mod_quali )</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: pH ~ Dose
+## Model 2: pH ~ Tratamentos
+##   Res.Df   RSS Df Sum of Sq      F  Pr(&gt;F)  
+## 1     10 2.085                              
+## 2      8 0.840  2     1.245 5.9286 0.02634 *
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+Pelo teste F, verifica-se que há falta de ajuste considerando-se o nível de 5% de significância. Conclui-se que o modelo não captura bem o comportamento dos dados
+</p>
+</div>
+<div id="ajuste-do-modelo-de-segundo-grau" class="section level3 hasAnchor" number="10.1.4">
+<h3><span class="header-section-number">10.1.4</span> Ajuste do modelo de segundo grau<a href="análise-de-regressão.html#ajuste-do-modelo-de-segundo-grau" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Com a inserção do termo <code>I(Dose, 2)</code> na fórmula, a expressão da curva de tendência passa a ser</p>
+<p><span class="math display">\[
+pH = \beta_0 + \beta_1 \times Dose + \beta_2 \times Dose^2  
+\]</span></p>
+<p>ou seja, uma parábola. Observe que a curvatura exibida por uma parábola pode capturar o comportamento que não foi possível descrever com a reta.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="análise-de-regressão.html#cb33-1" aria-hidden="true" tabindex="-1"></a>mod_quad <span class="ot">&lt;-</span> <span class="fu">lm</span>( pH <span class="sc">~</span> Dose <span class="sc">+</span> <span class="fu">I</span>(Dose<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> dados )</span>
+<span id="cb33-2"><a href="análise-de-regressão.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>( mod_quad )</span></code></pre></div>
+<pre><code>##  (Intercept)         Dose    I(Dose^2) 
+##  7.158333333 -0.049166667 -0.003083333</code></pre>
+</div>
+<div id="diagnóstico-do-ajuste-da-parábola" class="section level3 hasAnchor" number="10.1.5">
+<h3><span class="header-section-number">10.1.5</span> Diagnóstico do ajuste da parábola<a href="análise-de-regressão.html#diagnóstico-do-ajuste-da-parábola" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Análise dos resíduos do ajuste</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="análise-de-regressão.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( mod_quad, <span class="dv">1</span>) <span class="co"># valores ajustados x resíduos</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="análise-de-regressão.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb36-2"><a href="análise-de-regressão.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>( <span class="fu">residuals</span>( mod_quad ) ) <span class="co"># gráfico quantil-quantil</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-23-2.png" width="672" /></p>
+<pre><code>## [1]  6 11</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="análise-de-regressão.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>( <span class="fu">residuals</span>( mod_quad ) )</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  residuals(mod_quad)
+## W = 0.89411, p-value = 0.1332</code></pre>
+….
+</p>
+</div>
+<div id="teste-de-falta-de-ajuste-para-a-parábola" class="section level3 hasAnchor" number="10.1.6">
+<h3><span class="header-section-number">10.1.6</span> Teste de falta de ajuste para a parábola<a href="análise-de-regressão.html#teste-de-falta-de-ajuste-para-a-parábola" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="análise-de-regressão.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Falta de ajuste </span></span>
+<span id="cb40-2"><a href="análise-de-regressão.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>( mod_quad, mod_quali )</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: pH ~ Dose + I(Dose^2)
+## Model 2: pH ~ Tratamentos
+##   Res.Df     RSS Df Sum of Sq      F Pr(&gt;F)
+## 1      9 0.94417                           
+## 2      8 0.84000  1   0.10417 0.9921 0.3484</code></pre>
+…
+</p>
+</div>
+<div id="comparação-de-modelos" class="section level3 hasAnchor" number="10.1.7">
+<h3><span class="header-section-number">10.1.7</span> Comparação de modelos<a href="análise-de-regressão.html#comparação-de-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+O Critério de Informação de Akaike (AIC) é fundamentado na teoria da informação, proporcionando uma medida relativa da informação perdida quando um determinado modelo é usado para representar o processo gerador dos dados. Ele avalia a adequação do modelo, considerando tanto a complexidade do modelo quanto o ajuste aos dados. O AIC é calculado como <span class="math inline">\(AIC = 2k - 2\ln(L)\)</span>, onde <span class="math inline">\(k\)</span> é o número de parâmetros no modelo, e <span class="math inline">\(L\)</span> é a verossimilhança do modelo. Menores valores de AIC indicam um melhor equilíbrio entre ajuste do modelo e complexidade, permitindo comparar modelos diferentes, mesmo não aninhados, proporcionando uma abordagem robusta para a seleção de modelos na análise estatística.
+</p>
+O coeficiente de determinação (R²), por outro lado, apenas mede a proporção da variância explicada pelo modelo, não penalizando a complexidade, podendo levar à preferência por modelos superajustados (overfitting) que performam mal com dados novos. Portanto, o AIC é frequentemente mais adequado para a seleção de modelos quando se compara um conjunto de modelos.
+</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="análise-de-regressão.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(mod_quali , mod_reta, mod_quad )</span></code></pre></div>
+<pre><code>##           df      AIC
+## mod_quali  5 12.14340
+## mod_reta   3 19.05287
+## mod_quad   4 11.54621</code></pre>
+Neste caso, observa-se que o modelo mais parcimonioso é o quadrático dentre os modelos estudados, pois possui menor perda da informação dos dados originais, além de baixa complexidade, resultando em um AIC inferior.
+</p>
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="visualização-de-dados-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ajuste-linear-a-partir-da-ia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

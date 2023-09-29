@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11 Ajuste linear a partir da IA | Programação em R para biotecnologistas (em elaboração)</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11 Ajuste linear a partir da IA | Programação em R para biotecnologistas (em elaboração)" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11 Ajuste linear a partir da IA | Programação em R para biotecnologistas (em elaboração)" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  
+
+<meta name="author" content="Prof. Dr. Iuri E. P. Ferreira e Prof. Dr. Jorge L. R. Pantoja Filho. Universidade Federal de São Carlos, Campus Lagoa do Sino" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="análise-de-regressão.html"/>
+<link rel="next" href="comparações-entre-tratamentos.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Minicurso - XII Four Biotec + Biotec Days</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Apresentação</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#quem-somos"><i class="fa fa-check"></i><b>1.1</b> Quem somos?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#iniciativas"><i class="fa fa-check"></i><b>1.2</b> Iniciativas</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#projetos-de-pesquisa"><i class="fa fa-check"></i><b>1.3</b> Projetos de Pesquisa</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="origem-do-r.html"><a href="origem-do-r.html"><i class="fa fa-check"></i><b>2</b> Origem do R</a></li>
+<li class="chapter" data-level="3" data-path="primeiros-passos.html"><a href="primeiros-passos.html"><i class="fa fa-check"></i><b>3</b> Primeiros passos</a></li>
+<li class="chapter" data-level="4" data-path="tipos-de-dados.html"><a href="tipos-de-dados.html"><i class="fa fa-check"></i><b>4</b> Tipos de dados</a></li>
+<li class="chapter" data-level="5" data-path="operações-básicas.html"><a href="operações-básicas.html"><i class="fa fa-check"></i><b>5</b> Operações Básicas</a></li>
+<li class="chapter" data-level="6" data-path="desafio.html"><a href="desafio.html"><i class="fa fa-check"></i><b>6</b> Desafio</a></li>
+<li class="chapter" data-level="7" data-path="resposta-do-desafio.html"><a href="resposta-do-desafio.html"><i class="fa fa-check"></i><b>7</b> Resposta do desafio</a></li>
+<li class="chapter" data-level="8" data-path="inteligência-artificial-e-programação.html"><a href="inteligência-artificial-e-programação.html"><i class="fa fa-check"></i><b>8</b> Inteligência Artificial e Programação</a></li>
+<li class="chapter" data-level="9" data-path="visualização-de-dados-1.html"><a href="visualização-de-dados-1.html"><i class="fa fa-check"></i><b>9</b> Visualização de dados</a></li>
+<li class="chapter" data-level="10" data-path="análise-de-regressão.html"><a href="análise-de-regressão.html"><i class="fa fa-check"></i><b>10</b> Análise de Regressão</a></li>
+<li class="chapter" data-level="11" data-path="ajuste-linear-a-partir-da-ia.html"><a href="ajuste-linear-a-partir-da-ia.html"><i class="fa fa-check"></i><b>11</b> Ajuste linear a partir da IA</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="ajuste-linear-a-partir-da-ia.html"><a href="ajuste-linear-a-partir-da-ia.html#atividade-prática-1"><i class="fa fa-check"></i><b>11.1</b> Atividade Prática 1</a></li>
+<li class="chapter" data-level="11.2" data-path="ajuste-linear-a-partir-da-ia.html"><a href="ajuste-linear-a-partir-da-ia.html#atividade-prática-2"><i class="fa fa-check"></i><b>11.2</b> Atividade Prática 2</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html"><i class="fa fa-check"></i><b>12</b> Comparações entre tratamentos</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Programação em R para biotecnologistas (em elaboração)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ajuste-linear-a-partir-da-ia" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">11</span> Ajuste linear a partir da IA<a href="ajuste-linear-a-partir-da-ia.html#ajuste-linear-a-partir-da-ia" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<style>
+  .chat-container {
+    width: 100%;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .code-block {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+  }
+
+  .bot-message {
+    text-align: rigth;
+    color: #333;
+  }
+
+  .user-message {
+    text-align: right;
+    color: #4caf50;
+  }
+</style>
+<div style="text-align: justify">
+
+Nesta seção nós iremos explorar se ferramentas de inteligência artificial seriam capazes de orientar a análise de regressão e fornecer scripts úteis.
+</p>
+No entanto, <strong>cuidado!</strong> Recomendamos que todas as saídas fornecidas por IA sejam avaliadas por profissionais competentes na área, que se responsabilizem pelos resultados.
+</p>
+Além disso, dados sensíveis, pessoais ou institucionais, não devem ser fornecidos aos operadores de IA via prompts.
+</p>
+<div id="atividade-prática-1" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Atividade Prática 1<a href="ajuste-linear-a-partir-da-ia.html#atividade-prática-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Construa um prompt para inteligência artificial com o objetivo de obter orientações estatísticas e um script pronto para a análise de regressão e seleção de modelos.</p>
+<div class="chat-container">
+
+<details>
+<summary>
+Prompt
+</summary>
+<div class="message bot-message">
+<ul>
+<li>Tarefa: selecionar o modelo que melhor representa a relação entre as variáveis Dose e pH no experimento a seguir;
+</p></li>
+<li>Contexto: os dados são referentes a um experimento inteiramente aleatorizado com 4 tratamentos e três replicações, cuja finalidade foi observar o efeito da dosagem de essência de limão no pH final de um produto lácteo;
+</p></li>
+<li>Detalhamento: faça uma comparação estatística entre modelos lineares, determinando qual é o mais parcimonioso; faça diagnóstico do ajuste e análise dos resíduos; verifique, para os modelos ajustados, se há falta de ajuste.
+</p></li>
+<li>Ferramentas: Linguagem R e funções do stats;
+</p></li>
+<li>Requisitos: apresente as hipóteses testadas, os testes de significância, os valores p e a interpretação estatística.
+</p></li>
+<li>Dados: copiar os dados da tabela e colar aqui!
+</p></li>
+</ul>
+</div>
+</details>
+<p><br></p>
+<details>
+<summary>
+Resposta do <em>chatGPT-4</em>
+</summary>
+<div class="chat-container">
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>Importar os Dados</li>
+</ol></li>
+</ul>
+Primeiramente, você precisa importar os dados para o R. Você pode criar um <code>data.frame</code> diretamente.
+</p>
+<div class="code-block">
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="ajuste-linear-a-partir-da-ia.html#cb44-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb44-2"><a href="ajuste-linear-a-partir-da-ia.html#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Unidade =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,</span>
+<span id="cb44-3"><a href="ajuste-linear-a-partir-da-ia.html#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Tratamentos =</span> <span class="fu">rep</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">each =</span> <span class="dv">3</span>),</span>
+<span id="cb44-4"><a href="ajuste-linear-a-partir-da-ia.html#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Dose =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>), <span class="at">each =</span> <span class="dv">3</span>),</span>
+<span id="cb44-5"><a href="ajuste-linear-a-partir-da-ia.html#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pH =</span> <span class="fu">c</span>(<span class="fl">7.3</span>, <span class="fl">6.8</span>, <span class="fl">7.5</span>, <span class="fl">6.5</span>, <span class="fl">6.4</span>, <span class="fl">5.8</span>, <span class="fl">5.2</span>, <span class="fl">4.9</span>, <span class="fl">5.1</span>, <span class="fl">3.2</span>, <span class="fl">2.5</span>, <span class="fl">2.9</span>)</span>
+<span id="cb44-6"><a href="ajuste-linear-a-partir-da-ia.html#cb44-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<ul>
+<li><ol start="2" style="list-style-type: decimal">
+<li>Ajustar Modelos Lineares</li>
+</ol></li>
+</ul>
+Vamos ajustar alguns modelos lineares e compará-los. Um modelo simples é a regressão linear simples, e outro é um modelo linear com termos polinomiais para considerar efeitos não-lineares da Dose no pH.
+</p>
+<div class="code-block">
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="ajuste-linear-a-partir-da-ia.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo Linear Simples</span></span>
+<span id="cb45-2"><a href="ajuste-linear-a-partir-da-ia.html#cb45-2" aria-hidden="true" tabindex="-1"></a>modelo_linear <span class="ot">&lt;-</span> <span class="fu">lm</span>(pH <span class="sc">~</span> Dose, <span class="at">data =</span> df)</span>
+<span id="cb45-3"><a href="ajuste-linear-a-partir-da-ia.html#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="ajuste-linear-a-partir-da-ia.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo Linear Quadrático</span></span>
+<span id="cb45-5"><a href="ajuste-linear-a-partir-da-ia.html#cb45-5" aria-hidden="true" tabindex="-1"></a>modelo_quadratico <span class="ot">&lt;-</span> <span class="fu">lm</span>(pH <span class="sc">~</span> <span class="fu">poly</span>(Dose, <span class="dv">2</span>), <span class="at">data =</span> df)</span></code></pre></div>
+</div>
+<ul>
+<li><ol start="3" style="list-style-type: decimal">
+<li>Comparar Modelos</li>
+</ol></li>
+</ul>
+Vamos comparar os modelos usando o teste de anova.
+</p>
+<div class="code-block">
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="ajuste-linear-a-partir-da-ia.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo_linear, modelo_quadratico)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: pH ~ Dose
+## Model 2: pH ~ poly(Dose, 2)
+##   Res.Df     RSS Df Sum of Sq      F   Pr(&gt;F)   
+## 1     10 2.08500                                
+## 2      9 0.94417  1    1.1408 10.875 0.009264 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<ul>
+<li><ol start="4" style="list-style-type: decimal">
+<li>Diagnóstico do Modelo</li>
+</ol></li>
+</ul>
+<p>Vamos analisar os resíduos dos modelos ajustados.</p>
+<div class="code-block">
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="ajuste-linear-a-partir-da-ia.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para o Modelo Linear</span></span>
+<span id="cb48-2"><a href="ajuste-linear-a-partir-da-ia.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo_linear, <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="ajuste-linear-a-partir-da-ia.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para o Modelo Quadrático</span></span>
+<span id="cb49-2"><a href="ajuste-linear-a-partir-da-ia.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo_quadratico, <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
+</div>
+<ul>
+<li><ol start="5" style="list-style-type: decimal">
+<li>Testar a Falta de Ajuste</li>
+</ol></li>
+</ul>
+Para testar a falta de ajuste de cada modelo, podemos comparar a variância dos resíduos de cada modelo.
+</p>
+<div class="code-block">
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="ajuste-linear-a-partir-da-ia.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste de Falta de Ajuste para Modelo Linear</span></span>
+<span id="cb50-2"><a href="ajuste-linear-a-partir-da-ia.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo_linear)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: pH
+##           Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## Dose       1 30.104 30.1042  144.38 2.885e-07 ***
+## Residuals 10  2.085  0.2085                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="ajuste-linear-a-partir-da-ia.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste de Falta de Ajuste para Modelo Quadrático</span></span>
+<span id="cb52-2"><a href="ajuste-linear-a-partir-da-ia.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo_quadratico)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: pH
+##               Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
+## poly(Dose, 2)  2 31.2450 15.6225  148.92 1.268e-07 ***
+## Residuals      9  0.9442  0.1049                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<ul>
+<li><ol start="6" style="list-style-type: decimal">
+<li>Interpretação Estatística</li>
+</ol></li>
+</ul>
+Baseado nos p-valores e no diagnóstico dos resíduos, você pode determinar qual modelo é mais apropriado. O modelo com o menor p-valor e os resíduos bem distribuídos (sem padrões aparentes nos gráficos de diagnóstico) será considerado o melhor modelo. Se o p-valor for menor que o nível de significância (geralmente 0,05), você rejeitará a hipótese nula de que não há efeito da Dose no pH.
+</p>
+<ul>
+<li><ol start="7" style="list-style-type: decimal">
+<li>Resumo dos Modelos</li>
+</ol></li>
+</ul>
+Para obter os detalhes dos modelos ajustados, você pode usar a função summary.
+</p>
+<div class="code-block">
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="ajuste-linear-a-partir-da-ia.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sumário do Modelo Linear</span></span>
+<span id="cb54-2"><a href="ajuste-linear-a-partir-da-ia.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_linear)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = pH ~ Dose, data = df)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.71667 -0.26667  0.00833  0.37500  0.56667 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  7.46667    0.22057   33.85 1.20e-11 ***
+## Dose        -0.14167    0.01179  -12.02 2.89e-07 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.4566 on 10 degrees of freedom
+## Multiple R-squared:  0.9352, Adjusted R-squared:  0.9287 
+## F-statistic: 144.4 on 1 and 10 DF,  p-value: 2.885e-07</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="ajuste-linear-a-partir-da-ia.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sumário do Modelo Quadrático</span></span>
+<span id="cb56-2"><a href="ajuste-linear-a-partir-da-ia.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_quadratico)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = pH ~ poly(Dose, 2), data = df)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.55833 -0.12083  0.09167  0.18333  0.34167 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      5.3417     0.0935  57.130 7.77e-13 ***
+## poly(Dose, 2)1  -5.4867     0.3239 -16.940 3.91e-08 ***
+## poly(Dose, 2)2  -1.0681     0.3239  -3.298  0.00926 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.3239 on 9 degrees of freedom
+## Multiple R-squared:  0.9707, Adjusted R-squared:  0.9642 
+## F-statistic: 148.9 on 2 and 9 DF,  p-value: 1.268e-07</code></pre>
+</div>
+Ao executar esses passos, você terá uma boa ideia de qual modelo melhor representa a relação entre Dose e pH para este conjunto de dados, considerando tanto a significância estatística quanto a adequação do modelo aos dados.
+</p>
+</details>
+</div>
+</div>
+</div>
+<div id="atividade-prática-2" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Atividade Prática 2<a href="ajuste-linear-a-partir-da-ia.html#atividade-prática-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Construa um prompt para inteligência artificial com o objetivo de criar uma visualização do ajuste com alta qualidade.</p>
+<div class="chat-container">
+
+<details>
+<summary>
+Prompt
+</summary>
+<div class="message bot-message">
+<ul>
+<li>Tarefa: visualização do ajuste do modelo quadrático para a variável pH em função da dose;
+</p></li>
+<li>Contexto: os dados são referentes a um experimento inteiramente aleatorizado com quatro doses e três replicações, cuja finalidade foi observar o efeito da dosagem de essência de limão no pH final de um produto lácteo;
+</p></li>
+<li>Detalhamento: faça um gráfico do ajuste do modelo quadrático aos dados experimentais seguindo o estado da arte. O gráfico deve apresentar pontos experimentais, reta do ajuste e intervalo com 95% de confiança para os valores preditos da resposta. O gráfico deve ter rótulos adequados para o eixo x e y, além de cores que dêem destaque na visualização.
+</p></li>
+<li>Ferramentas: Linguagem R e pacote plotly;
+</p></li>
+<li>Dados: copiar os dados da tabela e colar aqui!
+</p></li>
+</ul>
+</div>
+</details>
+<p><br></p>
+<details>
+<summary>
+Resposta do <em>chatGPT-4</em>
+</summary>
+<div class="chat-container">
+<div class="code-block">
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="ajuste-linear-a-partir-da-ia.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb58-2"><a href="ajuste-linear-a-partir-da-ia.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;plotly&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;plotly&quot;</span>)</span>
+<span id="cb58-3"><a href="ajuste-linear-a-partir-da-ia.html#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="ajuste-linear-a-partir-da-ia.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb58-5"><a href="ajuste-linear-a-partir-da-ia.html#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb58-6"><a href="ajuste-linear-a-partir-da-ia.html#cb58-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-7"><a href="ajuste-linear-a-partir-da-ia.html#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculando predições e intervalos de confiança</span></span>
+<span id="cb58-8"><a href="ajuste-linear-a-partir-da-ia.html#cb58-8" aria-hidden="true" tabindex="-1"></a>predicoes <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_quad, <span class="at">newdata =</span> dados, <span class="at">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb58-9"><a href="ajuste-linear-a-partir-da-ia.html#cb58-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-10"><a href="ajuste-linear-a-partir-da-ia.html#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Adicionando as predições e intervalos de confiança ao data frame</span></span>
+<span id="cb58-11"><a href="ajuste-linear-a-partir-da-ia.html#cb58-11" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb58-12"><a href="ajuste-linear-a-partir-da-ia.html#cb58-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb58-13"><a href="ajuste-linear-a-partir-da-ia.html#cb58-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">fitted =</span> predicoes[,<span class="st">&quot;fit&quot;</span>],</span>
+<span id="cb58-14"><a href="ajuste-linear-a-partir-da-ia.html#cb58-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">lwr =</span> predicoes[,<span class="st">&quot;lwr&quot;</span>],</span>
+<span id="cb58-15"><a href="ajuste-linear-a-partir-da-ia.html#cb58-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">upr =</span> predicoes[,<span class="st">&quot;upr&quot;</span>]</span>
+<span id="cb58-16"><a href="ajuste-linear-a-partir-da-ia.html#cb58-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb58-17"><a href="ajuste-linear-a-partir-da-ia.html#cb58-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-18"><a href="ajuste-linear-a-partir-da-ia.html#cb58-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico com plotly</span></span>
+<span id="cb58-19"><a href="ajuste-linear-a-partir-da-ia.html#cb58-19" aria-hidden="true" tabindex="-1"></a>plot_vis <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(dados) <span class="sc">%&gt;%</span></span>
+<span id="cb58-20"><a href="ajuste-linear-a-partir-da-ia.html#cb58-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_trace</span>(</span>
+<span id="cb58-21"><a href="ajuste-linear-a-partir-da-ia.html#cb58-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>Dose, </span>
+<span id="cb58-22"><a href="ajuste-linear-a-partir-da-ia.html#cb58-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>pH, </span>
+<span id="cb58-23"><a href="ajuste-linear-a-partir-da-ia.html#cb58-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&#39;scatter&#39;</span>, </span>
+<span id="cb58-24"><a href="ajuste-linear-a-partir-da-ia.html#cb58-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="st">&#39;markers&#39;</span>, </span>
+<span id="cb58-25"><a href="ajuste-linear-a-partir-da-ia.html#cb58-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&#39;Dados Observados&#39;</span>,</span>
+<span id="cb58-26"><a href="ajuste-linear-a-partir-da-ia.html#cb58-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="st">&#39;red&#39;</span>, <span class="at">size =</span> <span class="dv">10</span>)</span>
+<span id="cb58-27"><a href="ajuste-linear-a-partir-da-ia.html#cb58-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb58-28"><a href="ajuste-linear-a-partir-da-ia.html#cb58-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_trace</span>(</span>
+<span id="cb58-29"><a href="ajuste-linear-a-partir-da-ia.html#cb58-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>Dose, </span>
+<span id="cb58-30"><a href="ajuste-linear-a-partir-da-ia.html#cb58-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>fitted, </span>
+<span id="cb58-31"><a href="ajuste-linear-a-partir-da-ia.html#cb58-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&#39;scatter&#39;</span>, </span>
+<span id="cb58-32"><a href="ajuste-linear-a-partir-da-ia.html#cb58-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="st">&#39;lines&#39;</span>,</span>
+<span id="cb58-33"><a href="ajuste-linear-a-partir-da-ia.html#cb58-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&#39;Ajuste Quadrático&#39;</span>,</span>
+<span id="cb58-34"><a href="ajuste-linear-a-partir-da-ia.html#cb58-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">line =</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb58-35"><a href="ajuste-linear-a-partir-da-ia.html#cb58-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb58-36"><a href="ajuste-linear-a-partir-da-ia.html#cb58-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_trace</span>(</span>
+<span id="cb58-37"><a href="ajuste-linear-a-partir-da-ia.html#cb58-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>Dose, </span>
+<span id="cb58-38"><a href="ajuste-linear-a-partir-da-ia.html#cb58-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>lwr, </span>
+<span id="cb58-39"><a href="ajuste-linear-a-partir-da-ia.html#cb58-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&#39;scatter&#39;</span>, </span>
+<span id="cb58-40"><a href="ajuste-linear-a-partir-da-ia.html#cb58-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="st">&#39;lines&#39;</span>,</span>
+<span id="cb58-41"><a href="ajuste-linear-a-partir-da-ia.html#cb58-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&#39;Limite Inferior 95%&#39;</span>,</span>
+<span id="cb58-42"><a href="ajuste-linear-a-partir-da-ia.html#cb58-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">line =</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="st">&#39;rgba(173,216,230,0.4)&#39;</span>)</span>
+<span id="cb58-43"><a href="ajuste-linear-a-partir-da-ia.html#cb58-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb58-44"><a href="ajuste-linear-a-partir-da-ia.html#cb58-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_trace</span>(</span>
+<span id="cb58-45"><a href="ajuste-linear-a-partir-da-ia.html#cb58-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="sc">~</span>Dose, </span>
+<span id="cb58-46"><a href="ajuste-linear-a-partir-da-ia.html#cb58-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="sc">~</span>upr, </span>
+<span id="cb58-47"><a href="ajuste-linear-a-partir-da-ia.html#cb58-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&#39;scatter&#39;</span>, </span>
+<span id="cb58-48"><a href="ajuste-linear-a-partir-da-ia.html#cb58-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="st">&#39;lines&#39;</span>,</span>
+<span id="cb58-49"><a href="ajuste-linear-a-partir-da-ia.html#cb58-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&#39;Limite Superior 95%&#39;</span>,</span>
+<span id="cb58-50"><a href="ajuste-linear-a-partir-da-ia.html#cb58-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&#39;tonexty&#39;</span>,</span>
+<span id="cb58-51"><a href="ajuste-linear-a-partir-da-ia.html#cb58-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">line =</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="st">&#39;rgba(173,216,230,0.4)&#39;</span>)</span>
+<span id="cb58-52"><a href="ajuste-linear-a-partir-da-ia.html#cb58-52" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb58-53"><a href="ajuste-linear-a-partir-da-ia.html#cb58-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(</span>
+<span id="cb58-54"><a href="ajuste-linear-a-partir-da-ia.html#cb58-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Ajuste Quadrático do pH em função da Dose&quot;</span>,</span>
+<span id="cb58-55"><a href="ajuste-linear-a-partir-da-ia.html#cb58-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&quot;Dose (mg)&quot;</span>),</span>
+<span id="cb58-56"><a href="ajuste-linear-a-partir-da-ia.html#cb58-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&quot;pH&quot;</span>)</span>
+<span id="cb58-57"><a href="ajuste-linear-a-partir-da-ia.html#cb58-57" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb58-58"><a href="ajuste-linear-a-partir-da-ia.html#cb58-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-59"><a href="ajuste-linear-a-partir-da-ia.html#cb58-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar o gráfico</span></span>
+<span id="cb58-60"><a href="ajuste-linear-a-partir-da-ia.html#cb58-60" aria-hidden="true" tabindex="-1"></a>plot_vis</span></code></pre></div>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-bd06d1d996f72935a54b" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-bd06d1d996f72935a54b">{"x":{"visdat":{"14b06228428b":["function () ","plotlyVisDat"]},"cur_data":"14b06228428b","attrs":{"14b06228428b":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"markers","name":"Dados Observados","marker":{"color":"red","size":10},"inherit":true},"14b06228428b.1":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"lines","name":"Ajuste Quadrático","line":{"color":"blue"},"inherit":true},"14b06228428b.2":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"lines","name":"Limite Inferior 95%","line":{"color":"rgba(173,216,230,0.4)"},"inherit":true},"14b06228428b.3":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"lines","name":"Limite Superior 95%","fill":"tonexty","line":{"color":"rgba(173,216,230,0.4)"},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Ajuste Quadrático do pH em função da Dose","xaxis":{"domain":[0,1],"automargin":true,"title":"Dose (mg)"},"yaxis":{"domain":[0,1],"automargin":true,"title":"pH"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[0,0,0,10,10,10,20,20,20,30,30,30],"y":[7.3,6.8,7.5,6.5,6.4,5.8,5.2,4.9,5.1,3.2,2.5,2.9],"type":"scatter","mode":"markers","name":"Dados Observados","marker":{"color":"red","size":10,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,0,0,10,10,10,20,20,20,30,30,30],"y":[7.15833333333333,7.15833333333333,7.15833333333333,6.35833333333333,6.35833333333333,6.35833333333333,4.94166666666666,4.94166666666666,4.94166666666666,2.90833333333333,2.90833333333333,2.90833333333333],"type":"scatter","mode":"lines","name":"Ajuste Quadrático","line":{"color":"blue"},"marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,0,0,10,10,10,20,20,20,30,30,30],"y":[6.31758934274298,6.31758934274298,6.31758934274298,5.56129464887217,5.56129464887217,5.56129464887217,4.1446279822055,4.1446279822055,4.1446279822055,2.06758934274298,2.06758934274298,2.06758934274298],"type":"scatter","mode":"lines","name":"Limite Inferior 95%","line":{"color":"rgba(173,216,230,0.4)"},"marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(214,39,40,0.5)","x":[0,0,0,10,10,10,20,20,20,30,30,30],"y":[7.99907732392368,7.99907732392368,7.99907732392368,7.1553720177945,7.1553720177945,7.1553720177945,5.73870535112783,5.73870535112783,5.73870535112783,3.74907732392368,3.74907732392368,3.74907732392368],"type":"scatter","mode":"lines","name":"Limite Superior 95%","fill":"tonexty","line":{"color":"rgba(173,216,230,0.4)"},"marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"error_y":{"color":"rgba(214,39,40,1)"},"error_x":{"color":"rgba(214,39,40,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="análise-de-regressão.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="comparações-entre-tratamentos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

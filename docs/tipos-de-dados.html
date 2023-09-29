@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Tipos de dados | Bioestatística e linguagem R na era da inteligência artificial</title>
+  <title>4 Tipos de dados | Programação em R para biotecnologistas (em elaboração)</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Tipos de dados | Bioestatística e linguagem R na era da inteligência artificial" />
+  <meta property="og:title" content="4 Tipos de dados | Programação em R para biotecnologistas (em elaboração)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Tipos de dados | Bioestatística e linguagem R na era da inteligência artificial" />
+  <meta name="twitter:title" content="4 Tipos de dados | Programação em R para biotecnologistas (em elaboração)" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
@@ -36,7 +36,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   
   
 <link rel="prev" href="primeiros-passos.html"/>
-<link rel="next" href="operações-básicas-e-funções-matemáticas.html"/>
+<link rel="next" href="operações-básicas.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -57,6 +57,13 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -128,28 +135,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -176,50 +161,18 @@ div.csl-indent {
 <li class="chapter" data-level="2" data-path="origem-do-r.html"><a href="origem-do-r.html"><i class="fa fa-check"></i><b>2</b> Origem do R</a></li>
 <li class="chapter" data-level="3" data-path="primeiros-passos.html"><a href="primeiros-passos.html"><i class="fa fa-check"></i><b>3</b> Primeiros passos</a></li>
 <li class="chapter" data-level="4" data-path="tipos-de-dados.html"><a href="tipos-de-dados.html"><i class="fa fa-check"></i><b>4</b> Tipos de dados</a></li>
-<li class="chapter" data-level="5" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html"><i class="fa fa-check"></i><b>5</b> Operações Básicas e Funções Matemáticas</a>
+<li class="chapter" data-level="5" data-path="operações-básicas.html"><a href="operações-básicas.html"><i class="fa fa-check"></i><b>5</b> Operações Básicas</a></li>
+<li class="chapter" data-level="6" data-path="desafio.html"><a href="desafio.html"><i class="fa fa-check"></i><b>6</b> Desafio</a></li>
+<li class="chapter" data-level="7" data-path="resposta-do-desafio.html"><a href="resposta-do-desafio.html"><i class="fa fa-check"></i><b>7</b> Resposta do desafio</a></li>
+<li class="chapter" data-level="8" data-path="inteligência-artificial-e-programação.html"><a href="inteligência-artificial-e-programação.html"><i class="fa fa-check"></i><b>8</b> Inteligência Artificial e Programação</a></li>
+<li class="chapter" data-level="9" data-path="visualização-de-dados-1.html"><a href="visualização-de-dados-1.html"><i class="fa fa-check"></i><b>9</b> Visualização de dados</a></li>
+<li class="chapter" data-level="10" data-path="análise-de-regressão.html"><a href="análise-de-regressão.html"><i class="fa fa-check"></i><b>10</b> Análise de Regressão</a></li>
+<li class="chapter" data-level="11" data-path="ajuste-linear-a-partir-da-ia.html"><a href="ajuste-linear-a-partir-da-ia.html"><i class="fa fa-check"></i><b>11</b> Ajuste linear a partir da IA</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#principais-estruturas-de-dados"><i class="fa fa-check"></i><b>5.1</b> Principais estruturas de dados</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#vetores"><i class="fa fa-check"></i><b>5.1.1</b> Vetores</a></li>
-<li class="chapter" data-level="5.1.2" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#arrays-ou-matrizes"><i class="fa fa-check"></i><b>5.1.2</b> Arrays ou matrizes</a></li>
+<li class="chapter" data-level="11.1" data-path="ajuste-linear-a-partir-da-ia.html"><a href="ajuste-linear-a-partir-da-ia.html#atividade-prática-1"><i class="fa fa-check"></i><b>11.1</b> Atividade Prática 1</a></li>
+<li class="chapter" data-level="11.2" data-path="ajuste-linear-a-partir-da-ia.html"><a href="ajuste-linear-a-partir-da-ia.html#atividade-prática-2"><i class="fa fa-check"></i><b>11.2</b> Atividade Prática 2</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#ufscar-lagoa-do-sino"><i class="fa fa-check"></i><b>5.2</b> UFSCar Lagoa do Sino</a></li>
-<li class="chapter" data-level="5.3" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#ce-meca"><i class="fa fa-check"></i><b>5.3</b> Ce-MECA</a></li>
-<li class="chapter" data-level="5.4" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#ciência-de-dados-e-aplicações-tecnológicas"><i class="fa fa-check"></i><b>5.4</b> Ciência de Dados e Aplicações Tecnológicas</a></li>
-<li class="chapter" data-level="5.5" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#usage"><i class="fa fa-check"></i><b>5.5</b> Usage</a></li>
-<li class="chapter" data-level="5.6" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#render-book"><i class="fa fa-check"></i><b>5.6</b> Render book</a></li>
-<li class="chapter" data-level="5.7" data-path="operações-básicas-e-funções-matemáticas.html"><a href="operações-básicas-e-funções-matemáticas.html#preview-book"><i class="fa fa-check"></i><b>5.7</b> Preview book</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="hello-bookdown.html"><a href="hello-bookdown.html"><i class="fa fa-check"></i><b>6</b> Hello bookdown</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="hello-bookdown.html"><a href="hello-bookdown.html#a-section"><i class="fa fa-check"></i><b>6.1</b> A section</a>
-<ul>
-<li class="chapter" data-level="" data-path="hello-bookdown.html"><a href="hello-bookdown.html#an-unnumbered-section"><i class="fa fa-check"></i>An unnumbered section</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>7</b> Cross-references</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="cross.html"><a href="cross.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>7.1</b> Chapters and sub-chapters</a></li>
-<li class="chapter" data-level="7.2" data-path="cross.html"><a href="cross.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>7.2</b> Captioned figures and tables</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>8</b> Parts</a></li>
-<li class="chapter" data-level="9" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>9</b> Footnotes and citations</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>9.1</b> Footnotes</a></li>
-<li class="chapter" data-level="9.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>9.2</b> Citations</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>10</b> Blocks</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>10.1</b> Equations</a></li>
-<li class="chapter" data-level="10.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>10.2</b> Theorems and proofs</a></li>
-<li class="chapter" data-level="10.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>10.3</b> Callout blocks</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>11</b> Sharing your book</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>11.1</b> Publishing</a></li>
-<li class="chapter" data-level="11.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>11.2</b> 404 pages</a></li>
-<li class="chapter" data-level="11.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>11.3</b> Metadata for sharing</a></li>
-</ul></li>
+<li class="chapter" data-level="12" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html"><i class="fa fa-check"></i><b>12</b> Comparações entre tratamentos</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -233,7 +186,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bioestatística e linguagem R na era da inteligência artificial</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Programação em R para biotecnologistas (em elaboração)</a>
           </h1>
         </div>
 
@@ -326,7 +279,7 @@ Exemplo
         </div>
       </div>
 <a href="primeiros-passos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="operações-básicas-e-funções-matemáticas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="operações-básicas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

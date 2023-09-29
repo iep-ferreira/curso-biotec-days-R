@@ -1,5 +1,5 @@
 --- 
-title: "Bioestatística e linguagem R na era da inteligência artificial"
+title: "Programação em R para biotecnologistas (em elaboração)"
 author: 'Prof. Dr. Iuri E. P. Ferreira e Prof. Dr. Jorge L. R. Pantoja Filho. Universidade Federal de São Carlos, Campus Lagoa do Sino'
 date: "5 de outubro de 2023"
 output:
@@ -401,217 +401,816 @@ mode(parabola)
 
 </div>
 
-# Operações Básicas e Funções Matemáticas
+# Operações Básicas
 
-```{r echo=FALSE, out.width='300px', fig.align='center'}
+<style>
+    details > summary {
+        font-weight: bold;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    
+    details > p {
+        margin-left: 20px;
+    }
+    
+    details > details > summary {
+        margin-left: 20px;
+    }
+</style>
+
+<div style="text-align: justify"> 
+
+## Operadores matemáticos
+
+```{r echo=FALSE, out.width='300px', fig.align='left', , fig.cap= "Fonte: https://www.statmethods.net/management/operators.html"}
 knitr::include_graphics("images/arith-operations.png")
 ```
 
-```{r echo=FALSE, out.width='300px', fig.align='center'}
+
+## Operadores lógicos
+
+```{r echo=FALSE, out.width='300px', fig.align='left', fig.cap= "Fonte: https://www.statmethods.net/management/operators.html"}
 knitr::include_graphics("images/logical-operations.png")
 ```
 
-
-No R, as operações aritméticas são definidas de maneira intuitiva. 
-
-```{r}
-# aritmética
-l<-23
-l^2+2*l
-3*2+2
-3*(2+2)
-3/2
-```
-
-Mais operações matemáticas são listadas   [aqui](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Arithmetic.html). 
-
-Além disso, diversas funções matemáticas são pré-definidas no R. 
 </div>
 
-```{r}
-# Arredondar (duas casas decimais)
-round(17/3,2)
-# seno, cosseno, tangente, arco-tangente, tengente hiperbólica
-sin(pi);cos(pi);tan(pi);atan(0.5);tanh(0.5)
-# raiz quadrado, exponencial, log natural, log na base 10 e módulo
-sqrt(4);exp(2);log(10);log10(10);abs(-6.5)
-```
+# Desafio 
+
+<style>
+    details > summary {
+        font-weight: bold;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    
+    details > p {
+        margin-left: 20px;
+    }
+    
+    details > details > summary {
+        margin-left: 20px;
+    }
+</style>
+
 <div style="text-align: justify"> 
-Por sua vez, comparações e controle de fluxo dependem de operadores 
-lógicos, ou seja, que resultam em _TRUE_ ou _FALSE_. Observe que "==" 
-não é um comando de atribuição, mas trata-se de uma comparação lógica de igualdade. Com comandos lógicos, também é possível estabelecer a união e 
-a interseção entre conjuntos: "(cond. 1)&(cond. 2)" será verdade (_TRUE_) apenas se as condições 1 e 2 forem satisfeitas simultaneamente; por outro lado, "(cond. 1)|(cond. 2)" será verdade se a condição 1 ou a condição 2 (ou ambas) forem satisfeitas. 
+
+Você consegue seguir a sequência de 11 passos sem errar? </p>
+
+  <details>
+  <summary>Passo 1</summary>
+  <p>Pense em um número entre 10 e 19</p>
+</details>
+
+<details>
+  <summary>Passo 2</summary>
+  <p>Some os algarismos deste número</p>
+</details>
+
+<details>
+  <summary>Passo 3</summary>
+  <p>Do número pensado, subtraia a soma dos algarismos</p>
+</details>
+
+<details>
+  <summary>Passo 4</summary>
+  <p>Multiplique o resultado por dois</p>
+</details>
+
+<details>
+  <summary>Passo 5</summary>
+  <p>Divida o resultado por três</p>
+</details>
+
+<details>
+  <summary>Passo 6</summary>
+  <p>Subtraia duas unidades do resultado</p>
+</details>
+
+<details>
+  <summary>Passo 7</summary>
+  <p>Correlacione com o alfabeto (1 - A, 2 - B, ...)</p>
+</details>
+
+<details>
+  <summary>Passo 8</summary>
+  <p>Escolha um país que comece por essa letra</p>
+</details>
+
+<details>
+  <summary>Passo 9</summary>
+  <p>Selecione a quinta letra desse país</p>
+</details>
+
+<details>
+  <summary>Passo 10</summary>
+  <p>Pense em uma cor que comece por essa letra</p>
+</details>
+
+<details>
+  <summary>Passo 11</summary>
+  <p>Pense em um animal que comece com essa letra e tenha essa cor</p>
+</details>
+
 </div>
 
-```{r}
-# Exemplo 1 
-nome <- "José"
-# A variável é um número? 
-is.numeric(nome)
-# A variável é um caracter? 
-is.character(nome)
-# Exemplo 2
-l<-1
-# A variável é igual a 23? 
-l==23
-# A variável é menor do que 15?
-l<15
-# A variável é menor do que 23
-l<=23
-# atribuição (nova variável)
-a<-17
-# condição 1 E condição 2 
-(a<15)&(l>23)
-(a<15)&(l>=23)
-# condição 1 OU condição 2 
-(a<15)|(l>23)
-(a<15)|(l>=23)
-```
-## Principais estruturas de dados   
-### Vetores
-<div style="text-align: justify"> 
-Vetor é o tipo de estrutura de dados mais simples. Trata-se de uma sequência de "valores" a serem armazenados na memória do computador. Observe que tais valores não são necessariamente números, mas podem ser nomes e/ou categorias ou valores lógicos (TRUE ou FALSE). Cada elemento de um vetor é um componente. 
+# Resposta do desafio
 
-Uma lista pode ser construída a partir da combinação de elementos do mesmo tipo, através do comando (*combine*). Sua sintaxe é *c(element 1, element 2, ...)* . Observe que os elementos são separados por vírgulas. Se os elementos forem números decimais, as unidades e os decimais serão separados por pontos, como na Língua Inglesa.
-</div>
+<style>
+  #protectedContent {
+    display: none;
+  }
+</style>
 
-```{r}
-# Vetor c/ números inteiros de 1 a 10
-v<-c(1,2,3,4,5,6,7,8,9,10)
-# Impressão do vetor armazenado
-print(v)
-# Quinto elemento do vetor
-v[5]
-```
+<label for="password">Digite a senha para visualizar o conteúdo:</label>
+<input type="password" id="password" name="password">
+<button onclick="showContent()">Mostrar Conteúdo</button>
 
-```{r}
-# Vetor c/ nomes dos alunos
-nomes<-c("Raul","Zulmira","Edmilson","Jaquelina","Gabriela","Hudson")
-# Impressão do vetor armazenado
-nomes
-# Obs: Nomes e rótulos sempre devem ser incluídos com aspas duplas. 
-```
-```{r}
-# Vetor com valores lógicos 
-# Quais elementos de v são divisíveis por 2?
-v%%2
-# Observe que o operador %% indica a divisibilidade 
-# (0 = não divisível / 1 = divisível)
-as.logical(v%%2)
-# Aqui os valores foram transformados em variáveis lógicas 
-# (i.e. TRUE = Verdadeiro = 1; FALSE = Falso = 0)
-```
-<div style="text-align: justify"> 
-Quando digitamos *vetor[2]*, o número disposto entre colchetes é uma **subscrição**. A subscrição indica a posição de um dado dentro de uma 
-estrutura de dados. Obviamente, a subscrição é um número inteiro e 
-dentro dos limites de tamanho da lista. A subscrição/índice varia de 1 
-até N, em que N é o número de elementos na lista. 
+<details id="protectedContent">
+  
 
-Diversas operações com vetores e entre vetores e matrizes são pré-definidas no R. No exemplo abaixo, identifique a diferença entre o produto ponto-a-ponto e a multiplicação escalar (produto interno). 
-</div>
-
-```{r}
-# Definição de dois vetores quaisquer 
-v <- c(12,3,4,25,7,8)
-r <- c(13,15,4,21,2,3)
-# Comprimento de um vetor
-length(v)
-# Multiplicação ponto-a-ponto
-v*r
-# Produto escalar <v,r>
-v%*%r
-```
-
-### Arrays ou matrizes
-<div style="text-align: justify"> 
-Arrays e matrizes são estruturas de dados bidimensionais, cujas as 
-entradas apresentam subscrições para as linhas e colunas. 
-</div>
-
-```{r}
-# Criando um banco de dados
-dados<-data.frame(v,r)
-# Leitura das 3 linhas iniciais
-head(dados,3)
-# acessando a coluna "v" do banco de dados
-dados$v
-# Acessando o elemento da linha 3 e coluna 2
-dados[3,2]
-# Dimenões do banco de dados
-dim(dados)
-```
-<div style="text-align: justify"> 
-No exemplo abaixo, definimos uma matriz com 3 linhas (_nr = number of lines_) e cujo preenchimento segue a ordem das colunas (_byrow = FALSE_).
-Diversas operações matriciais são possíveis, tais como: transposição, inversão, multiplicação, cálculo de autovalores, autovetores e determinantes. Essas operações têm grande relevância na Estatística.   
-</div>
-
-```{r}
-# Definindo a matriz
-A<-matrix(c(2,3,4,5,6,7),nr=3,byrow=FALSE)
-A
-# Obtenção da transposta
-t(A)
-# Definindo outra matriz
-B<-matrix(c(2,3,4,5,6,7,8,9,10),nr=3,byrow=FALSE)
-B
-# Cálculo do determinante
-det(B)
-# Tentativa - Cálculo da Inversa 
-try(solve(B))
-# Nova matriz
-B2<-matrix(c(2,3,28,5,6,12,8,9,5),nr=3,byrow=FALSE)
-det(B2)
-solve(B2)
-# multiplicação ponto-a-ponto
-B*B2
-# multiplicação matricial
-B%*%B2
-```
+ <figure>
+ <img src="images/image-art.png" width="400px"/>
+ <figcaption> Fonte: https://www.imagine.art/ </figcaption>
  
+ </figure>
 
 
+Ok! Mas como isso acontece? Para responder, vamos construir um pequeno programa com operações matemáticas e lógicas. </p>
 
+<details>
+<summary> Programa </summary>
 
-## UFSCar Lagoa do Sino
+```{r}
+# Atibui o número escolhido à variável num
+num <- 16
+# Calcula a soma dos algarismos 
+algarismos <- as.numeric(strsplit(as.character(num), NULL)[[1]])
+soma <- sum(algarismos)
+# Passo 3
+resultado <- num - soma
+# Passo 4
+resultado <- resultado*2
+# Passo 5 e 6
+resultado <- resultado/3 - 2
+# Conferência
+resultado == 4
+```
+Observe que o `resultado` é invariante! </p>
+</details>
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
+</details>
 
-## Ce-MECA 
+<script>
+  function showContent() {
+    var passwordInput = document.getElementById('password').value;
+    var correctPassword = 'macacomarrom'; // Defina a senha correta aqui
+    
+    if (passwordInput === correctPassword) {
+      document.getElementById('protectedContent').style.display = 'block';
+    } else {
+      alert('Senha incorreta!');
+    }
+  }
+</script>
 
+# Inteligência Artificial e Programação  
 
-## Ciência de Dados e Aplicações Tecnológicas
+<div style="text-align: justify"> 
 
+## Avanços recentes em IA
 
-## Usage 
+### Aprendizado de Máquina e Aprendizado Profundo
 
-Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
+O desenvolvimento de técnicas avançadas de aprendizado de máquina e aprendizado profundo permitiu a criação de modelos de IA mais sofisticados e precisos, capazes de realizar tarefas complexas, como reconhecimento de imagem e processamento de linguagem natural. </p>
 
-Use second-level and higher headings within chapters like: `## A short section` or `### An even shorter section`.
+### Frameworks e Bibliotecas
 
-The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.
+Frameworks como `TensorFlow` e `PyTorch` têm facilitado o desenvolvimento e a implementação de modelos de IA, proporcionando ferramentas eficientes e flexíveis para os pesquisadores e desenvolvedores. </p>
 
-## Render book
+## Contribuição em Programação
 
-You can render the HTML version of this example book without changing anything:
+A IA tem auxiliado programadores através de: </p>
 
-1. Find the **Build** pane in the RStudio IDE, and
+### Automação
 
-1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
+Ferramentas de IA podem automatizar tarefas repetitivas, reduzindo o tempo de desenvolvimento e diminuindo a probabilidade de erros. </p>
 
-Or build the book from the R console:```{r, eval=FALSE}
-bookdown::render_book()
+### Otimização de Código
+
+Sistemas de IA podem sugerir otimizações de código e identificar potenciais bugs e vulnerabilidades, melhorando a qualidade do software. </p>
+
+## Contribuição em Análise de Dados
+
+### Análise Preditiva
+
+Modelos de aprendizado de máquina podem analisar grandes conjuntos de dados para fazer previsões precisas, auxiliando na tomada de decisões em várias indústrias. </p>.
+
+### Visualização de Dados
+
+Ferramentas de IA podem ajudar a criar visualizações de dados mais intuitivas e informativas, permitindo uma melhor compreensão dos dados. </p>
+
+</div>
+
+# Visualização de dados
+
+<div style="text-align: justify"> 
+
+  + Usar a IA para carregar e visualizar dados experimentais de um arquivo `.xls` usando linguagem R
+  
+  + Prompt: 
+  
+    + Tarefa: construir um script para visualizar dados experimentais em R; 
+    
+    + Dados: os dados estão armazenados no caminho `./dados-exemplos/experimento.xlsx`; 
+    
+    + Contexto: os dados são referentes a um experimento inteiramente aleatorizado com 4 tratamentos e três replicações, cuja finalidade foi observar o efeito da dosagem de essência de limão no pH final de um produto lácteo;  
+    
+    + Detalhamento: deseja-se um gráfico da resposta `pH` em função da variável `Dose` de essência de limão;
+    
+    + Ferramentas: use o pacote ggplot2;
+    
+    + Requisitos: Gráficos em cores para os diferentes `Tratamentos`, com legenda e pontos representados por asteriscos de tamanho médio. O código não deve ultrapassar 15 linhas. 
+    
+  + Resposta do GPT-4: 
+    
+```{r message=FALSE, warning=FALSE}
+library(ggplot2)
+library(readxl)
+
+# Lendo os dados
+dados <- read_excel("./dados-exemplos/experimento.xlsx")
+
+# Criando o gráfico
+ggplot(dados, aes(x=Dose, y=pH, color=Tratamentos)) +
+  geom_point(shape=8, size=3) + 
+  labs(color='Tratamento') + 
+  theme_minimal()
+```
+    
+  + Atividade: insira o prompt em outra ferramenta de IA (LLM) e observe o resultado
+  
+</div>
+  
+# Análise de Regressão
+
+<div style="text-align: justify"> 
+
+Observe que os tratamentos do experimento podem ser analisados de forma qualitativa ou quantitativa. Na análise quantitativa, por exemplo, desejamos ajustar uma curva de tendência e fazer previsões para novos valores da resposta. </p>
+
+## Ajuste da reta 
+
+### Ajuste do modelo linear no R 
+
+A função `lm` é usada para ajustar modelos *estatisticamente* lineares (`lm` = linear model). Na sintaxe do R, a fórmula `pH ~ Dose` representa o ajuste de uma reta de tendência, expressa por 
+
+\[
+pH = \beta_0 + \beta_1 \times Dose  
+\]
+
+```{r}
+mod_reta <- lm( pH ~ Dose, data = dados )
+coef( mod_reta )
 ```
 
-To render this example to PDF as a `bookdown::pdf_book`, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
+Para ajustar a reta de tendência, torna-se necessário calcular os valores mais plausíveis para os parâmetros $\beta_0$ e $\beta_1$, com base nos dados. As estimativas de $\beta_0$ e $\beta_1$ são obtidas a partir do comando `coef`. 
 
-## Preview book
+### Diagnóstico do ajuste da reta 
 
-As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in "Preview book", or from the R console:
+Ao realizar o diagnóstico de um ajuste linear clássico a partir dos gráficos dos resíduos, esperamos validar os pressupostos do modelo. Os resíduos devem aparentar ser aleatórios, sem padrões discerníveis, indicando homocedasticidade, e devem ser aproximadamente normalmente distribuídos em torno de zero, validando a suposição de normalidade e a independência dos erros, essencial para inferências subsequentes. </p>
 
-```{r eval=FALSE}
-bookdown::serve_book()
+  + Análise dos resíduos do ajuste
+
+```{r message=FALSE, warning=FALSE}
+plot( mod_reta, 1) # valores ajustados x resíduos
+library(car)
+qqPlot( residuals( mod_reta ) ) # gráfico quantil-quantil
+```
+   
+Neste caso, obsevamos que o gráfico quantil-quantil não apresenta desvios à normalidade. Porém, no gráfico dos resíduos em função dos valores ajustados, observa-se uma estrutura de variação dos dados não explicada pelo modelo. Os dados deveriam oscilar aleatoriamente em torno do zero, mas não é isso o que acontece. </p>
+
+### Teste de falta de ajuste
+
+Nesta etapa, realizaremos o teste de falta de ajuste para averiguar se o modelo é suficiente para capturar o comportamento dos dados ou se um modelo mais "flexível" deveria ser utilizado. </p>
+
+```{r message=FALSE, warning=FALSE}
+mod_quali <- lm( pH ~ Tratamentos, data = dados) # ajuste do modelo qualitativo
+# Falta de ajuste 
+anova( mod_reta, mod_quali )
 ```
 
+Pelo teste F, verifica-se que há falta de ajuste considerando-se o nível de 5% de significância. Conclui-se que o modelo não captura bem o comportamento dos dados </p>
+
+### Ajuste do modelo de segundo grau
+
+Com a inserção do termo `I(Dose, 2)` na fórmula, a expressão da curva de tendência passa a ser
+
+\[
+pH = \beta_0 + \beta_1 \times Dose + \beta_2 \times Dose^2  
+\]
+
+ou seja, uma parábola. Observe que a curvatura exibida por uma parábola pode capturar o comportamento que não foi possível descrever com a reta.  
+
+```{r}
+mod_quad <- lm( pH ~ Dose + I(Dose^2), data = dados )
+coef( mod_quad )
+```
+
+### Diagnóstico do ajuste da parábola 
+
+  + Análise dos resíduos do ajuste
+
+```{r message=FALSE, warning=FALSE}
+plot( mod_quad, 1) # valores ajustados x resíduos
+library(car)
+qqPlot( residuals( mod_quad ) ) # gráfico quantil-quantil
+shapiro.test( residuals( mod_quad ) )
+```
+   
+.... </p>
+
+### Teste de falta de ajuste para a parábola
+
+```{r}
+# Falta de ajuste 
+anova( mod_quad, mod_quali )
+```
+
+... </p>
+
+### Comparação de modelos
+
+O Critério de Informação de Akaike (AIC) é fundamentado na teoria da informação, proporcionando uma medida relativa da informação perdida quando um determinado modelo é usado para representar o processo gerador dos dados. Ele avalia a adequação do modelo, considerando tanto a complexidade do modelo quanto o ajuste aos dados. O AIC é calculado como $AIC = 2k - 2\ln(L)$, onde $k$ é o número de parâmetros no modelo, e $L$ é a verossimilhança do modelo. Menores valores de AIC indicam um melhor equilíbrio entre ajuste do modelo e complexidade, permitindo comparar modelos diferentes, mesmo não aninhados, proporcionando uma abordagem robusta para a seleção de modelos na análise estatística. </p>
+
+O coeficiente de determinação (R²), por outro lado, apenas mede a proporção da variância explicada pelo modelo, não penalizando a complexidade, podendo levar à preferência por modelos superajustados (overfitting) que performam mal com dados novos. Portanto, o AIC é frequentemente mais adequado para a seleção de modelos quando se compara um conjunto de modelos.</p>
+
+```{r}
+AIC(mod_quali , mod_reta, mod_quad )
+```
+
+Neste caso, observa-se que o modelo mais parcimonioso é o quadrático dentre os modelos estudados, pois possui menor perda da informação dos dados originais, além de baixa complexidade, resultando em um AIC inferior. </p> 
+
+</div>
+
+# Ajuste linear a partir da IA
+
+
+<style>
+  .chat-container {
+    width: 100%;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .code-block {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+  }
+
+  .bot-message {
+    text-align: rigth;
+    color: #333;
+  }
+
+  .user-message {
+    text-align: right;
+    color: #4caf50;
+  }
+</style>
+
+
+
+<div style="text-align: justify"> 
+
+Nesta seção nós iremos explorar se ferramentas de inteligência artificial seriam capazes de orientar a análise de regressão e fornecer scripts úteis. </p>
+
+No entanto, **cuidado!** Recomendamos que todas as saídas fornecidas por IA sejam avaliadas por profissionais competentes na área, que se responsabilizem pelos resultados. </p>
+
+Além disso, dados sensíveis, pessoais ou institucionais, não devem ser fornecidos aos operadores de IA via prompts. </p>
+
+## Atividade Prática 1
+
+Construa um prompt para inteligência artificial com o objetivo de obter orientações estatísticas e um script pronto para a análise de regressão e seleção de modelos. 
+
+<div class="chat-container">
+  
+<details>
+<summary> Prompt </summary>
+  
+  <div class="message bot-message">
+    
+  + Tarefa: selecionar o modelo que melhor representa a relação entre as variáveis Dose e pH no experimento a seguir; </p>
+      
+  + Contexto: os dados são referentes a um experimento inteiramente aleatorizado com 4 tratamentos e três replicações, cuja finalidade foi observar o efeito da dosagem de essência de limão no pH final de um produto lácteo;  </p>
+    
+  + Detalhamento: faça uma comparação estatística entre modelos lineares, determinando qual é o mais parcimonioso; faça diagnóstico do ajuste e análise dos resíduos; verifique, para os modelos ajustados, se há falta de ajuste. </p>
+    
+  + Ferramentas: Linguagem R e funções do stats; </p>
+    
+  + Requisitos: apresente as hipóteses testadas, os testes de significância, os valores p e a interpretação estatística. </p>
+
+  + Dados: copiar os dados da tabela e colar aqui! </p>
+    
+  </div>
+  
+</details><br>
+
+<details>
+<summary> Resposta do _chatGPT-4_ </summary>
+
+<div class="chat-container">
+
+  + 1. Importar os Dados
+
+Primeiramente, você precisa importar os dados para o R. Você pode criar um `data.frame` diretamente. </p>
+
+<div class="code-block">
+```{r}
+df <- data.frame(
+  Unidade = 1:12,
+  Tratamentos = rep(LETTERS[1:4], each = 3),
+  Dose = rep(c(0, 10, 20, 30), each = 3),
+  pH = c(7.3, 6.8, 7.5, 6.5, 6.4, 5.8, 5.2, 4.9, 5.1, 3.2, 2.5, 2.9)
+)
+```
+</div>
+
+```{r include=FALSE}
+df <- data.frame(
+  Unidade = 1:12,
+  Tratamentos = rep(LETTERS[1:4], each = 3),
+  Dose = rep(c(0, 10, 20, 30), each = 3),
+  pH = c(7.3, 6.8, 7.5, 6.5, 6.4, 5.8, 5.2, 4.9, 5.1, 3.2, 2.5, 2.9)
+)
+```
+
+  + 2. Ajustar Modelos Lineares
+
+Vamos ajustar alguns modelos lineares e compará-los. Um modelo simples é a regressão linear simples, e outro é um modelo linear com termos polinomiais para considerar efeitos não-lineares da Dose no pH. </p>
+
+<div class="code-block">
+```{r}
+# Modelo Linear Simples
+modelo_linear <- lm(pH ~ Dose, data = df)
+
+# Modelo Linear Quadrático
+modelo_quadratico <- lm(pH ~ poly(Dose, 2), data = df)
+```
+</div>
+
+
+```{r include=FALSE}
+# Modelo Linear Simples
+modelo_linear <- lm(pH ~ Dose, data = df)
+
+# Modelo Linear Quadrático
+modelo_quadratico <- lm(pH ~ poly(Dose, 2), data = df)
+```
+
+  + 3. Comparar Modelos
+  
+Vamos comparar os modelos usando o teste de anova. </p>
+
+
+<div class="code-block">
+```{r}
+anova(modelo_linear, modelo_quadratico)
+```
+</div>
+
+```{r include=FALSE}
+anova(modelo_linear, modelo_quadratico)
+```
+
+  + 4. Diagnóstico do Modelo
+  
+Vamos analisar os resíduos dos modelos ajustados.
+
+<div class="code-block">
+```{r}
+# Para o Modelo Linear
+plot(modelo_linear, 1)
+
+# Para o Modelo Quadrático
+plot(modelo_quadratico, 1)
+```
+</div>
+
+```{r include=FALSE}
+# Para o Modelo Linear
+plot(modelo_linear, 1)
+
+# Para o Modelo Quadrático
+plot(modelo_quadratico, 1)
+```
+
+  + 5. Testar a Falta de Ajuste
+
+Para testar a falta de ajuste de cada modelo, podemos comparar a variância dos resíduos de cada modelo.</p>
+
+<div class="code-block">
+```{r}
+# Teste de Falta de Ajuste para Modelo Linear
+anova(modelo_linear)
+
+# Teste de Falta de Ajuste para Modelo Quadrático
+anova(modelo_quadratico)
+```
+</div>
+  
+```{r include=FALSE}
+# Teste de Falta de Ajuste para Modelo Linear
+anova(modelo_linear)
+
+# Teste de Falta de Ajuste para Modelo Quadrático
+anova(modelo_quadratico)
+```
+  
+  + 6. Interpretação Estatística
+
+Baseado nos p-valores e no diagnóstico dos resíduos, você pode determinar qual modelo é mais apropriado. O modelo com o menor p-valor e os resíduos bem distribuídos (sem padrões aparentes nos gráficos de diagnóstico) será considerado o melhor modelo. Se o p-valor for menor que o nível de significância (geralmente 0,05), você rejeitará a hipótese nula de que não há efeito da Dose no pH. </p>
+
+  + 7. Resumo dos Modelos
+
+Para obter os detalhes dos modelos ajustados, você pode usar a função summary. </p>
+
+<div class="code-block">
+```{r}
+# Sumário do Modelo Linear
+summary(modelo_linear)
+
+# Sumário do Modelo Quadrático
+summary(modelo_quadratico)
+```
+</div>
+
+```{r include=FALSE}
+# Sumário do Modelo Linear
+summary(modelo_linear)
+
+# Sumário do Modelo Quadrático
+summary(modelo_quadratico)
+```
+
+Ao executar esses passos, você terá uma boa ideia de qual modelo melhor representa a relação entre Dose e pH para este conjunto de dados, considerando tanto a significância estatística quanto a adequação do modelo aos dados. </p>  
+
+</details>
+  
+</div>  
+</div>
+
+## Atividade Prática 2
+
+Construa um prompt para inteligência artificial com o objetivo de criar uma visualização do ajuste com alta qualidade. 
+
+<div class="chat-container">
+  
+<details>
+<summary> Prompt </summary>
+  
+  <div class="message bot-message">
+    
+  + Tarefa: visualização do ajuste do modelo quadrático para a variável pH em função da dose; </p>
+      
+  + Contexto: os dados são referentes a um experimento inteiramente aleatorizado com quatro doses e três replicações, cuja finalidade foi observar o efeito da dosagem de essência de limão no pH final de um produto lácteo;  </p>
+    
+  + Detalhamento: faça um gráfico do ajuste do modelo quadrático aos dados experimentais seguindo o estado da arte. O gráfico deve apresentar pontos experimentais, reta do ajuste e intervalo com 95% de confiança para os valores preditos da resposta. O gráfico deve ter rótulos adequados para o eixo x e y, além de cores que dêem destaque na visualização. </p>
+    
+  + Ferramentas: Linguagem R e pacote plotly; </p>
+    
+  + Dados: copiar os dados da tabela e colar aqui! </p>
+    
+  </div>
+  
+</details><br>
+
+<details>
+<summary> Resposta do _chatGPT-4_ </summary>
+
+<div class="chat-container">
+
+<div class="code-block">
+```{r message=FALSE, warning=FALSE}
+if(!requireNamespace("dplyr", quietly = TRUE)) install.packages("dplyr")
+if(!requireNamespace("plotly", quietly = TRUE)) install.packages("plotly")
+
+library(plotly)
+library(dplyr)
+
+# Calculando predições e intervalos de confiança
+predicoes <- predict(mod_quad, newdata = dados, interval = "prediction", level = 0.95)
+
+# Adicionando as predições e intervalos de confiança ao data frame
+dados <- dados %>%
+  mutate(
+    fitted = predicoes[,"fit"],
+    lwr = predicoes[,"lwr"],
+    upr = predicoes[,"upr"]
+  )
+
+# Gráfico com plotly
+plot_vis <- plot_ly(dados) %>%
+  add_trace(
+    x = ~Dose, 
+    y = ~pH, 
+    type = 'scatter', 
+    mode = 'markers', 
+    name = 'Dados Observados',
+    marker = list(color = 'red', size = 10)
+  ) %>%
+  add_trace(
+    x = ~Dose, 
+    y = ~fitted, 
+    type = 'scatter', 
+    mode = 'lines',
+    name = 'Ajuste Quadrático',
+    line = list(color = 'blue')
+  ) %>%
+  add_trace(
+    x = ~Dose, 
+    y = ~lwr, 
+    type = 'scatter', 
+    mode = 'lines',
+    name = 'Limite Inferior 95%',
+    line = list(color = 'rgba(173,216,230,0.4)')
+  ) %>%
+  add_trace(
+    x = ~Dose, 
+    y = ~upr, 
+    type = 'scatter', 
+    mode = 'lines',
+    name = 'Limite Superior 95%',
+    fill = 'tonexty',
+    line = list(color = 'rgba(173,216,230,0.4)')
+  ) %>%
+  layout(
+    title = "Ajuste Quadrático do pH em função da Dose",
+    xaxis = list(title = "Dose (mg)"),
+    yaxis = list(title = "pH")
+  )
+
+# Visualizar o gráfico
+plot_vis
+```
+</div>
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+if(!requireNamespace("dplyr", quietly = TRUE)) install.packages("dplyr")
+if(!requireNamespace("plotly", quietly = TRUE)) install.packages("plotly")
+
+library(plotly)
+library(dplyr)
+
+# Calculando predições e intervalos de confiança
+predicoes <- predict(mod_quad, newdata = dados, interval = "prediction", level = 0.95)
+
+# Adicionando as predições e intervalos de confiança ao data frame
+dados <- dados %>%
+  mutate(
+    fitted = predicoes[,"fit"],
+    lwr = predicoes[,"lwr"],
+    upr = predicoes[,"upr"]
+  )
+
+# Gráfico com plotly
+plot_vis <- plot_ly(dados) %>%
+  add_trace(
+    x = ~Dose, 
+    y = ~pH, 
+    type = 'scatter', 
+    mode = 'markers', 
+    name = 'Dados Observados',
+    marker = list(color = 'red', size = 10)
+  ) %>%
+  add_trace(
+    x = ~Dose, 
+    y = ~fitted, 
+    type = 'scatter', 
+    mode = 'lines',
+    name = 'Ajuste Quadrático',
+    line = list(color = 'blue')
+  ) %>%
+  add_trace(
+    x = ~Dose, 
+    y = ~lwr, 
+    type = 'scatter', 
+    mode = 'lines',
+    name = 'Limite Inferior 95%',
+    line = list(color = 'rgba(173,216,230,0.4)')
+  ) %>%
+  add_trace(
+    x = ~Dose, 
+    y = ~upr, 
+    type = 'scatter', 
+    mode = 'lines',
+    name = 'Limite Superior 95%',
+    fill = 'tonexty',
+    line = list(color = 'rgba(173,216,230,0.4)')
+  ) %>%
+  layout(
+    title = "Ajuste Quadrático do pH em função da Dose",
+    xaxis = list(title = "Dose (mg)"),
+    yaxis = list(title = "pH")
+  )
+
+# Visualizar o gráfico
+plot_vis
+```
+
+</details>
+  
+</div>  
+</div>
+
+</div>
+
+# Comparações entre tratamentos 
+
+<div style="text-align: justify"> 
+
+Em experimentos com delineamentos usuais, tais como o inteiramente aleatorizado, as comparações múltiplas podem ser feitas a partir do pacote brasileiro `ExpDes`. </p>
+
+O `ExpDes` apresenta uma função para cada tipo de delineamento experimental. Com ele, também é possível realizar a análise de experimentos com tratamentos em esquema fatorial de forma fácil e intuitiva. Porém, o pacote não comporta recursos para delineamentos mais específicos e para a análise de efeitos aleatórios. </p>
+
+Nesta seção, usamos a função `crd` destinada à análise de Delineamentos Inteiramente Casualizados (_Complete Randomized Desing_). Nesse comando, a entrata `treat` designa o vetor de tratamentos, a entrada `resp` designa o vetor de respostas, `quali` indica se os tratamentos são qualitativos ou não, e os níveis de significância para os testes T e F são atrivuídos por `sigT` e `sigF`, respectivamente. </p>
+
+## Análise quantitativa
+
+```{r message=FALSE, warning=FALSE}
+# Carregar o pacote expdes
+if(!requireNamespace("ExpDes", quietly = TRUE)) install.packages("ExpDes")
+library(ExpDes)
+
+# Realizando a análise com a função dic
+resultado_dic <- crd(treat = dados$Dose, resp = dados$pH, quali = FALSE, sigT = 0.05, sigF = 0.05)
+```
+
+## Análise qualitativa
+
+`mpcomp` designa o método de comparação múltipla a ser usado
+
+```{r message=FALSE, warning=FALSE}
+# Realizando a análise com a função dic
+resultado_dic <- crd(treat = dados$Dose, resp = dados$pH, quali = TRUE, mcomp = "tukey", sigT = 0.05, sigF = 0.05)
+```
+
+## Gráfico de médias
+
+### Cálculo das margens de erro
+
+Para o cálculo da margem de erro das médias, devemos considerar: 
+
+  + O erro quadrático médio do resíduo (EQMR)
+  
+\[
+EQMR = \frac{\sum_{i =1}^n (y_i - \hat{y}_i)^2}{df_{res}}
+\]
+
+  + O erro padrão da média (SE)
+  
+\[
+SE = \sqrt{\frac{EQMR}{r}}
+\]  
+
+  + A margem de erro
+
+\[
+erro = t_{(1 - \alpha/2; \, df)} \, \sqrt{\frac{EQMR}{r}} = t_{\alpha/2; \, df} \, SE 
+\]
+
+em que: 
+
+  - $y_i$ e $\hat{y}_i$ são os valores observados e preditos da resposta; 
+  - $df_{res}$ é o número de graus de liberdade para os resíduos da análise; 
+  - $r$ é o número de réplicas por tratamentos; 
+  - $t_{(1-\alpha/2; \, df)}$ é o quantil da distribuição $t$ considerando-se o nível de significância $\alpha$ e $df$ graus de liberdade.
+
+```{r message=FALSE, warning=FALSE}
+(EQMR <- sum( residuals(mod_quali)^2 )/8 )
+(SE <- sqrt( EQMR / 3 ))
+(ERRO <- qt(0.975, 8)*SE) 
+```
+
+Dessa forma, a margem de erro a se considerar para a estimativa das médias de tratamentos é de $0,431$ unidades, isso com 95% de confiança. 
+
+### Prompt para a confecção do gráfico
+
+### Resultado 
+
+</div>
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
