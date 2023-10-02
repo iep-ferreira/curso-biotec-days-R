@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Origem do R | Programação em R para biotecnologistas (em elaboração)</title>
+  <title>13 Aleatorização de experimentos | Programação em R para biotecnologistas (em elaboração)</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Origem do R | Programação em R para biotecnologistas (em elaboração)" />
+  <meta property="og:title" content="13 Aleatorização de experimentos | Programação em R para biotecnologistas (em elaboração)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Origem do R | Programação em R para biotecnologistas (em elaboração)" />
+  <meta name="twitter:title" content="13 Aleatorização de experimentos | Programação em R para biotecnologistas (em elaboração)" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
@@ -35,8 +35,8 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="primeiros-passos.html"/>
+<link rel="prev" href="comparações-entre-tratamentos.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -205,28 +205,146 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="origem-do-r" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">2</span> Origem do R<a href="origem-do-r.html#origem-do-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div align="justify">
-R é uma linguagem de programação criada por Ross Ihaka e
-Robert Gentleman, na universidade de Auckland, Nova Zelândia,
-em meados dos anos 1990. A linguagem R foi uma adaptação da
-linguagem S, criada por John Chambers em 1976, nos laboratórios
-Bell.
-</p>
-R também denomina um programa computacional destinado a análises estatísticas e visualização de dados. O programa R é livre ( <em>General Public License</em> ) e possui código-fonte aberto, sendo aprimorado continuamente por uma rede global de colaboradores, a partir da <em>R Foundation for Statistical Computing</em> , sediada em Viena, na Áustria.
-</p>
-A linguagem R já esteve em 8º dentre as mais populares, no entanto, hoje ela ocupa a 18º posição de acordo com <em>The TIOBE Programming Community index</em> (TIOBE, 2023) .
-</p>
+<div id="aleatorização-de-experimentos" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">13</span> Aleatorização de experimentos<a href="aleatorização-de-experimentos.html#aleatorização-de-experimentos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<style>
+  .chat-container {
+    width: 100%;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .code-block {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+  }
+
+  .bot-message {
+    text-align: rigth;
+    color: #333;
+  }
+
+  .user-message {
+    text-align: right;
+    color: #4caf50;
+  }
+</style>
+<div style="text-align: justify">
+<div id="experimento-completamente-aleatorizado" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Experimento Completamente Aleatorizado<a href="aleatorização-de-experimentos.html#experimento-completamente-aleatorizado" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Aleatorize um experimento com três tratamentos (T1, T2 e T3) e cinco réplicas considerando um planejamento inteiramente casualizado.</p>
+<div id="código" class="section level3 hasAnchor" number="13.1.1">
+<h3><span class="header-section-number">13.1.1</span> Código<a href="aleatorização-de-experimentos.html#código" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="chat-container">
+<div class="code-block">
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="aleatorização-de-experimentos.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando a biblioteca agricolae</span></span>
+<span id="cb70-2"><a href="aleatorização-de-experimentos.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb70-3"><a href="aleatorização-de-experimentos.html#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="aleatorização-de-experimentos.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir número de replicações e tratamentos</span></span>
+<span id="cb70-5"><a href="aleatorização-de-experimentos.html#cb70-5" aria-hidden="true" tabindex="-1"></a>rep <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb70-6"><a href="aleatorização-de-experimentos.html#cb70-6" aria-hidden="true" tabindex="-1"></a>tratamentos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;T1&quot;</span>, <span class="st">&quot;T2&quot;</span>, <span class="st">&quot;T3&quot;</span>)</span>
+<span id="cb70-7"><a href="aleatorização-de-experimentos.html#cb70-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-8"><a href="aleatorização-de-experimentos.html#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar o design experimental completamente aleatorizado</span></span>
+<span id="cb70-9"><a href="aleatorização-de-experimentos.html#cb70-9" aria-hidden="true" tabindex="-1"></a>design <span class="ot">&lt;-</span> <span class="fu">design.crd</span>(tratamentos, <span class="at">r =</span> rep, <span class="at">seed =</span> <span class="dv">42</span>)</span></code></pre></div>
 </div>
+</div>
+</div>
+<div id="resultado" class="section level3 hasAnchor" number="13.1.2">
+<h3><span class="header-section-number">13.1.2</span> Resultado<a href="aleatorização-de-experimentos.html#resultado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="chat-container">
+<div class="code-block">
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="aleatorização-de-experimentos.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar o plano experimental</span></span>
+<span id="cb71-2"><a href="aleatorização-de-experimentos.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(design<span class="sc">$</span>book)</span></code></pre></div>
+<pre><code>##    plots r tratamentos
+## 1    101 1          T3
+## 2    102 1          T1
+## 3    103 2          T3
+## 4    104 3          T3
+## 5    105 1          T2
+## 6    106 2          T2
+## 7    107 2          T1
+## 8    108 3          T2
+## 9    109 3          T1
+## 10   110 4          T2
+## 11   111 4          T1
+## 12   112 4          T3
+## 13   113 5          T3
+## 14   114 5          T2
+## 15   115 5          T1</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="experimento-aleatorizado-em-blocos" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Experimento Aleatorizado em Blocos<a href="aleatorização-de-experimentos.html#experimento-aleatorizado-em-blocos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Aleatorize um experimento com três tratamentos (T1, T2 e T3) e seis réplicas considerando um delineamento casualizado em blocos.</p>
+<div id="código-1" class="section level3 hasAnchor" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> Código<a href="aleatorização-de-experimentos.html#código-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="chat-container">
+<div class="code-block">
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="aleatorização-de-experimentos.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando a biblioteca agricolae</span></span>
+<span id="cb73-2"><a href="aleatorização-de-experimentos.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb73-3"><a href="aleatorização-de-experimentos.html#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-4"><a href="aleatorização-de-experimentos.html#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir número de replicações e tratamentos</span></span>
+<span id="cb73-5"><a href="aleatorização-de-experimentos.html#cb73-5" aria-hidden="true" tabindex="-1"></a>rep <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb73-6"><a href="aleatorização-de-experimentos.html#cb73-6" aria-hidden="true" tabindex="-1"></a>tratamentos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;T1&quot;</span>, <span class="st">&quot;T2&quot;</span>, <span class="st">&quot;T3&quot;</span>)</span>
+<span id="cb73-7"><a href="aleatorização-de-experimentos.html#cb73-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-8"><a href="aleatorização-de-experimentos.html#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar o design experimental completamente aleatorizado</span></span>
+<span id="cb73-9"><a href="aleatorização-de-experimentos.html#cb73-9" aria-hidden="true" tabindex="-1"></a>design <span class="ot">&lt;-</span> <span class="fu">design.rcbd</span>(tratamentos, <span class="at">r =</span> rep)</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="resultado-1" class="section level3 hasAnchor" number="13.2.2">
+<h3><span class="header-section-number">13.2.2</span> Resultado<a href="aleatorização-de-experimentos.html#resultado-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="chat-container">
+<div class="code-block">
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="aleatorização-de-experimentos.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar o plano experimental</span></span>
+<span id="cb74-2"><a href="aleatorização-de-experimentos.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(design<span class="sc">$</span>book)</span></code></pre></div>
+<pre><code>##    plots block tratamentos
+## 1    101     1          T1
+## 2    102     1          T2
+## 3    103     1          T3
+## 4    201     2          T3
+## 5    202     2          T2
+## 6    203     2          T1
+## 7    301     3          T2
+## 8    302     3          T1
+## 9    303     3          T3
+## 10   401     4          T2
+## 11   402     4          T1
+## 12   403     4          T3
+## 13   501     5          T3
+## 14   502     5          T1
+## 15   503     5          T2
+## 16   601     6          T3
+## 17   602     6          T1
+## 18   603     6          T2</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="primeiros-passos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="comparações-entre-tratamentos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

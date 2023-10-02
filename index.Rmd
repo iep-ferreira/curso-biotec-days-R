@@ -1139,6 +1139,42 @@ plot_vis
 
 # Comparações entre tratamentos 
 
+<style>
+  .chat-container {
+    width: 100%;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .code-block {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+  }
+
+  .bot-message {
+    text-align: rigth;
+    color: #333;
+  }
+
+  .user-message {
+    text-align: right;
+    color: #4caf50;
+  }
+</style>
+
+
 <div style="text-align: justify"> 
 
 Em experimentos com delineamentos usuais, tais como o inteiramente aleatorizado, as comparações múltiplas podem ser feitas a partir do pacote brasileiro `ExpDes`. </p>
@@ -1208,7 +1244,219 @@ Dessa forma, a margem de erro a se considerar para a estimativa das médias de t
 
 ### Prompt para a confecção do gráfico
 
-### Resultado 
+<div class="chat-container">
+  
+<details>
+<summary> Prompt </summary>
+  
+  <div class="message bot-message">
+    
+  + Tarefa: Elabore um gráfico de médias para comparar o pH de um produto sujeito a quatro tratamentos (dosagens) </p>
+      
+  + Contexto: os dados são referentes a um experimento inteiramente aleatorizado com quatro doses e três replicações, cuja finalidade foi observar o efeito da dosagem de essência de limão no pH final de um produto lácteo;  </p>
+    
+  + Detalhamento: Faça um gráfico de médias, com barras representando as margens de erro. Use cores diferentes e apresente as letras comparativas do teste. Crie rótulos intuitivos para os eixos. As letras do teste (grupos) devem aparecer acima das colunas que representam cada tratamento. </p>
+    
+  + Ferramentas: Linguagem R e pacote ggplot2 ; </p>
+    
+  + Dados: A margem de erro para as médias é de 0.187. A tabela do teste de Tukey é apresentada a seguir: </p>
+
+<table>
+        <caption>Tukey's Test</caption>
+        <thead>
+            <tr>
+                <th>Groups</th>
+                <th>Treatments</th>
+                <th>Means</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>a</td>
+                <td>0</td>
+                <td>7.2</td>
+            </tr>
+            <tr>
+                <td>b</td>
+                <td>10</td>
+                <td>6.233333</td>
+            </tr>
+            <tr>
+                <td>c</td>
+                <td>20</td>
+                <td>5.066667</td>
+            </tr>
+            <tr>
+                <td>d</td>
+                <td>30</td>
+                <td>2.866667</td>
+            </tr>
+        </tbody>
+    </table>
+
+</details>
+
+</div>
+</div>  
+
+
+### Resposta do _chatGPT-4_ 
+
+<details>
+<summary> Resposta </summary>
+
+<div class="chat-container">
+
+<div class="code-block">
+
+```{r}
+# Carregar o pacote ggplot2
+library(ggplot2)
+
+# Criar o dataframe com os dados do teste de Tukey
+dados <- data.frame(
+  Tratamento = factor(c('0 ml', '10 ml', '20 ml', '30 ml'), levels = c('0 ml', '10 ml', '20 ml', '30 ml')),
+  Médias = c(7.2, 6.233333, 5.066667, 2.866667),
+  MargemErro = c(0.187, 0.187, 0.187, 0.187),
+  Grupo = c('a', 'b', 'c', 'd')
+)
+
+# Criar o gráfico de médias com barras de erro
+p <- ggplot(dados, aes(x = Tratamento, y = Médias, fill = Tratamento)) +
+  geom_bar(stat = "identity", position = position_dodge(), width = 0.6) +
+  geom_errorbar(aes(ymin = Médias - MargemErro, ymax = Médias + MargemErro), 
+                width = 0.2, position = position_dodge(0.6)) +
+  geom_text(aes(label=Grupo, y=Médias + MargemErro), vjust=-0.5) +
+  scale_fill_manual(values = c('0 ml' = 'red', '10 ml' = 'blue', '20 ml' = 'green', '30 ml' = 'purple')) +
+  labs(
+    title = "Efeito da Dosagem de Essência de Limão no pH",
+    x = "Dosagem de Essência de Limão",
+    y = "pH Médio"
+  ) +
+  theme_minimal()
+
+print(p)
+```
+</div>
+</div>
+  
+</details>  
+
+</div>
+
+# Aleatorização de experimentos 
+
+<style>
+  .chat-container {
+    width: 100%;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .code-block {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+  }
+
+  .bot-message {
+    text-align: rigth;
+    color: #333;
+  }
+
+  .user-message {
+    text-align: right;
+    color: #4caf50;
+  }
+</style>
+
+
+<div style="text-align: justify"> 
+
+## Experimento Completamente Aleatorizado
+
+Aleatorize um experimento com três tratamentos (T1, T2 e T3) e cinco réplicas considerando um planejamento inteiramente casualizado.  
+
+### Código
+
+<div class="chat-container">
+<div class="code-block">
+```{r message=FALSE, warning=FALSE}
+# Carregando a biblioteca agricolae
+library(agricolae)
+
+# Definir número de replicações e tratamentos
+rep <- 5
+tratamentos <- c("T1", "T2", "T3")
+
+# Criar o design experimental completamente aleatorizado
+design <- design.crd(tratamentos, r = rep, seed = 42)
+```
+
+</div>
+</div>
+
+### Resultado
+
+<div class="chat-container">
+<div class="code-block">
+
+```{r}
+# Visualizar o plano experimental
+print(design$book)
+```
+
+</div>
+</div>
+
+
+
+## Experimento Aleatorizado em Blocos
+
+Aleatorize um experimento com três tratamentos (T1, T2 e T3) e seis réplicas considerando um delineamento casualizado em blocos.  
+
+### Código
+
+<div class="chat-container">
+<div class="code-block">
+```{r message=FALSE, warning=FALSE}
+# Carregando a biblioteca agricolae
+library(agricolae)
+
+# Definir número de replicações e tratamentos
+rep <- 6
+tratamentos <- c("T1", "T2", "T3")
+
+# Criar o design experimental completamente aleatorizado
+design <- design.rcbd(tratamentos, r = rep)
+```
+
+</div>
+</div>
+
+### Resultado
+
+<div class="chat-container">
+<div class="code-block">
+
+```{r}
+# Visualizar o plano experimental
+print(design$book)
+```
+
+</div>
+</div>  
 
 
 
@@ -1222,32 +1470,5 @@ knitr::write_bib(c(
 ```
 
 
-```{r include=FALSE}
-# Caminho para a pasta com os arquivos HTML
-caminho_pasta <- "./docs"
 
-# Lista de arquivos HTML na pasta
-lista_arquivos <- list.files(path = caminho_pasta, pattern = "\\.html$", full.names = TRUE)
-
-# Caminho antigo para as imagens que será substituído
-caminho_antigo <- "_main_files/figures-html/"
-
-# Novo caminho para as imagens
-novo_caminho <- "figures-html/"
-
-# Loop pelos arquivos HTML
-for (arquivo in lista_arquivos) {
-  
-  # Ler o conteúdo do arquivo HTML
-  conteudo <- readLines(arquivo, warn = FALSE)
-  
-  # Substituir todas as ocorrências do caminho antigo pelo novo caminho
-  conteudo_modificado <- gsub(caminho_antigo, novo_caminho, conteudo)
-  
-  # Salvar o conteúdo modificado no mesmo arquivo
-  writeLines(conteudo_modificado, arquivo)
-}
-
-cat("Substituição concluída com sucesso!\n")
-```
 

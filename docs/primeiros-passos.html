@@ -172,7 +172,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1" data-path="ajuste-linear-a-partir-da-ia.html"><a href="ajuste-linear-a-partir-da-ia.html#atividade-prática-1"><i class="fa fa-check"></i><b>11.1</b> Atividade Prática 1</a></li>
 <li class="chapter" data-level="11.2" data-path="ajuste-linear-a-partir-da-ia.html"><a href="ajuste-linear-a-partir-da-ia.html#atividade-prática-2"><i class="fa fa-check"></i><b>11.2</b> Atividade Prática 2</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html"><i class="fa fa-check"></i><b>12</b> Comparações entre tratamentos</a></li>
+<li class="chapter" data-level="12" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html"><i class="fa fa-check"></i><b>12</b> Comparações entre tratamentos</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html#análise-quantitativa"><i class="fa fa-check"></i><b>12.1</b> Análise quantitativa</a></li>
+<li class="chapter" data-level="12.2" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html#análise-qualitativa"><i class="fa fa-check"></i><b>12.2</b> Análise qualitativa</a></li>
+<li class="chapter" data-level="12.3" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html#gráfico-de-médias"><i class="fa fa-check"></i><b>12.3</b> Gráfico de médias</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html#cálculo-das-margens-de-erro"><i class="fa fa-check"></i><b>12.3.1</b> Cálculo das margens de erro</a></li>
+<li class="chapter" data-level="12.3.2" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html#prompt-para-a-confecção-do-gráfico"><i class="fa fa-check"></i><b>12.3.2</b> Prompt para a confecção do gráfico</a></li>
+<li class="chapter" data-level="12.3.3" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html#resposta-do-chatgpt-4"><i class="fa fa-check"></i><b>12.3.3</b> Resposta do <em>chatGPT-4</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="aleatorização-de-experimentos.html"><a href="aleatorização-de-experimentos.html"><i class="fa fa-check"></i><b>13</b> Aleatorização de experimentos</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -233,8 +244,8 @@ Abra a interface básica do R (R-GUI) e execute o código a seguir:
 </p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="primeiros-passos.html#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">15</span>)</span>
 <span id="cb2-2"><a href="primeiros-passos.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span></code></pre></div>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -24.808   2.477  11.534  12.173  21.797  54.769</code></pre>
+<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -20.78475   0.06951   7.80839   9.15742  17.89768  49.43328</code></pre>
 </details>
 </details>
 <details>
@@ -254,10 +265,10 @@ Abra a interface gráfica do R de preferência e crie um novo arquivo de script 
 <span id="cb4-3"><a href="primeiros-passos.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># faça um resumo estatístico dos valores obtidos </span></span>
 <span id="cb4-4"><a href="primeiros-passos.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -24.557   1.846  10.634  10.877  20.849  55.107</code></pre>
+## -32.636  -1.464   7.190   6.800  15.231  39.592</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="primeiros-passos.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># desenhe um diagrama de caixas para os valores amostrados</span></span>
 <span id="cb6-2"><a href="primeiros-passos.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(x, <span class="at">main =</span> <span class="st">&quot;Diagrama de Caixas&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Valores amostrados&quot;</span>)</span></code></pre></div>
-<img src="figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 </details>
 </details>
 <details>

@@ -36,7 +36,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   
   
 <link rel="prev" href="ajuste-linear-a-partir-da-ia.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="aleatorização-de-experimentos.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -172,7 +172,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1" data-path="ajuste-linear-a-partir-da-ia.html"><a href="ajuste-linear-a-partir-da-ia.html#atividade-prática-1"><i class="fa fa-check"></i><b>11.1</b> Atividade Prática 1</a></li>
 <li class="chapter" data-level="11.2" data-path="ajuste-linear-a-partir-da-ia.html"><a href="ajuste-linear-a-partir-da-ia.html#atividade-prática-2"><i class="fa fa-check"></i><b>11.2</b> Atividade Prática 2</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html"><i class="fa fa-check"></i><b>12</b> Comparações entre tratamentos</a></li>
+<li class="chapter" data-level="12" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html"><i class="fa fa-check"></i><b>12</b> Comparações entre tratamentos</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html#análise-quantitativa"><i class="fa fa-check"></i><b>12.1</b> Análise quantitativa</a></li>
+<li class="chapter" data-level="12.2" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html#análise-qualitativa"><i class="fa fa-check"></i><b>12.2</b> Análise qualitativa</a></li>
+<li class="chapter" data-level="12.3" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html#gráfico-de-médias"><i class="fa fa-check"></i><b>12.3</b> Gráfico de médias</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html#cálculo-das-margens-de-erro"><i class="fa fa-check"></i><b>12.3.1</b> Cálculo das margens de erro</a></li>
+<li class="chapter" data-level="12.3.2" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html#prompt-para-a-confecção-do-gráfico"><i class="fa fa-check"></i><b>12.3.2</b> Prompt para a confecção do gráfico</a></li>
+<li class="chapter" data-level="12.3.3" data-path="comparações-entre-tratamentos.html"><a href="comparações-entre-tratamentos.html#resposta-do-chatgpt-4"><i class="fa fa-check"></i><b>12.3.3</b> Resposta do <em>chatGPT-4</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="aleatorização-de-experimentos.html"><a href="aleatorização-de-experimentos.html"><i class="fa fa-check"></i><b>13</b> Aleatorização de experimentos</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -196,7 +207,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="comparações-entre-tratamentos" class="section level1 hasAnchor" number="12">
 <h1><span class="header-section-number">12</span> Comparações entre tratamentos<a href="comparações-entre-tratamentos.html#comparações-entre-tratamentos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<style>
+  .chat-container {
+    width: 100%;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .code-block {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+  }
+
+  .bot-message {
+    text-align: rigth;
+    color: #333;
+  }
+
+  .user-message {
+    text-align: right;
+    color: #4caf50;
+  }
+</style>
 <div style="text-align: justify">
+
 Em experimentos com delineamentos usuais, tais como o inteiramente aleatorizado, as comparações múltiplas podem ser feitas a partir do pacote brasileiro <code>ExpDes</code>.
 </p>
 O <code>ExpDes</code> apresenta uma função para cada tipo de delineamento experimental. Com ele, também é possível realizar a análise de experimentos com tratamentos em esquema fatorial de forma fácil e intuitiva. Porém, o pacote não comporta recursos para delineamentos mais específicos e para a análise de efeitos aleatórios.
@@ -387,13 +433,134 @@ erro = t_{(1 - \alpha/2; \, df)} \, \sqrt{\frac{EQMR}{r}} = t_{\alpha/2; \, df} 
 </div>
 <div id="prompt-para-a-confecção-do-gráfico" class="section level3 hasAnchor" number="12.3.2">
 <h3><span class="header-section-number">12.3.2</span> Prompt para a confecção do gráfico<a href="comparações-entre-tratamentos.html#prompt-para-a-confecção-do-gráfico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-</div>
-<div id="resultado" class="section level3 hasAnchor" number="12.3.3">
-<h3><span class="header-section-number">12.3.3</span> Resultado<a href="comparações-entre-tratamentos.html#resultado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-</div>
-</div>
-</div>
+<div class="chat-container">
 
+<details>
+<summary>
+Prompt
+</summary>
+<div class="message bot-message">
+<ul>
+<li>Tarefa: Elabore um gráfico de médias para comparar o pH de um produto sujeito a quatro tratamentos (dosagens)
+</p></li>
+<li>Contexto: os dados são referentes a um experimento inteiramente aleatorizado com quatro doses e três replicações, cuja finalidade foi observar o efeito da dosagem de essência de limão no pH final de um produto lácteo;
+</p></li>
+<li>Detalhamento: Faça um gráfico de médias, com barras representando as margens de erro. Use cores diferentes e apresente as letras comparativas do teste. Crie rótulos intuitivos para os eixos. As letras do teste (grupos) devem aparecer acima das colunas que representam cada tratamento.
+</p></li>
+<li>Ferramentas: Linguagem R e pacote ggplot2 ;
+</p></li>
+<li>Dados: A margem de erro para as médias é de 0.187. A tabela do teste de Tukey é apresentada a seguir:
+</p></li>
+</ul>
+<table>
+<caption>
+Tukey’s Test
+</caption>
+<thead>
+<tr>
+<th>
+Groups
+</th>
+<th>
+Treatments
+</th>
+<th>
+Means
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+a
+</td>
+<td>
+0
+</td>
+<td>
+7.2
+</td>
+</tr>
+<tr>
+<td>
+b
+</td>
+<td>
+10
+</td>
+<td>
+6.233333
+</td>
+</tr>
+<tr>
+<td>
+c
+</td>
+<td>
+20
+</td>
+<td>
+5.066667
+</td>
+</tr>
+<tr>
+<td>
+d
+</td>
+<td>
+30
+</td>
+<td>
+2.866667
+</td>
+</tr>
+</tbody>
+</table>
+</details>
+</div>
+</div>
+</div>
+<div id="resposta-do-chatgpt-4" class="section level3 hasAnchor" number="12.3.3">
+<h3><span class="header-section-number">12.3.3</span> Resposta do <em>chatGPT-4</em><a href="comparações-entre-tratamentos.html#resposta-do-chatgpt-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<details>
+<summary>
+Resposta
+</summary>
+<div class="chat-container">
+<div class="code-block">
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="comparações-entre-tratamentos.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar o pacote ggplot2</span></span>
+<span id="cb69-2"><a href="comparações-entre-tratamentos.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb69-3"><a href="comparações-entre-tratamentos.html#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="comparações-entre-tratamentos.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar o dataframe com os dados do teste de Tukey</span></span>
+<span id="cb69-5"><a href="comparações-entre-tratamentos.html#cb69-5" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb69-6"><a href="comparações-entre-tratamentos.html#cb69-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Tratamento =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&#39;0 ml&#39;</span>, <span class="st">&#39;10 ml&#39;</span>, <span class="st">&#39;20 ml&#39;</span>, <span class="st">&#39;30 ml&#39;</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;0 ml&#39;</span>, <span class="st">&#39;10 ml&#39;</span>, <span class="st">&#39;20 ml&#39;</span>, <span class="st">&#39;30 ml&#39;</span>)),</span>
+<span id="cb69-7"><a href="comparações-entre-tratamentos.html#cb69-7" aria-hidden="true" tabindex="-1"></a>  Médias <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">7.2</span>, <span class="fl">6.233333</span>, <span class="fl">5.066667</span>, <span class="fl">2.866667</span>),</span>
+<span id="cb69-8"><a href="comparações-entre-tratamentos.html#cb69-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">MargemErro =</span> <span class="fu">c</span>(<span class="fl">0.187</span>, <span class="fl">0.187</span>, <span class="fl">0.187</span>, <span class="fl">0.187</span>),</span>
+<span id="cb69-9"><a href="comparações-entre-tratamentos.html#cb69-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Grupo =</span> <span class="fu">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>)</span>
+<span id="cb69-10"><a href="comparações-entre-tratamentos.html#cb69-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb69-11"><a href="comparações-entre-tratamentos.html#cb69-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-12"><a href="comparações-entre-tratamentos.html#cb69-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar o gráfico de médias com barras de erro</span></span>
+<span id="cb69-13"><a href="comparações-entre-tratamentos.html#cb69-13" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> Tratamento, <span class="at">y =</span> Médias, <span class="at">fill =</span> Tratamento)) <span class="sc">+</span></span>
+<span id="cb69-14"><a href="comparações-entre-tratamentos.html#cb69-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(), <span class="at">width =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb69-15"><a href="comparações-entre-tratamentos.html#cb69-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> Médias <span class="sc">-</span> MargemErro, <span class="at">ymax =</span> Médias <span class="sc">+</span> MargemErro), </span>
+<span id="cb69-16"><a href="comparações-entre-tratamentos.html#cb69-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.6</span>)) <span class="sc">+</span></span>
+<span id="cb69-17"><a href="comparações-entre-tratamentos.html#cb69-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>Grupo, <span class="at">y=</span>Médias <span class="sc">+</span> MargemErro), <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb69-18"><a href="comparações-entre-tratamentos.html#cb69-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;0 ml&#39;</span> <span class="ot">=</span> <span class="st">&#39;red&#39;</span>, <span class="st">&#39;10 ml&#39;</span> <span class="ot">=</span> <span class="st">&#39;blue&#39;</span>, <span class="st">&#39;20 ml&#39;</span> <span class="ot">=</span> <span class="st">&#39;green&#39;</span>, <span class="st">&#39;30 ml&#39;</span> <span class="ot">=</span> <span class="st">&#39;purple&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb69-19"><a href="comparações-entre-tratamentos.html#cb69-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb69-20"><a href="comparações-entre-tratamentos.html#cb69-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Efeito da Dosagem de Essência de Limão no pH&quot;</span>,</span>
+<span id="cb69-21"><a href="comparações-entre-tratamentos.html#cb69-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Dosagem de Essência de Limão&quot;</span>,</span>
+<span id="cb69-22"><a href="comparações-entre-tratamentos.html#cb69-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;pH Médio&quot;</span></span>
+<span id="cb69-23"><a href="comparações-entre-tratamentos.html#cb69-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb69-24"><a href="comparações-entre-tratamentos.html#cb69-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb69-25"><a href="comparações-entre-tratamentos.html#cb69-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-26"><a href="comparações-entre-tratamentos.html#cb69-26" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
 </div>
             </section>
 
@@ -401,7 +568,7 @@ erro = t_{(1 - \alpha/2; \, df)} \, \sqrt{\frac{EQMR}{r}} = t_{\alpha/2; \, df} 
         </div>
       </div>
 <a href="ajuste-linear-a-partir-da-ia.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="aleatorização-de-experimentos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
