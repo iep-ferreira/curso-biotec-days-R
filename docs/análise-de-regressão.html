@@ -221,10 +221,10 @@ Ao realizar o diagnóstico de um ajuste linear clássico a partir dos gráficos 
 <li>Análise dos resíduos do ajuste</li>
 </ul>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="análise-de-regressão.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( mod_reta, <span class="dv">1</span>) <span class="co"># valores ajustados x resíduos</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="análise-de-regressão.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
 <span id="cb29-2"><a href="análise-de-regressão.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>( <span class="fu">residuals</span>( mod_reta ) ) <span class="co"># gráfico quantil-quantil</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-20-2.png" width="672" /></p>
+<p><img src="figure-html/unnamed-chunk-20-2.png" width="672" /></p>
 <pre><code>## [1] 11  2</code></pre>
 Neste caso, obsevamos que o gráfico quantil-quantil não apresenta desvios à normalidade. Porém, no gráfico dos resíduos em função dos valores ajustados, observa-se uma estrutura de variação dos dados não explicada pelo modelo. Os dados deveriam oscilar aleatoriamente em torno do zero, mas não é isso o que acontece.
 </p>
@@ -266,10 +266,10 @@ pH = \beta_0 + \beta_1 \times Dose + \beta_2 \times Dose^2
 <li>Análise dos resíduos do ajuste</li>
 </ul>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="análise-de-regressão.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( mod_quad, <span class="dv">1</span>) <span class="co"># valores ajustados x resíduos</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="análise-de-regressão.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
 <span id="cb36-2"><a href="análise-de-regressão.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>( <span class="fu">residuals</span>( mod_quad ) ) <span class="co"># gráfico quantil-quantil</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-23-2.png" width="672" /></p>
+<p><img src="figure-html/unnamed-chunk-23-2.png" width="672" /></p>
 <pre><code>## [1]  6 11</code></pre>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="análise-de-regressão.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>( <span class="fu">residuals</span>( mod_quad ) )</span></code></pre></div>
 <pre><code>## 
