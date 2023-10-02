@@ -1211,6 +1211,10 @@ Dessa forma, a margem de erro a se considerar para a estimativa das médias de t
 ### Resultado 
 
 
+```{r}
+bookdown::publish_book()
+```
+
 
 </div>
 
@@ -1221,33 +1225,11 @@ knitr::write_bib(c(
 ), 'packages.bib')
 ```
 
+<!--chapter:end:index.Rmd-->
 
-```{r include=FALSE}
-# Caminho para a pasta com os arquivos HTML
-caminho_pasta <- "./docs"
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
 
-# Lista de arquivos HTML na pasta
-lista_arquivos <- list.files(path = caminho_pasta, pattern = "\\.html$", full.names = TRUE)
-
-# Caminho antigo para as imagens que será substituído
-caminho_antigo <- "_main_files/figures-html/"
-
-# Novo caminho para as imagens
-novo_caminho <- "figures-html/"
-
-# Loop pelos arquivos HTML
-for (arquivo in lista_arquivos) {
-  
-  # Ler o conteúdo do arquivo HTML
-  conteudo <- readLines(arquivo, warn = FALSE)
-  
-  # Substituir todas as ocorrências do caminho antigo pelo novo caminho
-  conteudo_modificado <- gsub(caminho_antigo, novo_caminho, conteudo)
-  
-  # Salvar o conteúdo modificado no mesmo arquivo
-  writeLines(conteudo_modificado, arquivo)
-}
-
-cat("Substituição concluída com sucesso!\n")
-```
+<!--chapter:end:07-references.Rmd-->
 
