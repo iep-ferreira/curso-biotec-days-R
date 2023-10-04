@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programação em R para biotecnologistas</title>
+  <title>14 Determinação de crsacimento microbiano | Programação em R para biotecnologistas (em elaboração)</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programação em R para biotecnologistas" />
+  <meta property="og:title" content="14 Determinação de crsacimento microbiano | Programação em R para biotecnologistas (em elaboração)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programação em R para biotecnologistas" />
+  <meta name="twitter:title" content="14 Determinação de crsacimento microbiano | Programação em R para biotecnologistas (em elaboração)" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
@@ -35,8 +35,8 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="origem-do-r.html"/>
+<link rel="prev" href="aleatorização-de-experimentos.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -184,7 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="aleatorização-de-experimentos.html"><a href="aleatorização-de-experimentos.html"><i class="fa fa-check"></i><b>13</b> Aleatorização de experimentos</a></li>
-<li class="chapter" data-level="14" data-path="determinação-de-crescimento-microbiano.html"><a href="determinação-de-crescimento-microbiano.html"><i class="fa fa-check"></i><b>14</b> Determinação de crescimento microbiano</a></li>
+<li class="chapter" data-level="14" data-path="determinação-de-crsacimento-microbiano.html"><a href="determinação-de-crsacimento-microbiano.html"><i class="fa fa-check"></i><b>14</b> Determinação de crsacimento microbiano</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -198,7 +198,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Programação em R para biotecnologistas</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Programação em R para biotecnologistas (em elaboração)</a>
           </h1>
         </div>
 
@@ -206,175 +206,206 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Programação em R para biotecnologistas</h1>
-<p class="author"><em>Prof. Dr. Iuri E. P. Ferreira e Prof. Dr. Jorge L. R. Pantoja Filho. Universidade Federal de São Carlos, Campus Lagoa do Sino</em></p>
-<p class="date"><em>5 de outubro de 2023</em></p>
-</div>
-<div id="apresentação" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> Apresentação<a href="index.html#apresentação" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="quem-somos" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Quem somos?<a href="index.html#quem-somos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div align="justify">
-Este material foi elaborado pela equipe do Centro de Modelagem Estatística em Ciências Ambientais (Ce-MECA), da UFSCar Lagoa do Sino. Visite o <a href="https://sites.google.com/ufscar.br/cemeca">nosso site!</a>
-</p>
-</div>
-<p><img src="images/logo3.jpg" width="550px" style="display: block; margin: auto;" /></p>
-</div>
-<div id="iniciativas" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Iniciativas<a href="index.html#iniciativas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li><h4>
-Projeto Ciência de Dados na Lagoa do Sino
-</h4></li>
-</ul>
-<div align="justify">
-O programa estabelece um espaço devotado à discussão e popularização da Ciência de Dados, a fim de criar uma ponte entre educandos da UFSCar e profissionais e empresas da área.
-</p>
-</div>
-<p><img src="images/imagem-projeto.png" width="600px" style="display: block; margin: auto;" /></p>
-<ul>
-<li><h4>
-Grupo de Ciência de Dados e Aplicações Tecnológicas
-</h4></li>
-</ul>
-<div align="justify">
-As aplicações em Ciência dos Dados são crescentes, e o seu impacto na sociedade hoje é imensurável. Hoje, encontramos algoritmos estatísticos ‘’em produção’’ por toda a parte: nos sites de notícias, nas redes sociais, nos carros autônomos, no marketing digital etc. Atualmente, a inteligência artificial tem impactado todas as áreas criativas, e suas diversas aplicações abrem novas possibilidades e nos causam espanto. Nos dias atuais, um volume crescente de dados é gerado, e este volume está aquém das capacidades humanas de processamento e aquisição de conhecimento. Neste contexto, há uma demanda crescente por cientistas de dados. Recentemente, na UFSCar Lagoa do Sino, um grupo multidisciplinar de pesquisadores tem se reunido frequentemente para discutir pautas relacionadas à Ciência de Dados e suas aplicações nas mais diversas áreas do conhecimento.
-</p>
-</div>
-<p>Linhas de Pesquisa:</p>
-<pre><code>+ Aprendizado de Máquinas 
-
-+ Modelagem Estatística em Ciências Ambientais e Ecologia
-
-+ Vieses e Processos de Tomada de Decisões</code></pre>
-<ul>
-<li><h4>
-Programas de Iniciação Científica e Estágios
-</h4></li>
-</ul>
-<p><img src="images/estagios.png" width="500px" style="display: block; margin: auto;" /></p>
-<ul>
-<li><h4>
-Estudos e Capacitações
-</h4></li>
-</ul>
-<p><img src="images/linhas-interesses.png" width="700px" style="display: block; margin: auto;" /></p>
-</div>
-<div id="projetos-de-pesquisa" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Projetos de Pesquisa<a href="index.html#projetos-de-pesquisa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="determinação-de-crsacimento-microbiano" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">14</span> Determinação de crsacimento microbiano<a href="determinação-de-crsacimento-microbiano.html#determinação-de-crsacimento-microbiano" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <style>
-.scrollable-section {
-  height: 500px;
-  overflow-y: scroll;
-  border: 1px solid #ccc;
-  padding: 10px;
-}
+  .chat-container {
+    width: 100%;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .code-block {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+  }
+
+  .bot-message {
+    text-align: rigth;
+    color: #333;
+  }
+
+  .user-message {
+    text-align: right;
+    color: #4caf50;
+  }
 </style>
-<div class="scrollable-section">
-<!-- Projeto Biomastats -->
-<table width="100%">
+<div style="text-align: justify">
+<div id="o-modelo-de-crescimento" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> O modelo de crescimento<a href="determinação-de-crsacimento-microbiano.html#o-modelo-de-crescimento" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O modelo de crescimento exponencial que representa a taxa de variação da biomassa em relação ao tempo (<span class="math inline">\(t\)</span>, em <span class="math inline">\(h\)</span>) pode ser expresso, matematicamente, pelo produto da taxa específica de crescimento de microrganismos (<span class="math inline">\(\mu\)</span>, em <span class="math inline">\(h^{-1}\)</span>) pela concentração de biomassa (<span class="math inline">\(x\)</span>, em <span class="math inline">\(kg.m^{-3}\)</span>) no reator:</p>
+<p><span class="math display">\[
+\frac{dx}{dt} = \mu \, x
+\]</span></p>
+<p>Como <span class="math inline">\((1/x) \, dx = \mu \, dt\)</span>, tem-se que</p>
+<p><span class="math display">\[
+\int_{x_a}^{x_b} \frac{1}{x} dx =  \int_{t_a}^{t_b} \mu \, dt
+\]</span></p>
+<p>E, desse modo,</p>
+<p><span class="math display">\[
+\ln(x_b) - \ln(x_a) = \mu \int_{t_a}^{t_b} dt  
+\]</span></p>
+<p>Portanto, o valor de <span class="math inline">\(\mu\)</span> é determinado pela expressão</p>
+<p><span class="math display">\[
+\mu = \frac{ \ln(x_b/x_a) }{ t_b - t_a}
+\]</span></p>
+</div>
+<div id="exercício" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> Exercício<a href="determinação-de-crsacimento-microbiano.html#exercício" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>E. coli</em> foi utilizada para produzir o hormônio do crescimento porcino recombinante. A bactéria cresce aerobicamente em batelada, com glicose como substrato limitante do crescimento. As concentrações de células e de substrato foram medidas em função do tempo de cultivo, com os resultados ao lado.</p>
+<p><em>Fonte: Bioprocess Engineering Principles, Pauline Doran, 2nd Edition</em></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<caption>
+Tabela 1 - Concentração de células em função do tempo.
+</caption>
+<thead>
 <tr>
-<td width="40%">
-<img src="images/proj-bioma-stats.png" width="400px"/>
+<th>
+Tempo (h)
+</th>
+<th style="text-align:center;">
+Concentração de células, x (kg/m³)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+0
 </td>
-<td width="60%">
-<summary>
-<b> Biomastats </b>
-</summary>
-<p>Um pacote para a elaboração de relatórios ambientais automatizados sobre o uso e a ocupação do solo no Brasil.</p>
-<p>Fontana, KO; Souza, CA; Molin, PG; Santana, MF; Ferreira, IEP.</p>
-<p>Fomento: CNPq</p>
+<td style="text-align:center;">
+0.2
 </td>
 </tr>
-</table>
-<!-- Projeto Abundância Animal -->
-<table width="100%">
 <tr>
-<td width="40%">
-<img src="images/proj-mba.png" width="400px"/>
+<td>
+0.33
 </td>
-<td width="60%">
-<summary>
-<b> Plataforma MBA </b>
-</summary>
-<p>Plataforma de simulação baseada em multi-agentes (MBA) e o controle populaciona do Java Porco (Sus scrofa) no Sudoeste Paulista</p>
-<p>Bassani, FB; Sanches, A; Ferreira, IEP <em>et al</em>.</p>
+<td style="text-align:center;">
+0.21
 </td>
 </tr>
-</table>
-<!-- Projeto SIG Socioambiental -->
-<table width="100%">
 <tr>
-<td width="40%">
-<img src="images/proj-sig.png" width="400px"/>
+<td>
+0.5
 </td>
-<td width="60%">
-<summary>
-<b> SIG Socioambiental </b>
-</summary>
-<p>Um sistema para a visualização e análise de dados socioambientais em recortes do terrotório brasileiro</p>
-<p>Bilia, G; Pantoja-Filho, JLR; Ferreira, IEP <em>et al</em>.</p>
+<td style="text-align:center;">
+0.22
 </td>
 </tr>
-</table>
-<!-- Projeto Métricas da Paisagem -->
-<table width="100%">
 <tr>
-<td width="40%">
-<img src="images/proj-met.png" width="400px"/>
+<td>
+0.75
 </td>
-<td width="60%">
-<summary>
-<b> Métricas da Paisagem </b>
-</summary>
-<p>Implementação computacional de módulos de processamento, análise e visualização de métricas de paisagens no programa Biomastats</p>
-<p>Camargo, V; Carvalho, HL; Tiezzi, RO; Ferreira, IEP <em>et al</em>.</p>
-<p>Fomento: CNPq</p>
+<td style="text-align:center;">
+0.32
 </td>
 </tr>
-</table>
-<!-- Projeto Modelos Bent-cable e lhas Pequenas  -->
-<table width="100%">
 <tr>
-<td width="40%">
-<img src="images/bent-proj.png" width="400px"/>
+<td>
+1
 </td>
-<td width="60%">
-<summary>
-<b> Modelos Bent-cable e lhas Pequenas </b>
-</summary>
-<p>Aplicação de modelos segmentados com transição de fase suave para explicar o Efeito de Ilhas Pequenas a partir da existência de limiares aleatórios</p>
-<p>Santana, MF; Zocchi, SS; Leandro, RA; Martensen, AC; Ferreira, IEP</p>
+<td style="text-align:center;">
+0.47
 </td>
 </tr>
-</table>
-<!-- Projeto Biomastats GUI  -->
-<table width="100%">
 <tr>
-<td width="40%">
-<img src="images/biomastatsGUI.png" width="400px"/>
+<td>
+1.5
 </td>
-<td width="60%">
-<summary>
-<b> Biomastats GUI </b>
-</summary>
-<p>Desenvolvimento e implantação da Interface Gráfica do Usuário para o programa Biomastats via aplicativos shiny</p>
-<p>Santana, MF; Ferreira, IEP</p>
-<p>Fomento: CNPq</p>
+<td style="text-align:center;">
+1
 </td>
 </tr>
+<tr>
+<td>
+2
+</td>
+<td style="text-align:center;">
+2.1
+</td>
+</tr>
+<tr>
+<td>
+2.5
+</td>
+<td style="text-align:center;">
+4.42
+</td>
+</tr>
+<tr>
+<td>
+2.8
+</td>
+<td style="text-align:center;">
+6.9
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td style="text-align:center;">
+9.4
+</td>
+</tr>
+<tr>
+<td>
+3.1
+</td>
+<td style="text-align:center;">
+10.9
+</td>
+</tr>
+<tr>
+<td>
+3.2
+</td>
+<td style="text-align:center;">
+11.6
+</td>
+</tr>
+<tr>
+<td>
+3.5
+</td>
+<td style="text-align:center;">
+11.7
+</td>
+</tr>
+<tr>
+<td>
+3.7
+</td>
+<td style="text-align:center;">
+11.6
+</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="origem-do-r.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="aleatorização-de-experimentos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

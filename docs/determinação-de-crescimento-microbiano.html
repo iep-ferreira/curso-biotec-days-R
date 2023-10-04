@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>13 Aleatorização de experimentos | Programação em R para biotecnologistas</title>
+  <title>14 Determinação de crescimento microbiano | Programação em R para biotecnologistas</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="13 Aleatorização de experimentos | Programação em R para biotecnologistas" />
+  <meta property="og:title" content="14 Determinação de crescimento microbiano | Programação em R para biotecnologistas" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="13 Aleatorização de experimentos | Programação em R para biotecnologistas" />
+  <meta name="twitter:title" content="14 Determinação de crescimento microbiano | Programação em R para biotecnologistas" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
@@ -35,8 +35,8 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="comparações-entre-tratamentos.html"/>
-<link rel="next" href="determinação-de-crescimento-microbiano.html"/>
+<link rel="prev" href="aleatorização-de-experimentos.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -206,8 +206,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="aleatorização-de-experimentos" class="section level1 hasAnchor" number="13">
-<h1><span class="header-section-number">13</span> Aleatorização de experimentos<a href="aleatorização-de-experimentos.html#aleatorização-de-experimentos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="determinação-de-crescimento-microbiano" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">14</span> Determinação de crescimento microbiano<a href="determinação-de-crescimento-microbiano.html#determinação-de-crescimento-microbiano" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <style>
   .chat-container {
     width: 100%;
@@ -243,108 +243,228 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 </style>
 <div style="text-align: justify">
-<div id="experimento-completamente-aleatorizado" class="section level2 hasAnchor" number="13.1">
-<h2><span class="header-section-number">13.1</span> Experimento Completamente Aleatorizado<a href="aleatorização-de-experimentos.html#experimento-completamente-aleatorizado" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Aleatorize um experimento com três tratamentos (T1, T2 e T3) e cinco réplicas considerando um planejamento inteiramente casualizado.</p>
-<div id="código" class="section level3 hasAnchor" number="13.1.1">
-<h3><span class="header-section-number">13.1.1</span> Código<a href="aleatorização-de-experimentos.html#código" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="o-modelo-de-crescimento" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> O modelo de crescimento<a href="determinação-de-crescimento-microbiano.html#o-modelo-de-crescimento" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O modelo de crescimento exponencial que representa a taxa de variação da biomassa em relação ao tempo (<span class="math inline">\(t\)</span>, em <span class="math inline">\(h\)</span>) pode ser expresso, matematicamente, pelo produto da taxa específica de crescimento de microrganismos (<span class="math inline">\(\mu\)</span>, em <span class="math inline">\(h^{-1}\)</span>) pela concentração de biomassa (<span class="math inline">\(x\)</span>, em <span class="math inline">\(kg.m^{-3}\)</span>) no reator:</p>
+<p><span class="math display">\[
+\frac{dx}{dt} = \mu \, x
+\]</span></p>
+<p>Como <span class="math inline">\((1/x) \, dx = \mu \, dt\)</span>, tem-se que</p>
+<p><span class="math display">\[
+\int_{x_a}^{x_b} \frac{1}{x} dx =  \int_{t_a}^{t_b} \mu \, dt
+\]</span></p>
+<p>E, desse modo,</p>
+<p><span class="math display">\[
+\ln(x_b) - \ln(x_a) = \mu \int_{t_a}^{t_b} dt  
+\]</span></p>
+<p>Portanto, o valor de <span class="math inline">\(\mu\)</span> é determinado pela expressão</p>
+<p><span class="math display">\[
+\mu = \frac{ \ln(x_b/x_a) }{ t_b - t_a}
+\]</span></p>
+</div>
+<div id="exemplo-de-aplicação" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> Exemplo de aplicação<a href="determinação-de-crescimento-microbiano.html#exemplo-de-aplicação" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>E. coli</em> foi utilizada para produzir o hormônio do crescimento porcino recombinante. A bactéria cresce aerobicamente em batelada, com glicose como substrato limitante do crescimento. As concentrações de células e de substrato foram medidas em função do tempo de cultivo, com os resultados ao lado.</p>
+<p><em>Fonte: Bioprocess Engineering Principles, Pauline Doran, 2nd Edition</em></p>
+<table border="1" cellpadding="5" cellspacing="0">
+<caption>
+Tabela 1 - Concentração de células em função do tempo.
+</caption>
+<thead>
+<tr>
+<th>
+Tempo (h)
+</th>
+<th style="text-align:center;">
+Concentração de células, x (kg/m³)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+0
+</td>
+<td style="text-align:center;">
+0.2
+</td>
+</tr>
+<tr>
+<td>
+0.33
+</td>
+<td style="text-align:center;">
+0.21
+</td>
+</tr>
+<tr>
+<td>
+0.5
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+</tr>
+<tr>
+<td>
+0.75
+</td>
+<td style="text-align:center;">
+0.32
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td style="text-align:center;">
+0.47
+</td>
+</tr>
+<tr>
+<td>
+1.5
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td style="text-align:center;">
+2.1
+</td>
+</tr>
+<tr>
+<td>
+2.5
+</td>
+<td style="text-align:center;">
+4.42
+</td>
+</tr>
+<tr>
+<td>
+2.8
+</td>
+<td style="text-align:center;">
+6.9
+</td>
+</tr>
+<tr>
+<td>
+3
+</td>
+<td style="text-align:center;">
+9.4
+</td>
+</tr>
+<tr>
+<td>
+3.1
+</td>
+<td style="text-align:center;">
+10.9
+</td>
+</tr>
+<tr>
+<td>
+3.2
+</td>
+<td style="text-align:center;">
+11.6
+</td>
+</tr>
+<tr>
+<td>
+3.5
+</td>
+<td style="text-align:center;">
+11.7
+</td>
+</tr>
+<tr>
+<td>
+3.7
+</td>
+<td style="text-align:center;">
+11.6
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="exercício-1" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">14.3</span> Exercício 1<a href="determinação-de-crescimento-microbiano.html#exercício-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Determine o valor do <span class="math inline">\(\mu_{max}\)</span> utilizando planilhas eletrônicas e o programa R.</p>
+<details>
+<summary>
+Resposta - com todos os dados
+</summary>
 <div class="chat-container">
 <div class="code-block">
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="aleatorização-de-experimentos.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando a biblioteca agricolae</span></span>
-<span id="cb70-2"><a href="aleatorização-de-experimentos.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
-<span id="cb70-3"><a href="aleatorização-de-experimentos.html#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-4"><a href="aleatorização-de-experimentos.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir número de replicações e tratamentos</span></span>
-<span id="cb70-5"><a href="aleatorização-de-experimentos.html#cb70-5" aria-hidden="true" tabindex="-1"></a>rep <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb70-6"><a href="aleatorização-de-experimentos.html#cb70-6" aria-hidden="true" tabindex="-1"></a>tratamentos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;T1&quot;</span>, <span class="st">&quot;T2&quot;</span>, <span class="st">&quot;T3&quot;</span>)</span>
-<span id="cb70-7"><a href="aleatorização-de-experimentos.html#cb70-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-8"><a href="aleatorização-de-experimentos.html#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar o design experimental completamente aleatorizado</span></span>
-<span id="cb70-9"><a href="aleatorização-de-experimentos.html#cb70-9" aria-hidden="true" tabindex="-1"></a>design <span class="ot">&lt;-</span> <span class="fu">design.crd</span>(tratamentos, <span class="at">r =</span> rep, <span class="at">seed =</span> <span class="dv">42</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="determinação-de-crescimento-microbiano.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Dados experimentais da biomassa em função do tempo</span></span>
+<span id="cb76-2"><a href="determinação-de-crescimento-microbiano.html#cb76-2" aria-hidden="true" tabindex="-1"></a>tempo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.33</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="fl">2.</span>, <span class="fl">2.5</span>, <span class="fl">2.8</span>, <span class="dv">3</span>, <span class="fl">3.1</span>, <span class="fl">3.2</span>, <span class="fl">3.5</span>, <span class="fl">3.7</span>) <span class="co">#horas</span></span>
+<span id="cb76-3"><a href="determinação-de-crescimento-microbiano.html#cb76-3" aria-hidden="true" tabindex="-1"></a>biomassa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.21</span>, <span class="fl">0.22</span>, <span class="fl">0.32</span>, <span class="fl">0.47</span>, <span class="dv">1</span>, <span class="fl">2.1</span>, <span class="fl">4.42</span>, <span class="fl">6.9</span>, <span class="fl">9.4</span>, <span class="fl">10.9</span>, <span class="fl">11.6</span>, <span class="fl">11.7</span>, <span class="fl">11.6</span>) <span class="co">#kg/m³</span></span>
+<span id="cb76-4"><a href="determinação-de-crescimento-microbiano.html#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Aplicar logaritmo natural aos dados de biomassa</span></span>
+<span id="cb76-5"><a href="determinação-de-crescimento-microbiano.html#cb76-5" aria-hidden="true" tabindex="-1"></a>ln_biomassa <span class="ot">&lt;-</span> <span class="fu">log</span>(biomassa)</span>
+<span id="cb76-6"><a href="determinação-de-crescimento-microbiano.html#cb76-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb76-7"><a href="determinação-de-crescimento-microbiano.html#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste linear</span></span>
+<span id="cb76-8"><a href="determinação-de-crescimento-microbiano.html#cb76-8" aria-hidden="true" tabindex="-1"></a>ajuste_linear <span class="ot">&lt;-</span> <span class="fu">lm</span>(ln_biomassa <span class="sc">~</span> tempo)</span>
+<span id="cb76-9"><a href="determinação-de-crescimento-microbiano.html#cb76-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-10"><a href="determinação-de-crescimento-microbiano.html#cb76-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Extrair o coeficiente angular da reta (que representa mu_max)</span></span>
+<span id="cb76-11"><a href="determinação-de-crescimento-microbiano.html#cb76-11" aria-hidden="true" tabindex="-1"></a>coeficientes <span class="ot">&lt;-</span> <span class="fu">coef</span>(ajuste_linear)</span>
+<span id="cb76-12"><a href="determinação-de-crescimento-microbiano.html#cb76-12" aria-hidden="true" tabindex="-1"></a>mu_max <span class="ot">&lt;-</span> coeficientes[<span class="dv">2</span>]</span>
+<span id="cb76-13"><a href="determinação-de-crescimento-microbiano.html#cb76-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibir o valor de mu_max</span></span>
+<span id="cb76-14"><a href="determinação-de-crescimento-microbiano.html#cb76-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;O valor de mu_max é:&quot;</span>, mu_max, <span class="st">&quot;h^-1</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## O valor de mu_max é: 1.314963 h^-1</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="determinação-de-crescimento-microbiano.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimativas de mu por diferenças finitas de primeira ordem</span></span>
+<span id="cb78-2"><a href="determinação-de-crescimento-microbiano.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tempo[<span class="sc">-</span><span class="dv">1</span>], <span class="fu">diff</span>(ln_biomassa)<span class="sc">/</span><span class="fu">diff</span>(tempo), <span class="at">ylab =</span> <span class="st">&quot;Mu estimado&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Tempo (h)&quot;</span>, <span class="at">cex.lab =</span> <span class="fl">1.3</span>, <span class="at">pch =</span><span class="dv">19</span>)</span></code></pre></div>
+<p><img src="figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 </div>
 </div>
-</div>
-<div id="resultado" class="section level3 hasAnchor" number="13.1.2">
-<h3><span class="header-section-number">13.1.2</span> Resultado<a href="aleatorização-de-experimentos.html#resultado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</details>
+<details>
+<summary>
+Resposta - dados filtrados
+</summary>
 <div class="chat-container">
 <div class="code-block">
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="aleatorização-de-experimentos.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar o plano experimental</span></span>
-<span id="cb71-2"><a href="aleatorização-de-experimentos.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(design<span class="sc">$</span>book)</span></code></pre></div>
-<pre><code>##    plots r tratamentos
-## 1    101 1          T3
-## 2    102 1          T1
-## 3    103 2          T3
-## 4    104 3          T3
-## 5    105 1          T2
-## 6    106 2          T2
-## 7    107 2          T1
-## 8    108 3          T2
-## 9    109 3          T1
-## 10   110 4          T2
-## 11   111 4          T1
-## 12   112 4          T3
-## 13   113 5          T3
-## 14   114 5          T2
-## 15   115 5          T1</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="determinação-de-crescimento-microbiano.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Dados experimentais da biomassa em função do tempo</span></span>
+<span id="cb79-2"><a href="determinação-de-crescimento-microbiano.html#cb79-2" aria-hidden="true" tabindex="-1"></a>tempo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.75</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="fl">2.</span>, <span class="fl">2.5</span>, <span class="fl">2.8</span>, <span class="dv">3</span>, <span class="fl">3.1</span>) <span class="co">#horas</span></span>
+<span id="cb79-3"><a href="determinação-de-crescimento-microbiano.html#cb79-3" aria-hidden="true" tabindex="-1"></a>biomassa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.32</span>, <span class="fl">0.47</span>, <span class="dv">1</span>, <span class="fl">2.1</span>, <span class="fl">4.42</span>, <span class="fl">6.9</span>, <span class="fl">9.4</span>, <span class="fl">10.9</span>) <span class="co">#kg/m³</span></span>
+<span id="cb79-4"><a href="determinação-de-crescimento-microbiano.html#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Aplicar logaritmo natural aos dados de biomassa</span></span>
+<span id="cb79-5"><a href="determinação-de-crescimento-microbiano.html#cb79-5" aria-hidden="true" tabindex="-1"></a>ln_biomassa <span class="ot">&lt;-</span> <span class="fu">log</span>(biomassa)</span>
+<span id="cb79-6"><a href="determinação-de-crescimento-microbiano.html#cb79-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb79-7"><a href="determinação-de-crescimento-microbiano.html#cb79-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste linear</span></span>
+<span id="cb79-8"><a href="determinação-de-crescimento-microbiano.html#cb79-8" aria-hidden="true" tabindex="-1"></a>ajuste_linear <span class="ot">&lt;-</span> <span class="fu">lm</span>(ln_biomassa <span class="sc">~</span> tempo)</span>
+<span id="cb79-9"><a href="determinação-de-crescimento-microbiano.html#cb79-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-10"><a href="determinação-de-crescimento-microbiano.html#cb79-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Extrair o coeficiente angular da reta (que representa mu_max)</span></span>
+<span id="cb79-11"><a href="determinação-de-crescimento-microbiano.html#cb79-11" aria-hidden="true" tabindex="-1"></a>coeficientes <span class="ot">&lt;-</span> <span class="fu">coef</span>(ajuste_linear)</span>
+<span id="cb79-12"><a href="determinação-de-crescimento-microbiano.html#cb79-12" aria-hidden="true" tabindex="-1"></a>mu_max <span class="ot">&lt;-</span> coeficientes[<span class="dv">2</span>]</span>
+<span id="cb79-13"><a href="determinação-de-crescimento-microbiano.html#cb79-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibir o valor de mu_max</span></span>
+<span id="cb79-14"><a href="determinação-de-crescimento-microbiano.html#cb79-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;O valor de mu_max é:&quot;</span>, mu_max, <span class="st">&quot;h^-1</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## O valor de mu_max é: 1.49765 h^-1</code></pre>
 </div>
 </div>
+</details>
+</div>
+<div id="exercício-2" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> Exercício 2<a href="determinação-de-crescimento-microbiano.html#exercício-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Use a inteligência artifical para linearizar os dados e calcular o <span class="math inline">\(\mu_{max}\)</span>.</p>
 </div>
 </div>
-<div id="experimento-aleatorizado-em-blocos" class="section level2 hasAnchor" number="13.2">
-<h2><span class="header-section-number">13.2</span> Experimento Aleatorizado em Blocos<a href="aleatorização-de-experimentos.html#experimento-aleatorizado-em-blocos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Aleatorize um experimento com três tratamentos (T1, T2 e T3) e seis réplicas considerando um delineamento casualizado em blocos.</p>
-<div id="código-1" class="section level3 hasAnchor" number="13.2.1">
-<h3><span class="header-section-number">13.2.1</span> Código<a href="aleatorização-de-experimentos.html#código-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="chat-container">
-<div class="code-block">
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="aleatorização-de-experimentos.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando a biblioteca agricolae</span></span>
-<span id="cb73-2"><a href="aleatorização-de-experimentos.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
-<span id="cb73-3"><a href="aleatorização-de-experimentos.html#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-4"><a href="aleatorização-de-experimentos.html#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir número de replicações e tratamentos</span></span>
-<span id="cb73-5"><a href="aleatorização-de-experimentos.html#cb73-5" aria-hidden="true" tabindex="-1"></a>rep <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb73-6"><a href="aleatorização-de-experimentos.html#cb73-6" aria-hidden="true" tabindex="-1"></a>tratamentos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;T1&quot;</span>, <span class="st">&quot;T2&quot;</span>, <span class="st">&quot;T3&quot;</span>)</span>
-<span id="cb73-7"><a href="aleatorização-de-experimentos.html#cb73-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-8"><a href="aleatorização-de-experimentos.html#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar o design experimental completamente aleatorizado</span></span>
-<span id="cb73-9"><a href="aleatorização-de-experimentos.html#cb73-9" aria-hidden="true" tabindex="-1"></a>design <span class="ot">&lt;-</span> <span class="fu">design.rcbd</span>(tratamentos, <span class="at">r =</span> rep)</span></code></pre></div>
-</div>
-</div>
-</div>
-<div id="resultado-1" class="section level3 hasAnchor" number="13.2.2">
-<h3><span class="header-section-number">13.2.2</span> Resultado<a href="aleatorização-de-experimentos.html#resultado-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="chat-container">
-<div class="code-block">
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="aleatorização-de-experimentos.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar o plano experimental</span></span>
-<span id="cb74-2"><a href="aleatorização-de-experimentos.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(design<span class="sc">$</span>book)</span></code></pre></div>
-<pre><code>##    plots block tratamentos
-## 1    101     1          T1
-## 2    102     1          T2
-## 3    103     1          T3
-## 4    201     2          T3
-## 5    202     2          T2
-## 6    203     2          T1
-## 7    301     3          T2
-## 8    302     3          T1
-## 9    303     3          T3
-## 10   401     4          T2
-## 11   402     4          T1
-## 12   403     4          T3
-## 13   501     5          T3
-## 14   502     5          T1
-## 15   503     5          T2
-## 16   601     6          T3
-## 17   602     6          T1
-## 18   603     6          T2</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="comparações-entre-tratamentos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="determinação-de-crescimento-microbiano.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="aleatorização-de-experimentos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

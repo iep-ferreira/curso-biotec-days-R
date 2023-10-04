@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Primeiros passos | Programação em R para biotecnologistas (em elaboração)</title>
+  <title>3 Primeiros passos | Programação em R para biotecnologistas</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Primeiros passos | Programação em R para biotecnologistas (em elaboração)" />
+  <meta property="og:title" content="3 Primeiros passos | Programação em R para biotecnologistas" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Primeiros passos | Programação em R para biotecnologistas (em elaboração)" />
+  <meta name="twitter:title" content="3 Primeiros passos | Programação em R para biotecnologistas" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
@@ -184,6 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="aleatorização-de-experimentos.html"><a href="aleatorização-de-experimentos.html"><i class="fa fa-check"></i><b>13</b> Aleatorização de experimentos</a></li>
+<li class="chapter" data-level="14" data-path="determinação-de-crescimento-microbiano.html"><a href="determinação-de-crescimento-microbiano.html"><i class="fa fa-check"></i><b>14</b> Determinação de crescimento microbiano</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -197,7 +198,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Programação em R para biotecnologistas (em elaboração)</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Programação em R para biotecnologistas</a>
           </h1>
         </div>
 
@@ -244,8 +245,8 @@ Abra a interface básica do R (R-GUI) e execute o código a seguir:
 </p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="primeiros-passos.html#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">15</span>)</span>
 <span id="cb2-2"><a href="primeiros-passos.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span></code></pre></div>
-<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -20.78475   0.06951   7.80839   9.15742  17.89768  49.43328</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -16.699  -1.040   6.049   8.264  18.227  40.962</code></pre>
 </details>
 </details>
 <details>
@@ -265,7 +266,7 @@ Abra a interface gráfica do R de preferência e crie um novo arquivo de script 
 <span id="cb4-3"><a href="primeiros-passos.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># faça um resumo estatístico dos valores obtidos </span></span>
 <span id="cb4-4"><a href="primeiros-passos.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -32.636  -1.464   7.190   6.800  15.231  39.592</code></pre>
+## -46.740  -1.114  12.916  11.259  23.709  45.164</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="primeiros-passos.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># desenhe um diagrama de caixas para os valores amostrados</span></span>
 <span id="cb6-2"><a href="primeiros-passos.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(x, <span class="at">main =</span> <span class="st">&quot;Diagrama de Caixas&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Valores amostrados&quot;</span>)</span></code></pre></div>
 <img src="figure-html/unnamed-chunk-6-1.png" width="672" />

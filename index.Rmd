@@ -1,5 +1,5 @@
 --- 
-title: "Programação em R para biotecnologistas (em elaboração)"
+title: "Programação em R para biotecnologistas"
 author: 'Prof. Dr. Iuri E. P. Ferreira e Prof. Dr. Jorge L. R. Pantoja Filho. Universidade Federal de São Carlos, Campus Lagoa do Sino'
 date: "5 de outubro de 2023"
 output:
@@ -1458,6 +1458,174 @@ print(design$book)
 </div>
 </div>  
 
+
+</div>
+
+# Determinação de crescimento microbiano
+
+<style>
+  .chat-container {
+    width: 100%;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .code-block {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+  }
+
+  .bot-message {
+    text-align: rigth;
+    color: #333;
+  }
+
+  .user-message {
+    text-align: right;
+    color: #4caf50;
+  }
+</style>
+
+
+<div style="text-align: justify"> 
+
+
+## O modelo de crescimento
+
+O modelo de crescimento exponencial que representa a taxa de variação da biomassa em relação ao tempo ($t$, em $h$) pode ser expresso, matematicamente, pelo produto da taxa específica de crescimento de microrganismos ($\mu$, em $h^{-1}$) pela concentração de biomassa ($x$, em $kg.m^{-3}$) no reator:
+
+\[
+\frac{dx}{dt} = \mu \, x
+\]
+
+Como $(1/x) \, dx = \mu \, dt$, tem-se que 
+
+\[
+\int_{x_a}^{x_b} \frac{1}{x} dx =  \int_{t_a}^{t_b} \mu \, dt
+\]
+
+E, desse modo, 
+
+\[
+\ln(x_b) - \ln(x_a) = \mu \int_{t_a}^{t_b} dt  
+\]
+
+Portanto, o valor de $\mu$ é determinado pela expressão
+
+\[
+\mu = \frac{ \ln(x_b/x_a) }{ t_b - t_a}
+\]
+
+## Exemplo de aplicação 
+
+_E. coli_ foi utilizada para produzir o hormônio do crescimento porcino recombinante. A bactéria cresce aerobicamente em batelada, com glicose como substrato limitante do crescimento. As concentrações de células e de substrato foram medidas em função do tempo de cultivo, com os resultados ao lado. 
+
+_Fonte: Bioprocess Engineering Principles, Pauline Doran, 2nd Edition_ 
+
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <caption>Tabela 1 - Concentração de células em função do tempo.</caption>
+    <thead>
+        <tr>
+            <th>Tempo (h)</th>
+            <th style="text-align:center;">Concentração de células, x (kg/m³)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>0</td><td style="text-align:center;">0.2</td></tr>
+        <tr><td>0.33</td><td style="text-align:center;">0.21</td></tr>
+        <tr><td>0.5</td><td style="text-align:center;">0.22</td></tr>
+        <tr><td>0.75</td><td style="text-align:center;">0.32</td></tr>
+        <tr><td>1</td><td style="text-align:center;">0.47</td></tr>
+        <tr><td>1.5</td><td style="text-align:center;">1</td></tr>
+        <tr><td>2</td><td style="text-align:center;">2.1</td></tr>
+        <tr><td>2.5</td><td style="text-align:center;">4.42</td></tr>
+        <tr><td>2.8</td><td style="text-align:center;">6.9</td></tr>
+        <tr><td>3</td><td style="text-align:center;">9.4</td></tr>
+        <tr><td>3.1</td><td style="text-align:center;">10.9</td></tr>
+        <tr><td>3.2</td><td style="text-align:center;">11.6</td></tr>
+        <tr><td>3.5</td><td style="text-align:center;">11.7</td></tr>
+        <tr><td>3.7</td><td style="text-align:center;">11.6</td></tr>
+        </tbody>
+</table>
+
+## Exercício 1
+
+Determine o valor do $\mu_{max}$ utilizando planilhas eletrônicas e o programa R. 
+
+<details>
+<summary> Resposta - com todos os dados </summary>
+<div class="chat-container">
+<div class="code-block">
+
+```{r message=FALSE, warning=FALSE}
+#Dados experimentais da biomassa em função do tempo
+tempo <- c(0, 0.33, 0.5, 0.75, 1, 1.5, 2., 2.5, 2.8, 3, 3.1, 3.2, 3.5, 3.7) #horas
+biomassa <- c(0.2, 0.21, 0.22, 0.32, 0.47, 1, 2.1, 4.42, 6.9, 9.4, 10.9, 11.6, 11.7, 11.6) #kg/m³
+# Aplicar logaritmo natural aos dados de biomassa
+ln_biomassa <- log(biomassa)
+ 
+# Ajuste linear
+ajuste_linear <- lm(ln_biomassa ~ tempo)
+
+# Extrair o coeficiente angular da reta (que representa mu_max)
+coeficientes <- coef(ajuste_linear)
+mu_max <- coeficientes[2]
+# Exibir o valor de mu_max
+cat("O valor de mu_max é:", mu_max, "h^-1\n")
+
+# Estimativas de mu por diferenças finitas de primeira ordem
+plot(tempo[-1], diff(ln_biomassa)/diff(tempo), ylab = "Mu estimado", xlab = "Tempo (h)", cex.lab = 1.3, pch =19)
+```
+
+</div>
+</div>  
+
+</details>
+
+<details>
+<summary> Resposta - dados filtrados </summary>
+<div class="chat-container">
+<div class="code-block">
+```{r}
+#Dados experimentais da biomassa em função do tempo
+tempo <- c(0.75, 1, 1.5, 2., 2.5, 2.8, 3, 3.1) #horas
+biomassa <- c(0.32, 0.47, 1, 2.1, 4.42, 6.9, 9.4, 10.9) #kg/m³
+# Aplicar logaritmo natural aos dados de biomassa
+ln_biomassa <- log(biomassa)
+ 
+# Ajuste linear
+ajuste_linear <- lm(ln_biomassa ~ tempo)
+
+# Extrair o coeficiente angular da reta (que representa mu_max)
+coeficientes <- coef(ajuste_linear)
+mu_max <- coeficientes[2]
+# Exibir o valor de mu_max
+cat("O valor de mu_max é:", mu_max, "h^-1\n")
+```
+</div>
+</div>  
+
+</details>
+
+
+
+
+## Exercício 2
+
+Use a inteligência artifical para linearizar os dados e calcular o $\mu_{max}$. 
 
 
 </div>

@@ -54,3 +54,11 @@ experimento-completamente-aleatorizado
 código
 código-1
 resultado-1
+section
+determinação-de-crsacimento-microbiano
+o-modelo-de-crescimento
+exercício
+determinação-de-crescimento-microbiano
+exemplo-de-aplicação
+exercício-1
+exercício-2
